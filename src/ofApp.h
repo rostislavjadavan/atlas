@@ -4,6 +4,7 @@
 #include "ofxImGui.h"
 #include "layer/FboLayer.h"
 #include "core/LayerManager.h"
+#include "core/LayerCompositor.h"
 
 class ofApp : public ofBaseApp {
 
@@ -28,5 +29,6 @@ class ofApp : public ofBaseApp {
 	float floatValue;
 	ImVec4 backgroundColor;
 
-	LayerManager layerManager;
+	std::shared_ptr<LayerManager> pLayerManager;
+	std::shared_ptr<LayerCompositor> pLayerCompositor;
 };

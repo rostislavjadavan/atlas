@@ -9,9 +9,11 @@ class FboLayer: public AbstractLayer {
         void setup();
         void displayGui();
         void update();
+        LayerInfo &getInfo();
         ofFbo getOutput();
 
     private:
         int width, height;
         ofFbo fbo;
+        LayerInfo layerInfo;
 };

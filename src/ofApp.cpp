@@ -2,25 +2,28 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+    FboLayer *pFboLayer1 = new FboLayer(800, 600);
+    pFboLayer1->getInfo().posX = 100;
+    pFboLayer1->getInfo().posY = 100;
 
-    //std::shared_ptr<AbstractLayer> pFboLayer = std::make_shared<FboLayer>(800, 600);
-    //pFboLayer->update();
-    FboLayer *pFboLayer = new FboLayer(800, 600);
+    FboLayer *pFboLayer2 = new FboLayer(800, 600);
 
-    this->layerManager.add(pFboLayer);
-    this->layerManager.runSetup();
+    this->pLayerManager = std::make_shared<LayerManager>();
+    this->pLayerManager->add(pFboLayer1);
+    this->pLayerManager->add(pFboLayer2);
+    this->pLayerManager->runSetup();
+
+    this->pLayerCompositor = std::make_shared<LayerCompositor>(800, 600);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    this->layerManager.runUpdate();
+    this->pLayerManager->runUpdate();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for (int i = 0; i < this->layerManager.count(); i++) {
-        this->layerManager.get(i)->getOutput().draw(0, 0);
-    }
+    this->pLayerCompositor->render(this->pLayerManager).draw(0, 0);
 
 	gui.begin();
 
