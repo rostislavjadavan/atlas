@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxImGui.h"
 
 struct LayerInfo {
 	int posX, posY;
@@ -17,4 +18,5 @@ struct LayerInfo {
 		OF_BLENDMODE_SCREEN
 	*/
 	ofBlendMode blendMode;
+	ImVec4 backgroundColor;
 };

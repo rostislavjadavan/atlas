@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../core/AbstractLayer.h"
+#include "ofMain.h"
 #include "ofxImGui.h"
 
 class FboLayer: public AbstractLayer {
@@ -13,8 +14,13 @@ class FboLayer: public AbstractLayer {
         LayerInfo &getInfo();
         ofFbo getOutput();
 
-    private:
+    protected:
+    	void commonGui();
+    	void customGui();
+
         int width, height;
         ofFbo fbo;
         LayerInfo layerInfo;
+
+        int guiBlendMode;
 };
