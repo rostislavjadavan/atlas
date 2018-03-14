@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../core/AbstractLayer.h"
+#include "ofxImGui.h"
 
 class FboLayer: public AbstractLayer {
     public:

@@ -3,10 +3,12 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
     FboLayer *pFboLayer1 = new FboLayer(800, 600);
-    pFboLayer1->getInfo().posX = 100;
+    pFboLayer1->getInfo().posX = 300;
     pFboLayer1->getInfo().posY = 100;
 
-    FboLayer *pFboLayer2 = new FboLayer(800, 600);
+    FboLayer *pFboLayer2 = new FboLayer(400, 400);
+    pFboLayer2->getInfo().posX = 100;
+    pFboLayer2->getInfo().posY = 300;
 
     this->pLayerManager = std::make_shared<LayerManager>();
     this->pLayerManager->add(pFboLayer1);
@@ -23,10 +25,13 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    this->pLayerCompositor->render(this->pLayerManager).draw(0, 0);
+    this->pLayerCompositor->render(this->pLayerManager).draw(0, 0, ofGetWidth(), ofGetHeight());
 
 	gui.begin();
+    this->pLayerManager->runDisplayGui();
+    gui.end();
 
+/*
 	//ImGui::SetNextWindowSize(ofVec2f(10,100), ImGuiSetCond_FirstUseEver);
 	ImGui::Begin("Window1");
 	ImGui::Text("Hello, world!");
@@ -51,8 +56,7 @@ void ofApp::draw(){
         ImGui::Begin("Another Window");
         ImGui::Text("Hello");
 	ImGui::End();
-
-	gui.end();
+*/
 }
 
 //--------------------------------------------------------------

@@ -12,12 +12,18 @@ FboLayer::FboLayer(int width, int height) {
     this->layerInfo.alpha = 0.5f;
     this->layerInfo.blendMode = OF_BLENDMODE_ALPHA;
 }
+
 FboLayer::~FboLayer() {}
 
 void FboLayer::setup() {
+	
 }
 
 void FboLayer::displayGui() {
+	if (ImGui::TreeNode(this->getLayerIdString().c_str())) {
+		ImGui::SliderFloat("Opacity", &this->layerInfo.alpha, 0.0f, 1.0f);
+		ImGui::TreePop();
+	}
 }
 
 void FboLayer::update() {
