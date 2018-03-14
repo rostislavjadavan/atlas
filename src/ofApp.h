@@ -2,9 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxImGui.h"
-#include "layer/EmptyLayer.h"
+#include "layer/FboLayer.h"
+#include "core/LayerManager.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 
     public:
 	void setup();
@@ -27,5 +28,5 @@ class ofApp : public ofBaseApp{
 	float floatValue;
 	ImVec4 backgroundColor;
 
-        EmptyLayer emptyLayer;		
+	LayerManager layerManager;
 };

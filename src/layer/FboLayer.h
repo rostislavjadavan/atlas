@@ -2,9 +2,11 @@
 
 #include "../core/AbstractLayer.h"
 
-class EmptyLayer: public AbstractLayer {
+class FboLayer: public AbstractLayer {
     public:
-        void setup(int width, int height);
+    	FboLayer(int width, int height);
+    	~FboLayer();
+        void setup();
         void displayGui();
         void update();
         ofFbo getOutput();

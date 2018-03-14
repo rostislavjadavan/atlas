@@ -1,19 +1,26 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-    emptyLayer.setup(800, 600);
+void ofApp::setup() {
+
+    //std::shared_ptr<AbstractLayer> pFboLayer = std::make_shared<FboLayer>(800, 600);
+    //pFboLayer->update();
+    FboLayer *pFboLayer = new FboLayer(800, 600);
+
+    this->layerManager.add(pFboLayer);
+    this->layerManager.runSetup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    emptyLayer.update();
+    this->layerManager.runUpdate();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-        emptyLayer.getOutput().draw(0, 0);
+    for (int i = 0; i < this->layerManager.count(); i++) {
+        this->layerManager.get(i)->getOutput().draw(0, 0);
+    }
 
 	gui.begin();
 
