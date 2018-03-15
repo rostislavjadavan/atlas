@@ -2,7 +2,16 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    FboLayer *pFboLayer1 = new FboLayer(600, 600);
+    ofSetWindowTitle("Atlas Compositor 0.1 Dev");
+    //ofSetEscapeQuitsApp(false);
+
+    this->settings.compositorWidth = 800;
+    this->settings.compositorHeight = 600;
+
+    this->pLayerManager = std::make_shared<LayerManager>(settings);
+    this->pLayerCompositor = std::make_shared<LayerCompositor>(settings);
+
+    /*FboLayer *pFboLayer1 = new FboLayer(600, 600);
     pFboLayer1->getInfo().posX = 300;
     pFboLayer1->getInfo().posY = 100;
 
@@ -12,20 +21,19 @@ void ofApp::setup() {
 
     FboLayer *pFboLayer3 = new FboLayer(400, 400);
     pFboLayer3->getInfo().posX = 0;
-    pFboLayer3->getInfo().posY = 0;
+    pFboLayer3->getInfo().posY = 0;*/
 
-    this->pLayerManager = std::make_shared<LayerManager>();
-    this->pLayerManager->add(pFboLayer1);
+    /*this->pLayerManager->add(pFboLayer1);
     this->pLayerManager->add(pFboLayer2);
     this->pLayerManager->add(pFboLayer3);
-    this->pLayerManager->runSetup();
+    this->pLayerManager->layersSetup();*/
 
-    this->pLayerCompositor = std::make_shared<LayerCompositor>(800, 600);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    this->pLayerManager->runUpdate();
+    this->pLayerManager->layersUpdate();
 }
 
 //--------------------------------------------------------------
@@ -36,7 +44,7 @@ void ofApp::draw(){
     ImGui::SetNextWindowPos(ImVec2(10, 10));
     ImGui::SetNextWindowSize(ofVec2f(600, ofGetHeight() - 80), ImGuiSetCond_FirstUseEver);
     ImGui::Begin("Atlas Compositor");
-        this->pLayerManager->runDisplayGui();
+        this->pLayerManager->displayGui();
     ImGui::End();
     gui.end();
 }

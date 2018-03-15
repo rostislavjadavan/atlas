@@ -1,18 +1,30 @@
 #pragma once
 
+#include "ApplicationSettings.h"
 #include "AbstractLayer.h"
+#include "layer/Layers.h"
 #include <vector>
 
 class LayerManager {
 	public:
+		LayerManager(ApplicationSettings settings);
+		~LayerManager();
+
 		void add(std::shared_ptr<AbstractLayer> layer);
 		void add(AbstractLayer *layer);
 		int count();
 		std::shared_ptr<AbstractLayer> get(int i);
-		void runSetup();
-		void runDisplayGui();
-		void runUpdate();
+		
+		void layersSetup();
+		void layersUpdate();
 
-	private:
+		void displayGui();
+
+	protected:
+		ApplicationSettings settings;
 		std::vector<std::shared_ptr<AbstractLayer>> layerList;
+
+		void createGui();
+		void moveGui();
+		void deleteGui();
 };

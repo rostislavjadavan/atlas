@@ -9,7 +9,7 @@ FboLayer::FboLayer(int width, int height) {
     this->layerInfo.height = height;
     this->layerInfo.posX = 0;
     this->layerInfo.posY = 0;
-    this->layerInfo.alpha = 0.5f;
+    this->layerInfo.alpha = 1.0f;
     this->layerInfo.blendMode = OF_BLENDMODE_ADD;
     this->layerInfo.backgroundColor = ofColor(0, 0, 0, 255);
 
@@ -77,10 +77,10 @@ void FboLayer::commonGui() {
 		ImGui::TreePop();
 	}
 	if (ImGui::TreeNode("position & size")) {
-		ImGui::SliderInt("posX", &this->layerInfo.posX, 0, ofGetWidth());
-		ImGui::SliderInt("posY", &this->layerInfo.posY, 0, ofGetHeight());
-		ImGui::SliderInt("width", &this->layerInfo.width, 0, ofGetWidth());
-		ImGui::SliderInt("height", &this->layerInfo.height, 0, ofGetHeight());
+		ImGui::InputInt("posX", &this->layerInfo.posX);
+		ImGui::InputInt("posY", &this->layerInfo.posY);
+		ImGui::InputInt("width", &this->layerInfo.width);
+		ImGui::InputInt("height", &this->layerInfo.height);
 		ImGui::TreePop();
 	}
 }

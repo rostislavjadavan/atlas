@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxImGui.h"
 #include "layer/FboLayer.h"
+#include "core/ApplicationSettings.h"
 #include "core/LayerManager.h"
 #include "core/LayerCompositor.h"
 
@@ -29,6 +30,7 @@ class ofApp : public ofBaseApp {
 	float floatValue;
 	ImVec4 backgroundColor;
 
+	ApplicationSettings settings;
 	std::shared_ptr<LayerManager> pLayerManager;
 	std::shared_ptr<LayerCompositor> pLayerCompositor;
 };

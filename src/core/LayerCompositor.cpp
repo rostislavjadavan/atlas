@@ -1,10 +1,9 @@
 
 #include "LayerCompositor.h"
 
-LayerCompositor::LayerCompositor(int width, int height) {
-	this->width = width;
-	this->height = height;
-	this->fbo.allocate(width, height, GL_RGBA);
+LayerCompositor::LayerCompositor(ApplicationSettings settings) {
+	this->settings = settings;
+	this->fbo.allocate(settings.compositorWidth, settings.compositorHeight, GL_RGBA);
 }
 
 LayerCompositor::~LayerCompositor() { }

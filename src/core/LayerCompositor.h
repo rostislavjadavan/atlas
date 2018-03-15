@@ -1,15 +1,17 @@
 #pragma once
 
+#include "ApplicationSettings.h"
 #include "LayerManager.h"
 #include "ofMain.h"
 
 class LayerCompositor {
 	public:
-		LayerCompositor(int width, int height);
+		LayerCompositor(ApplicationSettings settings);
 		~LayerCompositor();
+
 		ofFbo render(std::shared_ptr<LayerManager> manager);
 
 	private:
-		int width, height;
+		ApplicationSettings settings;
 		ofFbo fbo;
 };
