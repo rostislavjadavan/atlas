@@ -2,7 +2,10 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    ofSetWindowTitle("Atlas Compositor 0.1 Dev");
+    ofLog(OF_LOG_NOTICE) << this->appName << " starting...";
+    ofLog(OF_LOG_NOTICE) << "workdir: " <<  ofFilePath::getCurrentWorkingDirectory();
+    
+    ofSetWindowTitle(this->appName);
     //ofSetEscapeQuitsApp(false);
 
     this->settings.compositorWidth = 800;
@@ -27,8 +30,6 @@ void ofApp::setup() {
     this->pLayerManager->add(pFboLayer2);
     this->pLayerManager->add(pFboLayer3);
     this->pLayerManager->layersSetup();*/
-
-    
 }
 
 //--------------------------------------------------------------
@@ -39,7 +40,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     this->pLayerCompositor->render(this->pLayerManager).draw(0, 0, ofGetWidth(), ofGetHeight());
-
+    
 	gui.begin();
     ImGui::SetNextWindowPos(ImVec2(10, 10));
     ImGui::SetNextWindowSize(ofVec2f(600, ofGetHeight() - 80), ImGuiSetCond_FirstUseEver);

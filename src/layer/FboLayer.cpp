@@ -88,3 +88,12 @@ void FboLayer::commonGui() {
 void FboLayer::customGui() {
 
 }
+
+void FboLayer::reinit(int width, int height) {
+    this->width = width;
+    this->height = height;
+    this->fbo.allocate(width, height, GL_RGBA);
+    
+    this->layerInfo.width = width;
+    this->layerInfo.height = height;
+}

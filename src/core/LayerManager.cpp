@@ -58,17 +58,20 @@ void LayerManager::createGui() {
 			this->add(pFboLayer);
 		}
 		ImGui::SameLine();
-		if (ImGui::Button("GIF")) {
-				
+		if (ImGui::Button("VIDEO")) {
+            VideoLayer *pVideoLayer = new VideoLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+            this->add(pVideoLayer);
 		}
 		ImGui::SameLine();
-		if (ImGui::Button("TEXT")) {
-				
+		if (ImGui::Button("GIF")) {
+            GifLayer *pGifLayer = new GifLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+            this->add(pGifLayer);
 		}
+        /*
 		ImGui::SameLine();
 		if (ImGui::Button("TIMETABLE")) {
 				
-		}
+		}*/
 			
 		ImGui::TreePop();
 	}

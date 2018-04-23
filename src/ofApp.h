@@ -9,7 +9,7 @@
 
 class ofApp : public ofBaseApp {
 
-    public:
+public:
 	void setup();
 	void update();
 	void draw();
@@ -33,4 +33,6 @@ class ofApp : public ofBaseApp {
 	ApplicationSettings settings;
 	std::shared_ptr<LayerManager> pLayerManager;
 	std::shared_ptr<LayerCompositor> pLayerCompositor;
+    
+    std::string appName = "Atlas Compositor";
 };
