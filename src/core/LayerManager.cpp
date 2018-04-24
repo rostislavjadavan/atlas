@@ -53,25 +53,28 @@ void LayerManager::displayGui() {
 void LayerManager::createGui() {
 	if (ImGui::TreeNode("create layer")) {
 		if (ImGui::Button("EMPTY")) {
-			FboLayer *pFboLayer = new FboLayer(this->settings.compositorWidth, this->settings.compositorHeight);
-			pFboLayer->setup();
-			this->add(pFboLayer);
+			FboLayer *l = new FboLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+			l->setup();
+			this->add(l);
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("VIDEO")) {
-            VideoLayer *pVideoLayer = new VideoLayer(this->settings.compositorWidth, this->settings.compositorHeight);
-            this->add(pVideoLayer);
+            VideoLayer *l = new VideoLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+            l->setup();
+            this->add(l);
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("GIF")) {
-            GifLayer *pGifLayer = new GifLayer(this->settings.compositorWidth, this->settings.compositorHeight);
-            this->add(pGifLayer);
+            GifLayer *l = new GifLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+            l->setup();
+            this->add(l);
 		}
-        /*
 		ImGui::SameLine();
-		if (ImGui::Button("TIMETABLE")) {
-				
-		}*/
+		if (ImGui::Button("GIF_DIR")) {
+            GifDirectoryLayer *l = new GifDirectoryLayer(this->settings.compositorWidth, this->settings.compositorHeight);
+            l->setup();
+            this->add(l);
+		}
 			
 		ImGui::TreePop();
 	}

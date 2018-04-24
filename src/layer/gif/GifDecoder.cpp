@@ -49,6 +49,7 @@ void GifDecoder::init()
 
 bool GifDecoder::load(const char* fileName)
 {
+    this->filename = std::string(fileName);
 	init();
 
 	FILE* fp = fopen(fileName, "rb");
@@ -593,4 +594,8 @@ uint32_t GifDecoder::getWidth()
 uint32_t GifDecoder::getHeight()
 {
 	return height;
+}
+
+std::string GifDecoder::getFilename() {
+    return this->filename;
 }

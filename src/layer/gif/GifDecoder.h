@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <vector>
 #include <memory>
 #include <stdint.h>
@@ -14,6 +15,7 @@ class GifDecoder
 private:
 	static const int32_t MAX_STACK_SIZE = 4096;
 
+    std::string filename;
 	std::vector<GifFrame> frames;
 	uint16_t width;
 	uint16_t height;
@@ -73,5 +75,6 @@ public:
 
 	uint32_t getWidth();
 	uint32_t getHeight();
+    std::string getFilename();
 };
 
