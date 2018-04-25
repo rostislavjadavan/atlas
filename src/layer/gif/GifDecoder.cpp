@@ -24,6 +24,7 @@ GifDecoder::~GifDecoder()
 		pixels = NULL;
 	}
 	for (std::vector<GifFrame>::iterator i = frames.begin(); i != frames.end(); ++i) {
+        i->freeTexture();
 		delete i->data;
 	}
 	delete lastBitmapIterator;

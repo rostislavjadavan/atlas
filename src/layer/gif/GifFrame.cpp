@@ -14,6 +14,13 @@ const ofTexture* GifFrame::getTexture() {
     return this->texture;
 }
 
+void GifFrame::freeTexture() {
+    if (this->texture != NULL) {
+        this->texture->clear();
+        delete this->texture;
+    }
+}
+
 GifFrame::~GifFrame(void)
 {
 }

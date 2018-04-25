@@ -13,6 +13,7 @@ public:
 	const uint32_t* data;
 	const int32_t delayMs;
     const ofTexture* getTexture();
+    void freeTexture();
     
 private:
     ofTexture *texture = NULL;
