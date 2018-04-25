@@ -575,7 +575,7 @@ const ofTexture* GifDecoder::getFrameTexture(int32_t n) {
     if (frameCount <= 0)
         return 0;
     n = n % frameCount;
-    return &frames[n].texture;
+    return frames[n].getTexture();
 }
 
 uint32_t GifDecoder::getDelay(int32_t n)

@@ -56,24 +56,25 @@ void GifDirectoryLayer::update() {
     ofClear(this->layerInfo.backgroundColor);
     if (this->isLoaded) {
         if ((int)this->frame > this->currentGif->getFrameCount()) {
-            if (this->isNextGifLoaded) {
-                delete this->currentGif;
-                this->currentGif = this->nextGif;
-                this->nextGif = NULL;
-                this->nextGif = new GifDecoder();
-                this->isNextGifLoaded = false;
-            }
+            delete this->currentGif;
+            this->currentGif = result.get();
             this->frame = 0;
+            this->runPreload = true;
         }
         this->currentGif->getFrameTexture((int)this->frame)->draw(0, 0);
         this->frame += delta * (float)this->currentGif->getDelay((int)this->frame) / 1000.0f;
         
-        if (this->isNextGifLoaded == false && this->frame > this->currentGif->getFrameCount() / 2) {
-            this->isNextGifLoaded = this->nextGif->load(ofToDataPath(this->gifs.getPath(this->gif)).c_str());
+        if (this->runPreload) {
             this->gif++;
             if (this->gif >= this->gifs.size()) {
                 this->gif = 0;
             }
+            result = std::async(std::launch::async, [](std::string path) {
+                GifDecoder *decoder = new GifDecoder();
+                decoder->load(ofToDataPath(path).c_str());
+                return decoder;
+            }, this->gifs.getPath(this->gif));
+            this->runPreload = false;
         }
     }
     this->fbo.end();

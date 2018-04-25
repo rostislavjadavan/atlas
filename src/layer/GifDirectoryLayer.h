@@ -3,6 +3,7 @@
 #include "FboLayer.h"
 #include "gif/GifDecoder.h"
 #include <vector>
+#include <future>
 
 class GifDirectoryLayer : public FboLayer {
 public:
@@ -23,7 +24,8 @@ protected:
     char directory[512] = "";
     
     GifDecoder *currentGif, *nextGif;
-    bool isNextGifLoaded = false;
+    std::future<GifDecoder*> result;
+    bool runPreload = true;
     
     void displayGui();
     void customGui();
