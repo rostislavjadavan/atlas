@@ -2,10 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxImGui.h"
-#include "layer/FboLayer.h"
 #include "core/ApplicationSettings.h"
 #include "core/LayerManager.h"
 #include "core/LayerCompositor.h"
+#include "output/OutputWindow.h"
 
 class ofApp : public ofBaseApp {
 
@@ -27,12 +27,12 @@ public:
 	void gotMessage(ofMessage msg);
 
 	ofxImGui::Gui gui;
-	float floatValue;
-	ImVec4 backgroundColor;
 
 	ApplicationSettings settings;
 	std::shared_ptr<LayerManager> pLayerManager;
 	std::shared_ptr<LayerCompositor> pLayerCompositor;
+    
+    OutputWindow outputWindow;
     
     std::string appName = "Atlas Compositor";
 };

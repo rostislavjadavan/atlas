@@ -8,6 +8,37 @@ void ofApp::setup() {
     ofSetWindowTitle(this->appName);
     //ofSetEscapeQuitsApp(false);
 
+    /*int count;
+    GLFWmonitor **monitors = glfwGetMonitors(&count);
+    for (int i = 0; i < count; i++) {
+        GLFWmonitor *monitor = monitors[i];
+        const GLFWvidmode * desktopMode = glfwGetVideoMode(monitor);
+        
+        if (desktopMode) {
+            int xM; int yM;
+            glfwGetMonitorPos(monitor, &xM, &yM);
+            
+            ofLog(OF_LOG_NOTICE) << glfwGetMonitorName(monitor) << ": " << desktopMode->width << "x" << desktopMode->height;
+        }
+    }
+   
+    const GLFWvidmode * desktopMode = glfwGetVideoMode(monitors[1]);
+    int xM; int yM;
+    glfwGetMonitorPos(monitors[1], &xM, &yM);
+    
+    ofGLFWWindowSettings wsettings;
+    wsettings.resizable = false;
+    wsettings.decorated = false;
+    wsettings.width = desktopMode->width;
+    wsettings.height = desktopMode->height;
+    wsettings.setPosition(ofVec2f(xM, yM));
+    //wsettings.shareContextWith = std::make_s;
+    shared_ptr<ofAppBaseWindow> secondWindow = ofCreateWindow(wsettings);
+    secondWindow->setVerticalSync(false);
+    //*/
+    
+    outputWindow.init();
+    
     this->settings.compositorWidth = 800;
     this->settings.compositorHeight = 600;
 
@@ -46,6 +77,7 @@ void ofApp::draw(){
     ImGui::SetNextWindowSize(ofVec2f(600, ofGetHeight() - 80), ImGuiSetCond_FirstUseEver);
     ImGui::Begin("Atlas Compositor");
         this->pLayerManager->displayGui();
+        this->outputWindow.displayGui();
     ImGui::End();
     gui.end();
 }
