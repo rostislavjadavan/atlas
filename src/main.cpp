@@ -1,17 +1,16 @@
 #include "ofMain.h"
 #include "ofApp.h"
 #include "ofAppGLFWWindow.h"
-
-std::shared_ptr<ofAppBaseWindow> mainWindow;
+#include "core/Application.h"
 
 int main( ){
     ofGLFWWindowSettings settings;
     settings.width = 1280;
     settings.height = 800;
     settings.resizable = false;
-    mainWindow = ofCreateWindow(settings);
+    Application::Instance().mainWindow = ofCreateWindow(settings);
     shared_ptr<ofApp> mainApp(new ofApp);
     
-    ofRunApp(mainWindow, mainApp);
+    ofRunApp(Application::Instance().mainWindow, mainApp);
     ofRunMainLoop();
 }

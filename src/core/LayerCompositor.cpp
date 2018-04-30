@@ -1,9 +1,9 @@
 
 #include "LayerCompositor.h"
 
-LayerCompositor::LayerCompositor(ApplicationSettings settings) {
-	this->settings = settings;
-	this->fbo.allocate(settings.compositorWidth, settings.compositorHeight, GL_RGBA);
+LayerCompositor::LayerCompositor(std::shared_ptr<ApplicationSettings> settings) {
+	this->pSettings = settings;
+	this->fbo.allocate(settings->compositorWidth, settings->compositorHeight, GL_RGBA);
 }
 
 LayerCompositor::~LayerCompositor() { }

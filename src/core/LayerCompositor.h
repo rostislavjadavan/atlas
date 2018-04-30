@@ -6,12 +6,12 @@
 
 class LayerCompositor {
 	public:
-		LayerCompositor(ApplicationSettings settings);
+		LayerCompositor(std::shared_ptr<ApplicationSettings> settings);
 		~LayerCompositor();
 
 		ofFbo render(std::shared_ptr<LayerManager> manager);
 
 	private:
-		ApplicationSettings settings;
+		std::shared_ptr<ApplicationSettings> pSettings;
 		ofFbo fbo;
 };

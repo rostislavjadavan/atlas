@@ -8,12 +8,12 @@ void ofOutputApp::setup() {
 
 //--------------------------------------------------------------
 void ofOutputApp::update(){
-    
+    Application::Instance().pLayerManager->layersUpdate();
 }
 
 //--------------------------------------------------------------
 void ofOutputApp::draw(){
-    ofClear(0, 0, 0, 0);
+    Application::Instance().pLayerCompositor->render(Application::Instance().pLayerManager).draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------

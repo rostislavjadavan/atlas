@@ -4,6 +4,7 @@
 #include "ofxImGui.h"
 #include "ofAppGLFWWindow.h"
 #include "ofOutputApp.h"
+#include "../core/Application.h"
 #include <vector>
 #include <string>
 

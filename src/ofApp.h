@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxImGui.h"
+#include "core/Application.h"
 #include "core/ApplicationSettings.h"
 #include "core/LayerManager.h"
 #include "core/LayerCompositor.h"
@@ -27,11 +28,6 @@ public:
 	void gotMessage(ofMessage msg);
 
 	ofxImGui::Gui gui;
-
-	ApplicationSettings settings;
-	std::shared_ptr<LayerManager> pLayerManager;
-	std::shared_ptr<LayerCompositor> pLayerCompositor;
-    
     OutputWindow outputWindow;
     
     std::string appName = "Atlas Compositor";

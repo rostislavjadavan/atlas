@@ -7,7 +7,7 @@
 
 class LayerManager {
 	public:
-		LayerManager(ApplicationSettings settings);
+		LayerManager(std::shared_ptr<ApplicationSettings> settings);
 		~LayerManager();
 
 		void add(std::shared_ptr<AbstractLayer> layer);
@@ -21,7 +21,7 @@ class LayerManager {
 		void displayGui();
 
 	protected:
-		ApplicationSettings settings;
+		std::shared_ptr<ApplicationSettings> pSettings;
 		std::vector<std::shared_ptr<AbstractLayer>> layerList;
 
 		void createGui();

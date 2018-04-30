@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "../core/Application.h"
 
 class ofOutputApp : public ofBaseApp {
     

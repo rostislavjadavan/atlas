@@ -1,7 +1,5 @@
 #include "OutputWindow.h"
 
-extern std::shared_ptr<ofAppBaseWindow> mainWindow;
-
 void OutputWindow::init() {
     int count;
     GLFWmonitor **monitors = glfwGetMonitors(&count);
@@ -56,7 +54,7 @@ void OutputWindow::open(MonitorInfo *mi) {
     wsettings.width = mi->width;
     wsettings.height = mi->height;
     wsettings.setPosition(ofVec2f(mi->vx, mi->vy));
-    wsettings.shareContextWith = mainWindow;
+    wsettings.shareContextWith = Application::Instance().mainWindow;
     
     this->window = ofCreateWindow(wsettings);
     this->window->setVerticalSync(false);
