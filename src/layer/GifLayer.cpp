@@ -38,7 +38,7 @@ void GifLayer::update() {
         if ((int)this->frame > this->gif->getFrameCount()) {
             this->frame = 0;
         }
-        this->gif->getFrameTexture((int)this->frame)->draw(0, 0);
+        this->drawTexture(*this->gif->getFrameTexture((int)this->frame));
         
         if (this->playGif) {
             this->frame += delta * (float)gif->getDelay((int)this->frame) / 1000.0f;

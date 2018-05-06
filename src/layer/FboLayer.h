@@ -30,8 +30,10 @@ protected:
     LayerInfo layerInfo;
     
     int guiBlendMode;
+    int guiDrawMode;
     
     void reinit(int width, int height);
+    void drawTexture(const ofTexture &tex);
     
     double lastElapsedTime = 0;
     float delta = 0;

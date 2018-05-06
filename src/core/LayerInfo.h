@@ -3,6 +3,10 @@
 #include "ofMain.h"
 #include "ofxImGui.h"
 
+enum LayerDrawMode {
+    ORIGINAL, STRETCH, FIT
+};
+
 struct LayerInfo {
 	int posX, posY;
 	int width, height;
@@ -18,4 +22,5 @@ struct LayerInfo {
 		OF_BLENDMODE_SCREEN
 	*/
 	ofBlendMode blendMode;
+    LayerDrawMode layerDrawMode;
 };

@@ -40,7 +40,9 @@ void VideoLayer::update() {
     this->updateBegin();
     if (this->video.isLoaded()) {
         this->video.update();
-        this->video.draw(0, 0);
+        if (this->video.isPlaying()) {
+            this->drawTexture(this->video.getTexture());
+        }
     }
     this->updateEnd();
 }

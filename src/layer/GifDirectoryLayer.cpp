@@ -92,7 +92,7 @@ void GifDirectoryLayer::update() {
             this->frame = 0;
         }
         
-        this->currentGif->getFrameTexture((int)this->frame)->draw(0, 0);
+        this->drawTexture(*this->currentGif->getFrameTexture((int)this->frame));
         
         if (this->playGif) {
             this->frame += delta * (float)this->currentGif->getDelay((int)this->frame) / 1000.0f;
