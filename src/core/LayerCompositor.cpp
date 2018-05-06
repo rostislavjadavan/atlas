@@ -10,7 +10,7 @@ LayerCompositor::~LayerCompositor() { }
 
 ofFbo LayerCompositor::render(std::shared_ptr<LayerManager> manager) {
 	fbo.begin();
-	ofClear(0, 0, 0, 0);
+	ofClear(0, 0, 0, 255);
 
 	for (int i = 0; i < manager->count(); i++) {
 		LayerInfo info = manager->get(i)->getInfo();

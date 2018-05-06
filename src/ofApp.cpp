@@ -24,12 +24,18 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    Application::Instance().pLayerCompositor->render(Application::Instance().pLayerManager).draw(0, 0, ofGetWidth(), ofGetHeight());
+    const int widthHalf = ofGetWidth() / 2;
+    const int heightHalf = ofGetHeight() / 2;
+    const int previewHeight = widthHalf * Application::Instance().pSettings->getHeightToWidthRatio();
+    
+    ofClear(100);
+    Application::Instance().pLayerCompositor->render(Application::Instance().pLayerManager).draw(widthHalf, 0, widthHalf, previewHeight);
     
 	gui.begin();
-    ImGui::SetNextWindowPos(ImVec2(10, 10));
-    ImGui::SetNextWindowSize(ofVec2f(600, ofGetHeight() - 80), ImGuiSetCond_FirstUseEver);
-    ImGui::Begin("Atlas Compositor");
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(ofVec2f(widthHalf - 1, ofGetHeight()));
+    ImGui::Begin("Atlas Compositor", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+                 ImGuiWindowFlags_NoCollapse);
         Application::Instance().pLayerManager->displayGui();
         this->outputWindow.displayGui();
     ImGui::End();

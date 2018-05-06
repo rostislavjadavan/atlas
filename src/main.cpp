@@ -7,7 +7,6 @@ int main( ){
     ofGLFWWindowSettings settings;
     settings.width = 1280;
     settings.height = 800;
-    settings.resizable = false;
     Application::Instance().mainWindow = ofCreateWindow(settings);
     shared_ptr<ofApp> mainApp(new ofApp);
     
