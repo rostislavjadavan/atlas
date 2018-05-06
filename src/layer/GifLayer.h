@@ -16,6 +16,7 @@ public:
 protected:
     float frame;
     std::shared_ptr<GifDecoder> gif;
+    bool playGif = true;
     
     char filename[256] = "";
     GifPreloader preloader;

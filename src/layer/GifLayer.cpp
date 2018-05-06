@@ -9,11 +9,11 @@ GifLayer::~GifLayer() {
 }
 
 void GifLayer::play() {
-    
+    this->playGif = true;
 }
 
 void GifLayer::stop() {
-    
+    this->playGif = false;
 }
 
 void GifLayer::displayGui() {
@@ -40,7 +40,9 @@ void GifLayer::update() {
         }
         this->gif->getFrameTexture((int)this->frame)->draw(0, 0);
         
-        this->frame += delta * (float)gif->getDelay((int)this->frame) / 1000.0f;
+        if (this->playGif) {
+            this->frame += delta * (float)gif->getDelay((int)this->frame) / 1000.0f;
+        }
     }
     this->updateEnd();
 }
@@ -51,12 +53,16 @@ void GifLayer::customGui() {
         preloader.preload(ofToDataPath(this->filename));
     }
     if (this->gif.use_count() > 0) {
-        if (ImGui::Button("PLAY")) {
-            this->play();
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("STOP")) {
-            this->stop();
+        if (!this->playGif) {
+            ImGui::SameLine();
+            if (ImGui::Button("PLAY")) {
+                this->play();
+            }
+        } else {
+            ImGui::SameLine();
+            if (ImGui::Button("STOP")) {
+                this->stop();
+            }
         }
     }
 }
