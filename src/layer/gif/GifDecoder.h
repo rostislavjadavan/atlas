@@ -76,5 +76,6 @@ public:
 	uint32_t getWidth();
 	uint32_t getHeight();
     std::string getFilename();
+    bool isError = false;
 };
 

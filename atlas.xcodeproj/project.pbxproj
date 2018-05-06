@@ -15,6 +15,7 @@
 		462C212713EFFA5383B35DAB /* EngineGLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C686ADB50E8F79292BA80 /* EngineGLFW.cpp */; };
 		5C2607C471F8D48C0036C56E /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CF9B1FD213484DDDB7AE362 /* imgui.cpp */; };
 		6B3BB6E115053982E13C175C /* EngineVk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D1568F53D3EC80AC718E7B /* EngineVk.cpp */; };
+		7C115A73209F41C10046A3BB /* GifPreloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C115A72209F41C10046A3BB /* GifPreloader.cpp */; };
 		7C38A202208E3EA000CBC8BD /* DataBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FA208E3EA000CBC8BD /* DataBlock.cpp */; };
 		7C38A203208E3EA000CBC8BD /* BitmapIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FB208E3EA000CBC8BD /* BitmapIterator.cpp */; };
 		7C38A204208E3EA000CBC8BD /* GifFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FC208E3EA000CBC8BD /* GifFrame.cpp */; };
@@ -84,6 +85,9 @@
 		6CF9B1FD213484DDDB7AE362 /* imgui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = imgui.cpp; path = ../../../addons/ofxImGui/libs/imgui/src/imgui.cpp; sourceTree = SOURCE_ROOT; };
 		748079BFB4742DB856EABE40 /* Helpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Helpers.h; path = ../../../addons/ofxImGui/src/Helpers.h; sourceTree = SOURCE_ROOT; };
 		75EDE0F944593EF8C610B0A1 /* stb_textedit.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_textedit.h; path = ../../../addons/ofxImGui/libs/imgui/src/stb_textedit.h; sourceTree = SOURCE_ROOT; };
+		7C115A6B209E40A60046A3BB /* ofxPSBlend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofxPSBlend.h; path = core/ofxPSBlend.h; sourceTree = "<group>"; };
+		7C115A71209F41C10046A3BB /* GifPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifPreloader.h; sourceTree = "<group>"; };
+		7C115A72209F41C10046A3BB /* GifPreloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GifPreloader.cpp; sourceTree = "<group>"; };
 		7C38A1F8208E3EA000CBC8BD /* DataBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBlock.h; sourceTree = "<group>"; };
 		7C38A1F9208E3EA000CBC8BD /* GifDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifDecoder.h; sourceTree = "<group>"; };
 		7C38A1FA208E3EA000CBC8BD /* DataBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBlock.cpp; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		1BF4AF61A21BC0CB4D19CFDE /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				7C115A70209F41C10046A3BB /* utils */,
 				7C38A1F7208E3EA000CBC8BD /* gif */,
 				1F7F29100BA7C2BE9F3FF4EC /* FboLayer.cpp */,
 				B4D6B0E3561BB479495D4B27 /* FboLayer.h */,
@@ -209,6 +214,16 @@
 				C618591A26FF62625326E2DD /* libs */,
 			);
 			name = ofxImGui;
+			sourceTree = "<group>";
+		};
+		7C115A70209F41C10046A3BB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				7C115A71209F41C10046A3BB /* GifPreloader.h */,
+				7C115A72209F41C10046A3BB /* GifPreloader.cpp */,
+			);
+			name = utils;
+			path = layer/utils;
 			sourceTree = "<group>";
 		};
 		7C38A1F7208E3EA000CBC8BD /* gif */ = {
@@ -284,6 +299,7 @@
 				358B0960318D7AF721FE9B2C /* LayerManager.h */,
 				7C7F8255209787FA00B25CE6 /* Application.cpp */,
 				7C7F8256209787FA00B25CE6 /* Application.h */,
+				7C115A6B209E40A60046A3BB /* ofxPSBlend.h */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -434,6 +450,7 @@
 				7C38A206208E3EA000CBC8BD /* GifDecoder.cpp in Sources */,
 				7C7F825320976EDA00B25CE6 /* ofOutputApp.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				7C115A73209F41C10046A3BB /* GifPreloader.cpp in Sources */,
 				BEB406D3AC8F0CF58DECCCFA /* LayerCompositor.cpp in Sources */,
 				02C7399EA3B9BCBAAF78BF37 /* LayerManager.cpp in Sources */,
 				CB2879294336CB4EC7238FB7 /* AbstractLayer.cpp in Sources */,

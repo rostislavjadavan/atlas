@@ -55,6 +55,7 @@ bool GifDecoder::load(const char* fileName)
 
 	FILE* fp = fopen(fileName, "rb");
 	if (NULL == fp) {
+        this->isError = true;
 		return false;
 	}
 	fseek(fp, 0, SEEK_END);
@@ -67,6 +68,7 @@ bool GifDecoder::load(const char* fileName)
 	bool result = loadFromMemory(data, fileSize);
 	delete[] data;
 
+    this->isError = !result;
 	return result;
 }
 
@@ -76,6 +78,7 @@ BitmapIterator* GifDecoder::loadUsingIterator(const char* fileName)
 
 	FILE* fp = fopen(fileName, "rb");
 	if (NULL == fp) {
+        this->isError = true;
 		return NULL;
 	}
 	fseek(fp, 0, SEEK_END);
@@ -92,6 +95,7 @@ bool GifDecoder::loadFromMemory(const uint8_t* data, uint32_t size)
 {
 	DataBlock dataBlock(data, size);
 	if (!readHeader(&dataBlock)) {
+        this->isError = true;
 		return false;
 	}
 	return readContents(&dataBlock);
@@ -101,6 +105,7 @@ BitmapIterator* GifDecoder::loadFromMemoryUsingIterator(std::shared_ptr<uint8_t>
 {
 	DataBlock dataBlock(data.get(), size);
 	if (!readHeader(&dataBlock)) {
+        this->isError = true;
 		return NULL;
 	}
 	if (NULL != lastBitmapIterator) {

@@ -8,14 +8,6 @@ GifLayer::~GifLayer() {
     
 }
 
-void GifLayer::load() {
-    this->isLoaded = this->gif.load(ofToDataPath(this->filename).c_str());
-    if (this->isLoaded) {
-        ofLog(OF_LOG_NOTICE) << "gif loaded: " << this->filename << ", width: " << this->gif.getWidth() << ", height: " << this->gif.getHeight() << ", frames: " << this->gif.getFrameCount();
-        this->reinit(this->gif.getWidth(), this->gif.getHeight());
-    }
-}
-
 void GifLayer::play() {
     
 }
@@ -37,14 +29,18 @@ void GifLayer::update() {
     this->calcDelta();
     const float delta = this->getDelta();
     
+    if (preloader.getStatus() == GifPreloader::PREPARED) {
+        this->gif = preloader.get();
+    }
+    
     this->updateBegin();
-    if (this->isLoaded) {
-        if ((int)this->frame > this->gif.getFrameCount()) {
+    if (this->gif.use_count() > 0) {
+        if ((int)this->frame > this->gif->getFrameCount()) {
             this->frame = 0;
         }
-        this->gif.getFrameTexture((int)this->frame)->draw(0, 0);
+        this->gif->getFrameTexture((int)this->frame)->draw(0, 0);
         
-        this->frame += delta * (float)gif.getDelay((int)this->frame) / 1000.0f;
+        this->frame += delta * (float)gif->getDelay((int)this->frame) / 1000.0f;
     }
     this->updateEnd();
 }
@@ -52,9 +48,9 @@ void GifLayer::update() {
 void GifLayer::customGui() {
     ImGui::InputText("Filename", this->filename, 256);
     if (ImGui::Button("LOAD")) {
-        this->load();
+        preloader.preload(ofToDataPath(this->filename));
     }
-    if (this->isLoaded) {
+    if (this->gif.use_count() > 0) {
         if (ImGui::Button("PLAY")) {
             this->play();
         }
