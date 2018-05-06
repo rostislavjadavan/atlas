@@ -10,6 +10,7 @@ public:
     ~GifDirectoryLayer();
     
     void load();
+    void loadAppend();
     void play();
     void stop();
     void update();

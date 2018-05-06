@@ -18,10 +18,28 @@ void GifDirectoryLayer::load() {
     const int size = (int)dir.listDir();
     if (size > 0) {
         ofLog(OF_LOG_NOTICE) << "gifDirectory: " << size << " files found in " << this->directory;
+        this->gifList.clear();
         for (int i = 0; i < dir.size(); i ++) {
             this->gifList.push_back(dir.getPath(i));
         }
         this->gifListIndex = 0;
+    } else {
+        ofLog(OF_LOG_NOTICE) << "gifDirectory: no files found or directory doesnt exists: " << this->directory;
+    }
+}
+
+void GifDirectoryLayer::loadAppend() {
+    ofDirectory dir;
+    
+    dir.open(this->directory);
+    dir.allowExt("gif");
+    
+    const int size = (int)dir.listDir();
+    if (size > 0) {
+        ofLog(OF_LOG_NOTICE) << "gifDirectory: " << size << " files found in " << this->directory;
+        for (int i = 0; i < dir.size(); i ++) {
+            this->gifList.push_back(dir.getPath(i));
+        }
     } else {
         ofLog(OF_LOG_NOTICE) << "gifDirectory: no files found or directory doesnt exists: " << this->directory;
     }
@@ -90,10 +108,15 @@ void GifDirectoryLayer::customGui() {
     if (ImGui::Button("LOAD")) {
         this->load();
     }
+    if (this->gifList.size() > 0) {
+        ImGui::SameLine();
+        if (ImGui::Button("LOAD_APPEND")) {
+            this->loadAppend();
+        }
+    }
+    
     if (this->gifList.size() > 0 && this->currentGif.use_count() > 0) {
-        ImGui::Text("Loaded files: %i", (int)this->gifList.size());
-        ImGui::Text("Now playing %i/%i: %s", this->gifListIndex, (int)this->gifList.size(), this->currentGif->getFilename().c_str());
-        ImGui::Text("preloadQueue size %i", (int)this->preloadQueue.size());
+        ImGui::Text("Now playing %i/%i", this->gifListIndex + 1 - PRELOAD_QUEUE_SIZE, (int)this->gifList.size());
         
         if (!this->playGif) {
             if (ImGui::Button("PLAY")) {
