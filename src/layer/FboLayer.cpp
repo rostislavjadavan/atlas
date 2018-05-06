@@ -11,7 +11,6 @@ FboLayer::FboLayer(int width, int height) {
     this->layerInfo.posY = 0;
     this->layerInfo.alpha = 1.0f;
     this->layerInfo.blendMode = OF_BLENDMODE_ADD;
-    this->layerInfo.backgroundColor = ofColor(0, 0, 0, 255);
 
     this->guiBlendMode = 2;
 }
@@ -32,9 +31,7 @@ void FboLayer::displayGui() {
 }
 
 void FboLayer::update() {
-    this->fbo.begin();
-    ofClear(this->layerInfo.backgroundColor);
-    this->fbo.end();
+    
 }
 
 LayerInfo &FboLayer::getInfo() {
@@ -49,9 +46,8 @@ void FboLayer::commonGui() {
 	// TODO: working preview
 	//ImGui::Image((GLuint*)this->fbo.getTexture().getTextureData().textureID, ImVec2(200, 200));
 
-	if (ImGui::TreeNode("color & blending")) {
+	if (ImGui::TreeNode("blending & opacity")) {
 		ImGui::SliderFloat("opacity", &this->layerInfo.alpha, 0.0f, 1.0f);
-		ImGui::ColorEdit3("background color", (float*)&this->layerInfo.backgroundColor);
 
 		ImGui::Combo("blend mode", &this->guiBlendMode, "DISABLED\0ALPHA\0ADD\0SUBTRACT\0MULTIPLY\0SCREEN\0");
 		switch(this->guiBlendMode) {
@@ -87,6 +83,16 @@ void FboLayer::commonGui() {
 
 void FboLayer::customGui() {
 
+}
+
+void FboLayer::updateBegin() {
+    this->fbo.begin();
+    ofClear(0, 0, 0, 255);
+    
+}
+
+void FboLayer::updateEnd() {
+    this->fbo.end();
 }
 
 void FboLayer::reinit(int width, int height) {

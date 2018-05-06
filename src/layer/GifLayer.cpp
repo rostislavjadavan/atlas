@@ -37,8 +37,7 @@ void GifLayer::update() {
     this->calcDelta();
     const float delta = this->getDelta();
     
-    this->fbo.begin();
-    ofClear(this->layerInfo.backgroundColor);
+    this->updateBegin();
     if (this->isLoaded) {
         if ((int)this->frame > this->gif.getFrameCount()) {
             this->frame = 0;
@@ -47,7 +46,7 @@ void GifLayer::update() {
         
         this->frame += delta * (float)gif.getDelay((int)this->frame) / 1000.0f;
     }
-    this->fbo.end();
+    this->updateEnd();
 }
 
 void GifLayer::customGui() {

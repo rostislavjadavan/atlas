@@ -37,13 +37,12 @@ void VideoLayer::displayGui() {
 }
 
 void VideoLayer::update() {
-    this->fbo.begin();
-    ofClear(this->layerInfo.backgroundColor);
+    this->updateBegin();
     if (this->video.isLoaded()) {
         this->video.update();
         this->video.draw(0, 0);
     }
-    this->fbo.end();
+    this->updateEnd();
 }
 
 void VideoLayer::customGui() {

@@ -18,5 +18,4 @@ struct LayerInfo {
 		OF_BLENDMODE_SCREEN
 	*/
 	ofBlendMode blendMode;
-	ImVec4 backgroundColor;
 };

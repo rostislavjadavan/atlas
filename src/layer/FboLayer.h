@@ -22,6 +22,9 @@ protected:
     void commonGui();
     void customGui();
     
+    void updateBegin();
+    void updateEnd();
+    
     int width, height;
     ofFbo fbo;
     LayerInfo layerInfo;

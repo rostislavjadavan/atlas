@@ -52,8 +52,7 @@ void GifDirectoryLayer::update() {
     this->calcDelta();
     const float delta = this->getDelta();
     
-    this->fbo.begin();
-    ofClear(this->layerInfo.backgroundColor);
+    this->updateBegin();
     if (this->isLoaded) {
         if ((int)this->frame > this->currentGif->getFrameCount()) {
             delete this->currentGif;
@@ -77,7 +76,7 @@ void GifDirectoryLayer::update() {
             this->runPreload = false;
         }
     }
-    this->fbo.end();
+    this->updateEnd();
 }
 
 void GifDirectoryLayer::customGui() {
