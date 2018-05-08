@@ -13,6 +13,9 @@ public:
     void update();
     LayerInfo &getInfo();
     ofFbo getOutput();
+    std::string getName() {
+        return "FBO";
+    }
     
     float getDelta() {
         return this->delta;

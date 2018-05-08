@@ -11,8 +11,11 @@ public:
     void play();
     void stop();
     void update();
+    std::string getName() {
+        return "Video";
+    }
 
-protected:
+protected:    
     ofVideoPlayer video;
     char filename[256] = "";
     

@@ -16,6 +16,10 @@ void ofApp::setup() {
     Application::Instance().pLayerManager = std::make_shared<LayerManager>(Application::Instance().pSettings);
     Application::Instance().pLayerCompositor = std::make_shared<LayerCompositor>(Application::Instance().pSettings);
     
+    /*std::shared_ptr<ParticleSystemLayer> pp = std::make_shared<ParticleSystemLayer>(Application::Instance().pSettings->compositorWidth, Application::Instance().pSettings->compositorHeight);
+    pp->create(1000, ofVec2f(400, 300), 30);
+    Application::Instance().pLayerManager->add(pp);*/
+    
     gui.setup();
     ImGuiStyle * style = &ImGui::GetStyle();
     

@@ -12,6 +12,9 @@ public:
     void play();
     void stop();
     void update();
+    std::string getName() {
+        return "Gif";
+    }
     
 protected:
     float frame;

@@ -14,9 +14,11 @@ public:
     void play();
     void stop();
     void update();
+    std::string getName() {
+        return "GifDirectory";
+    }
     
-protected:
-
+protected:    
     static const int PRELOAD_QUEUE_SIZE = 3;
     
     char directory[512] = "";

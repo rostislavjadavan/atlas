@@ -12,7 +12,8 @@ void VideoLayer::load() {
     if (this->video.isLoaded()) {
         this->video.close();
     }
-    this->video.load(std::string(this->filename));
+    this->video.loadAsync(std::string(this->filename));
+    this->video.setVolume(0.0f);
 }
 
 void VideoLayer::play() {
@@ -29,7 +30,7 @@ void VideoLayer::stop() {
 
 void VideoLayer::displayGui() {
     ImGui::PushID(this->getLayerIdString().c_str());
-    if (ImGui::CollapsingHeader(this->getLayerIdString().c_str())) {
+    if (ImGui::CollapsingHeader((this->getName() + " (" + this->getLayerIdString() + ")").c_str())) {
         this->commonGui();
         this->customGui();
     }

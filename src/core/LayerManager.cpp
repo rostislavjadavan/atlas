@@ -69,6 +69,12 @@ void LayerManager::createGui() {
         l->setup();
         this->add(l);
     }
+    ImGui::SameLine();
+    if (ImGui::Button("PARTICLES")) {
+        ParticleSystemLayer *l = new ParticleSystemLayer(this->pSettings->compositorWidth, this->pSettings->compositorHeight);
+        l->setup();
+        this->add(l);
+    }
 }
 
 void LayerManager::moveGui() {

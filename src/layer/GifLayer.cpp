@@ -18,7 +18,7 @@ void GifLayer::stop() {
 
 void GifLayer::displayGui() {
     ImGui::PushID(this->getLayerIdString().c_str());
-    if (ImGui::CollapsingHeader(this->getLayerIdString().c_str())) {
+    if (ImGui::CollapsingHeader((this->getName() + " (" + this->getLayerIdString() + ")").c_str())) {
         this->commonGui();
         this->customGui();
     }
@@ -26,7 +26,6 @@ void GifLayer::displayGui() {
 }
 
 void GifLayer::update() {
-    this->calcDelta();
     const float delta = this->getDelta();
     
     if (preloader.getStatus() == GifPreloader::PREPARED) {

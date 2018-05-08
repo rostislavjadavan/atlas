@@ -25,7 +25,7 @@ void FboLayer::setup() {
 
 void FboLayer::displayGui() {
 	ImGui::PushID(this->getLayerIdString().c_str());
-	if (ImGui::CollapsingHeader(this->getLayerIdString().c_str())) {
+	if (ImGui::CollapsingHeader((this->getName() + " (" + this->getLayerIdString() + ")").c_str())) {
 		this->commonGui();
 		this->customGui();
 	}
@@ -103,6 +103,7 @@ void FboLayer::customGui() {
 }
 
 void FboLayer::updateBegin() {
+    this->calcDelta();
     this->fbo.begin();
     ofClear(0, 0, 0, 255);
     

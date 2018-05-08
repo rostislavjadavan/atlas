@@ -55,7 +55,7 @@ void GifDirectoryLayer::stop() {
 
 void GifDirectoryLayer::displayGui() {
     ImGui::PushID(this->getLayerIdString().c_str());
-    if (ImGui::CollapsingHeader(this->getLayerIdString().c_str())) {
+    if (ImGui::CollapsingHeader((this->getName() + " (" + this->getLayerIdString() + ")").c_str())) {
         this->commonGui();
         this->customGui();
     }
@@ -63,7 +63,6 @@ void GifDirectoryLayer::displayGui() {
 }
 
 void GifDirectoryLayer::update() {
-    this->calcDelta();
     const float delta = this->getDelta();
     
     if (this->gifList.size() > 0 && this->preloadQueue.size() < PRELOAD_QUEUE_SIZE && this->preloader.getStatus() == GifPreloader::WAITING) {

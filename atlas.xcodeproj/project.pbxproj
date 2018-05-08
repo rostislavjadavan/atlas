@@ -16,6 +16,7 @@
 		5C2607C471F8D48C0036C56E /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CF9B1FD213484DDDB7AE362 /* imgui.cpp */; };
 		6B3BB6E115053982E13C175C /* EngineVk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D1568F53D3EC80AC718E7B /* EngineVk.cpp */; };
 		7C115A73209F41C10046A3BB /* GifPreloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C115A72209F41C10046A3BB /* GifPreloader.cpp */; };
+		7C115A7720A209C30046A3BB /* ParticleSystemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C115A7520A209C30046A3BB /* ParticleSystemLayer.cpp */; };
 		7C38A202208E3EA000CBC8BD /* DataBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FA208E3EA000CBC8BD /* DataBlock.cpp */; };
 		7C38A203208E3EA000CBC8BD /* BitmapIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FB208E3EA000CBC8BD /* BitmapIterator.cpp */; };
 		7C38A204208E3EA000CBC8BD /* GifFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FC208E3EA000CBC8BD /* GifFrame.cpp */; };
@@ -88,6 +89,9 @@
 		7C115A6B209E40A60046A3BB /* ofxPSBlend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofxPSBlend.h; path = core/ofxPSBlend.h; sourceTree = "<group>"; };
 		7C115A71209F41C10046A3BB /* GifPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifPreloader.h; sourceTree = "<group>"; };
 		7C115A72209F41C10046A3BB /* GifPreloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GifPreloader.cpp; sourceTree = "<group>"; };
+		7C115A7520A209C30046A3BB /* ParticleSystemLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ParticleSystemLayer.cpp; path = layer/ParticleSystemLayer.cpp; sourceTree = "<group>"; };
+		7C115A7620A209C30046A3BB /* ParticleSystemLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ParticleSystemLayer.h; path = layer/ParticleSystemLayer.h; sourceTree = "<group>"; };
+		7C115A7820A20ED30046A3BB /* Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
 		7C38A1F8208E3EA000CBC8BD /* DataBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBlock.h; sourceTree = "<group>"; };
 		7C38A1F9208E3EA000CBC8BD /* GifDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifDecoder.h; sourceTree = "<group>"; };
 		7C38A1FA208E3EA000CBC8BD /* DataBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBlock.cpp; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				7C38A208208E3EC400CBC8BD /* GifLayer.h */,
 				7C9483B2208FB4F800AD3BCA /* GifDirectoryLayer.cpp */,
 				7C9483B3208FB4F800AD3BCA /* GifDirectoryLayer.h */,
+				7C115A7520A209C30046A3BB /* ParticleSystemLayer.cpp */,
+				7C115A7620A209C30046A3BB /* ParticleSystemLayer.h */,
 			);
 			name = layer;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			children = (
 				7C115A71209F41C10046A3BB /* GifPreloader.h */,
 				7C115A72209F41C10046A3BB /* GifPreloader.cpp */,
+				7C115A7820A20ED30046A3BB /* Random.h */,
 			);
 			name = utils;
 			path = layer/utils;
@@ -452,6 +459,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				7C115A73209F41C10046A3BB /* GifPreloader.cpp in Sources */,
 				BEB406D3AC8F0CF58DECCCFA /* LayerCompositor.cpp in Sources */,
+				7C115A7720A209C30046A3BB /* ParticleSystemLayer.cpp in Sources */,
 				02C7399EA3B9BCBAAF78BF37 /* LayerManager.cpp in Sources */,
 				CB2879294336CB4EC7238FB7 /* AbstractLayer.cpp in Sources */,
 				7C38A203208E3EA000CBC8BD /* BitmapIterator.cpp in Sources */,

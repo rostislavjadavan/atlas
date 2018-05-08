@@ -4,3 +4,4 @@
 #include "VideoLayer.h"
 #include "GifLayer.h"
 #include "GifDirectoryLayer.h"
+#include "ParticleSystemLayer.h"
