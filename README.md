@@ -3,10 +3,17 @@ VJ Application prototype using OpenFrameworks and ImGui.
 
 ![screenshot](screenshot.jpg)
 
-## Planned features
+## Features
 * play animated ```gif``` (or directory with gifs)
-* ```ffmpeg``` video
 * text layer using custom ```.ttf``` font
+* experimental particle system
+
+## Planned features
+* photoshop-like blending modes
+* image slideshow
+* timetable
+* beat detection
+* save/load workspace
 
 ## Reference
 
