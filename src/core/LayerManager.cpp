@@ -64,14 +64,14 @@ void LayerManager::createGui() {
         this->add(l);
     }
     ImGui::SameLine();
-    if (ImGui::Button("FFMPEG_VIDEO")) {
-        VideoLayer *l = new VideoLayer(this->pSettings->compositorWidth, this->pSettings->compositorHeight);
+    if (ImGui::Button("PARTICLES")) {
+        ParticleSystemLayer *l = new ParticleSystemLayer(this->pSettings->compositorWidth, this->pSettings->compositorHeight);
         l->setup();
         this->add(l);
     }
     ImGui::SameLine();
-    if (ImGui::Button("PARTICLES")) {
-        ParticleSystemLayer *l = new ParticleSystemLayer(this->pSettings->compositorWidth, this->pSettings->compositorHeight);
+    if (ImGui::Button("TEXT")) {
+        TextLayer *l = new TextLayer(this->pSettings->compositorWidth, this->pSettings->compositorHeight);
         l->setup();
         this->add(l);
     }

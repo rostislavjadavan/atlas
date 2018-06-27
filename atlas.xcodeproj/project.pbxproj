@@ -23,10 +23,10 @@
 		7C38A205208E3EA000CBC8BD /* BaseGifEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FD208E3EA000CBC8BD /* BaseGifEncoder.cpp */; };
 		7C38A206208E3EA000CBC8BD /* GifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A1FF208E3EA000CBC8BD /* GifDecoder.cpp */; };
 		7C38A209208E3EC400CBC8BD /* GifLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C38A207208E3EC400CBC8BD /* GifLayer.cpp */; };
-		7C777E2920866D0B0097D0B4 /* VideoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C777E2720866D0B0097D0B4 /* VideoLayer.cpp */; };
 		7C7F824F20970D6B00B25CE6 /* OutputWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F824D20970D6B00B25CE6 /* OutputWindow.cpp */; };
 		7C7F825320976EDA00B25CE6 /* ofOutputApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F825120976EDA00B25CE6 /* ofOutputApp.cpp */; };
 		7C7F8257209787FA00B25CE6 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F8255209787FA00B25CE6 /* Application.cpp */; };
+		7C8DA0BB20E4195100A7016A /* TextLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8DA0B920E4195100A7016A /* TextLayer.cpp */; };
 		7C9483B4208FB4F800AD3BCA /* GifDirectoryLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9483B2208FB4F800AD3BCA /* GifDirectoryLayer.cpp */; };
 		A0F2BFB15B92B4C6EB9527DE /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C966A8F6085AAA2FED6F411 /* Helpers.cpp */; };
 		A6F396BE5D1E24326E1F796A /* ofxImGuiLoggerChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64438C8902B287DA10BCD63B /* ofxImGuiLoggerChannel.cpp */; };
@@ -106,14 +106,14 @@
 		7C38A208208E3EC400CBC8BD /* GifLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GifLayer.h; path = layer/GifLayer.h; sourceTree = "<group>"; };
 		7C38A20A208E5E5E00CBC8BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7C38A20B208E5E6F00CBC8BD /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
-		7C777E2720866D0B0097D0B4 /* VideoLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VideoLayer.cpp; path = layer/VideoLayer.cpp; sourceTree = "<group>"; };
-		7C777E2820866D0B0097D0B4 /* VideoLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoLayer.h; path = layer/VideoLayer.h; sourceTree = "<group>"; };
 		7C7F824D20970D6B00B25CE6 /* OutputWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OutputWindow.cpp; sourceTree = "<group>"; };
 		7C7F824E20970D6B00B25CE6 /* OutputWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutputWindow.h; sourceTree = "<group>"; };
 		7C7F825120976EDA00B25CE6 /* ofOutputApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofOutputApp.cpp; sourceTree = "<group>"; };
 		7C7F825220976EDA00B25CE6 /* ofOutputApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofOutputApp.h; sourceTree = "<group>"; };
 		7C7F8255209787FA00B25CE6 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = core/Application.cpp; sourceTree = "<group>"; };
 		7C7F8256209787FA00B25CE6 /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = core/Application.h; sourceTree = "<group>"; };
+		7C8DA0B920E4195100A7016A /* TextLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TextLayer.cpp; path = layer/TextLayer.cpp; sourceTree = "<group>"; };
+		7C8DA0BA20E4195100A7016A /* TextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextLayer.h; path = layer/TextLayer.h; sourceTree = "<group>"; };
 		7C9483B2208FB4F800AD3BCA /* GifDirectoryLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GifDirectoryLayer.cpp; path = layer/GifDirectoryLayer.cpp; sourceTree = "<group>"; };
 		7C9483B3208FB4F800AD3BCA /* GifDirectoryLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GifDirectoryLayer.h; path = layer/GifDirectoryLayer.h; sourceTree = "<group>"; };
 		80F80BA4DD89C624504E035E /* stb_truetype.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_truetype.h; path = ../../../addons/ofxImGui/libs/imgui/src/stb_truetype.h; sourceTree = SOURCE_ROOT; };
@@ -168,14 +168,14 @@
 				1F7F29100BA7C2BE9F3FF4EC /* FboLayer.cpp */,
 				B4D6B0E3561BB479495D4B27 /* FboLayer.h */,
 				25B8664E760208641BC01915 /* Layers.h */,
-				7C777E2720866D0B0097D0B4 /* VideoLayer.cpp */,
-				7C777E2820866D0B0097D0B4 /* VideoLayer.h */,
 				7C38A207208E3EC400CBC8BD /* GifLayer.cpp */,
 				7C38A208208E3EC400CBC8BD /* GifLayer.h */,
 				7C9483B2208FB4F800AD3BCA /* GifDirectoryLayer.cpp */,
 				7C9483B3208FB4F800AD3BCA /* GifDirectoryLayer.h */,
 				7C115A7520A209C30046A3BB /* ParticleSystemLayer.cpp */,
 				7C115A7620A209C30046A3BB /* ParticleSystemLayer.h */,
+				7C8DA0B920E4195100A7016A /* TextLayer.cpp */,
+				7C8DA0BA20E4195100A7016A /* TextLayer.h */,
 			);
 			name = layer;
 			sourceTree = "<group>";
@@ -453,7 +453,6 @@
 			files = (
 				7C38A204208E3EA000CBC8BD /* GifFrame.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				7C777E2920866D0B0097D0B4 /* VideoLayer.cpp in Sources */,
 				7C38A206208E3EA000CBC8BD /* GifDecoder.cpp in Sources */,
 				7C7F825320976EDA00B25CE6 /* ofOutputApp.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -462,6 +461,7 @@
 				7C115A7720A209C30046A3BB /* ParticleSystemLayer.cpp in Sources */,
 				02C7399EA3B9BCBAAF78BF37 /* LayerManager.cpp in Sources */,
 				CB2879294336CB4EC7238FB7 /* AbstractLayer.cpp in Sources */,
+				7C8DA0BB20E4195100A7016A /* TextLayer.cpp in Sources */,
 				7C38A203208E3EA000CBC8BD /* BitmapIterator.cpp in Sources */,
 				D52AB7B353E28E08A3741294 /* FboLayer.cpp in Sources */,
 				A0F2BFB15B92B4C6EB9527DE /* Helpers.cpp in Sources */,
