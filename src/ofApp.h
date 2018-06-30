@@ -1,12 +1,6 @@
 #pragma once
 
-#include "ofMain.h"
-#include "ofxImGui.h"
-#include "core/Application.h"
-#include "core/ApplicationSettings.h"
-#include "core/LayerManager.h"
-#include "core/LayerCompositor.h"
-#include "output/OutputWindow.h"
+#include "core/app.hpp"
 
 class ofApp : public ofBaseApp {
 
@@ -27,8 +21,8 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	ofxImGui::Gui gui;
-    OutputWindow outputWindow;
+	//ofxImGui::Gui gui;
+    //OutputWindow outputWindow;
     
     std::string appName = "Atlas Compositor";
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../core/AbstractLayer.h"
+#include "../_output/AbstractLayer.h"
 #include "ofMain.h"
 #include "ofxImGui.h"
 

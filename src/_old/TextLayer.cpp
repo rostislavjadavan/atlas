@@ -37,13 +37,15 @@ void TextLayer::update() {
 
 void TextLayer::customGui() {
     ImGui::InputTextMultiline("Text", this->text, 1024);
-    ImGui::InputInt("Size", &this->size);
     ImGui::InputFloat("Line height", &this->lineHeight);
     ImGui::InputFloat("Letter spacing", &this->letterSpacing);
-    ImGui::InputText("Font", this->fontName, 256);
-    ImGui::SameLine();
-    if (ImGui::Button("LOAD")) {
-        this->font.load(std::string(this->fontName), this->size);
+    if (ImGui::TreeNode("font properties")) {
+        ImGui::InputInt("Size", &this->size);
+        ImGui::InputText("Font filename (.ttf)", this->fontName, 256);
+        ImGui::SameLine();
+        if (ImGui::Button("LOAD")) {
+            this->font.load(std::string(this->fontName), this->size);
+        }
+        ImGui::TreePop();
     }
-    
 }

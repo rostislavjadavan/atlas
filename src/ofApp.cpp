@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    ofLog(OF_LOG_NOTICE) << this->appName << " starting...";
+    /*ofLog(OF_LOG_NOTICE) << this->appName << " starting...";
     ofLog(OF_LOG_NOTICE) << "workdir: " <<  ofFilePath::getCurrentWorkingDirectory();
     
     ofSetWindowTitle(this->appName);
@@ -15,11 +15,13 @@ void ofApp::setup() {
 
     Application::Instance().pLayerManager = std::make_shared<LayerManager>(Application::Instance().pSettings);
     Application::Instance().pLayerCompositor = std::make_shared<LayerCompositor>(Application::Instance().pSettings);
+     */
     
     /*std::shared_ptr<ParticleSystemLayer> pp = std::make_shared<ParticleSystemLayer>(Application::Instance().pSettings->compositorWidth, Application::Instance().pSettings->compositorHeight);
     pp->create(1000, ofVec2f(400, 300), 30);
     Application::Instance().pLayerManager->add(pp);*/
     
+    /*
     gui.setup();
     ImGuiStyle * style = &ImGui::GetStyle();
     
@@ -78,15 +80,18 @@ void ofApp::setup() {
     style->Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.25f, 1.00f, 0.00f, 1.00f);
     style->Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.25f, 1.00f, 0.00f, 0.43f);
     style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
+    */
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    Application::Instance().pLayerManager->layersUpdate();
+    //Application::Instance().pLayerManager->layersUpdate();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofClear(100);
+    /*
     const int widthHalf = ofGetWidth() / 2;
     const int heightHalf = ofGetHeight() / 2;
     const int previewHeight = widthHalf * Application::Instance().pSettings->getHeightToWidthRatio();
@@ -95,14 +100,26 @@ void ofApp::draw(){
     Application::Instance().pLayerCompositor->render(Application::Instance().pLayerManager).draw(widthHalf, 0, widthHalf, previewHeight);
     
 	gui.begin();
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::SetNextWindowSize(ofVec2f(widthHalf - 1, ofGetHeight()));
+    
+    ofSetColor(0, 0, 0);
+    float sizex = Application::Instance().pSettings->compositorWidth / 8;
+    float sizey = Application::Instance().pSettings->compositorHeight / 8;
+    for (int y = 0; y < 4; y ++) {
+        for (int x = 0; x < 4; x ++) {
+            ofDrawRectangle(x * sizex, y * sizey, sizex - 1, sizey - 1);
+        }
+    }
+    ofSetColor(255, 255, 255);
+    
+    ImGui::SetNextWindowPos(ImVec2(0, ofGetHeight()/2));
+    ImGui::SetNextWindowSize(ofVec2f(widthHalf - 1, ofGetHeight()/2));
     ImGui::Begin("Atlas Compositor", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
                  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
         Application::Instance().pLayerManager->displayGui();
         this->outputWindow.displayGui();
     ImGui::End();
     gui.end();
+     */
 }
 
 //--------------------------------------------------------------
