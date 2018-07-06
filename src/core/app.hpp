@@ -2,6 +2,7 @@
 
 #include "libs/of.hpp"
 #include "core/layer_container.hpp"
+#include "core/layer_compositor.hpp"
 #include <memory>
 
 namespace atlas {
@@ -9,7 +10,7 @@ namespace atlas {
         
         class App {
         public:
-            static App& i() {
+            static App& instance() {
                 static App myInstance;
                 return myInstance;
             }
@@ -18,25 +19,28 @@ namespace atlas {
             App(App&&) = delete;
             App& operator=(App const&) = delete;
             App& operator=(App &&) = delete;
+            void setup();
             
-            static const int APP_WIDTH = 1280;
-            static const int APP_HEIGHT = 800;
-            
-            void runOfApp();
+            void setMainWindow(const std::shared_ptr<ofAppBaseWindow> &mainWindow) {
+                this->mainWindow = mainWindow;
+            }
             
             const std::shared_ptr<ofAppBaseWindow>& getMainWindow() {
                 return this->mainWindow;
             }
             
-             /*std::shared_ptr<ApplicationSettings> pSettings;
-             std::shared_ptr<LayerManager> pLayerManager;
-             std::shared_ptr<LayerCompositor> pLayerCompositor;*/
+            struct {
+                int compositorOutputWidth = 800;
+                int compositorOutputHeight = 600;
+            } settings;
             
         protected:
             App() {}
             ~App() {}
             
             std::shared_ptr<ofAppBaseWindow> mainWindow;
+            std::shared_ptr<LayerCompositor> compositor;
+            std::shared_ptr<LayerContainer> container;
         };
         
     }

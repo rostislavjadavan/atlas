@@ -1,6 +1,8 @@
 #pragma once
 
 #include "core/app.hpp"
+#include "gui/gui.hpp"
+#include "libs/of.hpp"
 
 class ofApp : public ofBaseApp {
 
@@ -23,6 +25,4 @@ public:
 
 	//ofxImGui::Gui gui;
     //OutputWindow outputWindow;
-    
-    std::string appName = "Atlas Compositor";
 };

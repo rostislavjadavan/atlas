@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+    atlas::core::App::instance().setup();
+    atlas::gui::Gui::instance().setup();
+    
     /*ofLog(OF_LOG_NOTICE) << this->appName << " starting...";
     ofLog(OF_LOG_NOTICE) << "workdir: " <<  ofFilePath::getCurrentWorkingDirectory();
     

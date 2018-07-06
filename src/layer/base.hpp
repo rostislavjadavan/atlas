@@ -8,8 +8,8 @@ namespace atlas {
         class Base {
         public:
             virtual void setup() = 0;
-            virtual void update() = 0;
-            virtual const ofTexture& getFrame() = 0;
+            virtual void update(double delta) = 0;
+            virtual const std::shared_ptr<ofFbo>& getFrame() = 0;
         private:
             
         };
