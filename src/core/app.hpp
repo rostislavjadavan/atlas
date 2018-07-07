@@ -1,6 +1,7 @@
 #pragma once
 
 #include "libs/of.hpp"
+#include "core/app_settings.hpp"
 #include "core/layer_container.hpp"
 #include "core/layer_compositor.hpp"
 #include <memory>
@@ -20,6 +21,7 @@ namespace atlas {
             App& operator=(App const&) = delete;
             App& operator=(App &&) = delete;
             void setup();
+            void update();
             
             void setMainWindow(const std::shared_ptr<ofAppBaseWindow> &mainWindow) {
                 this->mainWindow = mainWindow;
@@ -29,10 +31,15 @@ namespace atlas {
                 return this->mainWindow;
             }
             
-            struct {
-                int compositorOutputWidth = 800;
-                int compositorOutputHeight = 600;
-            } settings;
+            const std::shared_ptr<LayerContainer>& getLayerContainer() {
+                return this->container;
+            }
+            
+            const std::shared_ptr<LayerCompositor>& getLayerCompositor() {
+                return this->compositor;
+            }
+            
+            AppSettings settings;
             
         protected:
             App() {}

@@ -1,6 +1,9 @@
 
+#include "gui_settings.hpp"
+#include "types.hpp"
+#include "view/layers.hpp"
+#include "../core/app.hpp"
 #include "../libs/of.hpp"
-#include <string>
 
 namespace atlas {
     namespace gui {
@@ -17,13 +20,26 @@ namespace atlas {
             Gui& operator=(Gui const&) = delete;
             Gui& operator=(Gui &&) = delete;
             void setup();
+            void draw();
+            
+            Events events;
+            
+            void onKeyReleased(ofKeyEventArgs& event);
+            void onKeyPressed(ofKeyEventArgs& event);
+            void onMousePressed(ofMouseEventArgs& event);
+            void onMouseReleased(ofMouseEventArgs& event);
+            void onMouseMove(ofMouseEventArgs& event);
             
         private:
             Gui() {}
             ~Gui() {}
             
-            std::string appName = "Atlas Compositor";
+            GuiSettings settings;
             ofxImGui::Gui gui;
+            
+            int selectedLayer = -1;
+            
+            Layers layersView;
         };
     }
 }
