@@ -2,8 +2,10 @@
 
 namespace atlas {
     namespace gui {
-        class Output {
-            
-        };
+        namespace view {
+            class Output {
+                
+            };
+        }
     }
 }

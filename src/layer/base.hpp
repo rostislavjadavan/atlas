@@ -11,6 +11,7 @@ namespace atlas {
             virtual void setup(const atlas::core::AppSettings &settings) = 0;
             virtual void update(double delta) = 0;
             virtual const std::shared_ptr<ofFbo>& getFrame() = 0;
+            virtual void renderGui() = 0;
         private:
             
         };

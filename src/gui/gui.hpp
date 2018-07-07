@@ -2,6 +2,8 @@
 #include "gui_settings.hpp"
 #include "types.hpp"
 #include "view/layers.hpp"
+#include "view/preview.hpp"
+#include "view/properties.hpp"
 #include "../core/app.hpp"
 #include "../libs/of.hpp"
 
@@ -37,9 +39,11 @@ namespace atlas {
             GuiSettings settings;
             ofxImGui::Gui gui;
             
-            int selectedLayer = -1;
+            int selectedLayer;
             
-            Layers layersView;
+            view::Layers layersView;
+            view::Preview previewView;
+            view::Properties propertiesView;
         };
     }
 }

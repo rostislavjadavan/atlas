@@ -1,4 +1,4 @@
-#include "fbo_canvas_layer.hpp"
+#include "fbo_canvas.hpp"
 
 #include "../core/app.hpp"
 
@@ -14,4 +14,8 @@ void atlas::layer::FboCanvas::update(double delta) {
 
 const std::shared_ptr<ofFbo>& atlas::layer::FboCanvas::getFrame() {
     return this->fbo;
+}
+
+void atlas::layer::FboCanvas::renderGui() {
+    
 }

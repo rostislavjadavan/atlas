@@ -39,6 +39,10 @@ namespace atlas {
                 return this->compositor;
             }
             
+            const std::shared_ptr<ofFbo>& getFrameFromLayer(int index) {
+                return this->container->getLayer(index)->getFrame();
+            }
+            
             AppSettings settings;
             
         protected:

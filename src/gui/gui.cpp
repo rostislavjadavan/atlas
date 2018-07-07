@@ -10,6 +10,8 @@ void atlas::gui::Gui::setup() {
     ofAddListener(ofEvents().keyReleased, this, &atlas::gui::Gui::onKeyReleased);
     ofAddListener(ofEvents().keyPressed, this, &atlas::gui::Gui::onKeyPressed);
     
+    this->gui.setup();
+    
     ImGuiStyle * style = &ImGui::GetStyle();
     
     style->WindowPadding = ImVec2(15, 15);
@@ -70,28 +72,44 @@ void atlas::gui::Gui::setup() {
 }
 
 void atlas::gui::Gui::draw() {
+    this->gui.begin();
+    
     const int width = ofGetWidth();
     const int height = ofGetHeight();
     const float compositorRatio = atlas::core::App::instance().settings.getHeightToWidthRatio();
     
-    const int layersWidth = width / 3;
-    const int layerHeight = layersWidth * compositorRatio;
+    //
+    // Layers
+    //
+    const float layersWidth = width / 3;
+    const float layerHeight = layersWidth * compositorRatio;
     
-    //ofSetColor(0, 0, 0);
-    //ofDrawRectangle(0, 0, layersWidth, layerHeight);
-    this->layersView.draw(ofRectangle(0, 0, layersWidth, layerHeight), this->events);
+    this->layersView.draw(ofRectangle(0, 0, layersWidth - 1, layerHeight), this->events);
+    this->selectedLayer = this->layersView.getSelectedLayer();
     
-    const int previewWidth = width / 3;
-    const int previewHeight = previewWidth * compositorRatio;
+    //
+    // Preview
+    //
+    const float previewWidth = width / 3;
+    const float previewHeight = previewWidth * compositorRatio;
     
-    ofSetColor(255, 0, 0);
-    ofDrawRectangle(layersWidth, 0, layersWidth + previewWidth, previewHeight);
+    this->previewView.draw(ofRectangle(layersWidth, 0, previewWidth - 1, previewHeight), this->selectedLayer);
     
-    const int outputWidth = width / 3;
-    const int outputHeight = outputWidth * compositorRatio;
+    //
+    // Output
+    //
+    const float outputWidth = width / 3;
+    const float outputHeight = outputWidth * compositorRatio;
     
-    ofSetColor(0, 255, 0);
-    ofDrawRectangle(layersWidth + previewWidth, 0, layersWidth + previewWidth + outputWidth, outputHeight);
+    ofSetColor(0, 0, 0);
+    ofDrawRectangle(layersWidth + previewWidth, 0, outputWidth, outputHeight);
+    
+    //
+    // Properties
+    //
+    this->propertiesView.draw(ofRectangle(0, layerHeight + 1, layersWidth + previewWidth, height - layerHeight), this->selectedLayer);
+    
+    this->gui.end();
 }
 
 void atlas::gui::Gui::onKeyReleased(ofKeyEventArgs& event) {

@@ -2,24 +2,48 @@
 #include "../../core/app.hpp"
 #include <memory>
 
-void atlas::gui::Layers::draw(ofRectangle rect, Events events) {
-    std::shared_ptr<atlas::core::LayerContainer> container = atlas::core::App::instance().getLayerContainer();
+void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
+    const std::shared_ptr<atlas::core::LayerContainer> container = atlas::core::App::instance().getLayerContainer();
     
-    const int tileSizeX = rect.width / container->NUM_LAYERS_X - 2;
-    const int tileSizeY = rect.height / container->NUM_LAYERS_Y - 2;
+    const float tileSizeX = rect.width / container->NUM_LAYERS_X;
+    const float tileSizeY = rect.height / container->NUM_LAYERS_Y;
     
     for (int y = 0; y < container->NUM_LAYERS_Y; y++) {
         for (int x = 0; x < container->NUM_LAYERS_X; x++) {
-            ofRectangle rect(x * (tileSizeX + 2) + 2, y * (tileSizeY + 2) + 2, tileSizeX, tileSizeY);
+            ofRectangle rect(x * tileSizeX, y * tileSizeY, tileSizeX, tileSizeY);
+            const int layerIndex = y * container->NUM_LAYERS_X + x;
             
             ofSetColor(0, 0, 0);
             if (rect.inside(events.mouseX, events.mouseY)) {
+                ofSetColor(215, 215, 215);
                 if (events.mouseButton == MOUSE_BUTTON_LEFT) {
-                    ofSetColor(255, 0, 0);
-                } else
-                ofSetColor(0, 255, 0);
+                    this->selectedLayer = layerIndex;
+                }
+                if (events.mouseButton == MOUSE_BUTTON_RIGHT) {
+                    // TODO
+                }
             }
+            
+            if (layerIndex == this->selectedLayer) {
+                ofSetColor(255, 240, 40);
+            }
+            
             ofDrawRectangle(rect);
+            
+            ofRectangle rectInside(x * tileSizeX + 1, y * tileSizeY + 1, tileSizeX - 2, tileSizeY - 2);
+            const std::shared_ptr<atlas::layer::Base> layer = container->getLayer(layerIndex);
+            const std::shared_ptr<ofFbo> layerFrame = layer->getFrame();
+            
+            if (layerFrame != nullptr && layerFrame.use_count() > 0) {
+                layerFrame->draw(rectInside);
+            } else {
+                ofSetColor(0, 0, 0);
+                ofDrawRectangle(rectInside);
+            }
         }
     }
+}
+
+int atlas::gui::view::Layers::getSelectedLayer() {
+    return this->selectedLayer;
 }

@@ -5,9 +5,14 @@
 
 namespace atlas {
     namespace gui {
-        class Layers {
-        public:
-            void draw(ofRectangle rect, Events events);
-        };
+        namespace view {
+            class Layers {
+            public:
+                void draw(ofRectangle rect, Events events);
+                int getSelectedLayer();
+            protected:
+                int selectedLayer = 0;
+            };
+        }
     }
 }
