@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "../gif/GifDecoder.h"
+#include "GifDecoder.h"
 #include <string>
 #include <future>
 

@@ -6,5 +6,6 @@ void atlas::core::App::setup() {
 }
 
 void atlas::core::App::update() {
+    this->compositor->update();
 }
 

@@ -1,5 +1,5 @@
 #include "empty.hpp"
 
-void atlas::layer::Empty::renderGui() {
+void atlas::layer::Empty::gui() {
     
 }

@@ -11,7 +11,7 @@ void atlas::gui::view::Properties::draw(ofRectangle rect, int selectedLayer) {
     const std::shared_ptr<atlas::layer::Base> layer = container->getLayer(selectedLayer);
     ImGui::LabelText("", "Layer %i", selectedLayer);
     ImGui::Separator();
-    layer->renderGui();
+    layer->gui();
     
     ImGui::End();
 }

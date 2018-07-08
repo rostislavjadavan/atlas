@@ -19,9 +19,6 @@ void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
                 if (events.mouseButton == MOUSE_BUTTON_LEFT) {
                     this->selectedLayer = layerIndex;
                 }
-                if (events.mouseButton == MOUSE_BUTTON_RIGHT) {
-                    // TODO
-                }
             }
             
             if (layerIndex == this->selectedLayer) {
@@ -35,6 +32,7 @@ void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
             const std::shared_ptr<ofFbo> layerFrame = layer->getFrame();
             
             if (layerFrame != nullptr && layerFrame.use_count() > 0) {
+                ofSetColor(255, 255, 255);
                 layerFrame->draw(rectInside);
             } else {
                 ofSetColor(0, 0, 0);

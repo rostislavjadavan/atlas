@@ -9,7 +9,7 @@ namespace atlas {
             void setup(const atlas::core::AppSettings &settings) { }
             void update(double delta) { }
             const std::shared_ptr<ofFbo>& getFrame() { return nullptr; }
-            void renderGui();
+            void gui();
         };
     }
 }

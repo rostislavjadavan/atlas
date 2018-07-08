@@ -1,6 +1,7 @@
 #include "gui.hpp"
 
 void atlas::gui::Gui::setup() {
+    ofSetWindowTitle(this->settings.appName);
     
     this->events.mouseButton = MOUSE_BUTTON_NONE;
     
@@ -72,7 +73,7 @@ void atlas::gui::Gui::setup() {
 }
 
 void atlas::gui::Gui::draw() {
-    this->gui.begin();
+    ofClear(100);
     
     const int width = ofGetWidth();
     const int height = ofGetHeight();
@@ -107,6 +108,8 @@ void atlas::gui::Gui::draw() {
     //
     // Properties
     //
+    this->gui.begin();
+    
     this->propertiesView.draw(ofRectangle(0, layerHeight + 1, layersWidth + previewWidth, height - layerHeight), this->selectedLayer);
     
     this->gui.end();

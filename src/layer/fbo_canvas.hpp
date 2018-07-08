@@ -7,11 +7,13 @@ namespace atlas {
         class FboCanvas : public Base {
         public:
             void setup(const atlas::core::AppSettings &settings);
-            void update(double delta);
+            void update(double delta) { }
             const std::shared_ptr<ofFbo>& getFrame();
-            void renderGui();
+            void gui() { }
             
-        private:
+        protected:
+            LayerDrawMode layerDrawMode;
+            void drawTexture(const ofTexture &tex);
             std::shared_ptr<ofFbo> fbo;
         };
     }
