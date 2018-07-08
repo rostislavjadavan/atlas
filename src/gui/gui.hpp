@@ -4,6 +4,7 @@
 #include "view/layers.hpp"
 #include "view/preview.hpp"
 #include "view/properties.hpp"
+#include "view/output.hpp"
 #include "../core/app.hpp"
 #include "../libs/of.hpp"
 
@@ -43,6 +44,7 @@ namespace atlas {
             
             view::Layers layersView;
             view::Preview previewView;
+            view::Output outputView;
             view::Properties propertiesView;
         };
     }

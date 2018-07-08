@@ -10,13 +10,32 @@ void atlas::core::LayerCompositor::update() {
     this->delta = ofGetElapsedTimeMillis() - this->lastElapsedTime;
     this->lastElapsedTime = ofGetElapsedTimeMillis();
     
+    this->fbo->begin();
+    ofClear(0, 0, 0, 255);
+    
     for (int i = 0; i < this->container->NUM_LAYERS; i++) {
-        if (this->container->getLayer(i).use_count() > 0) {
-            this->container->getLayer(i)->update(this->delta);
-        }
+        this->renderLayer(i);
     }
+    
+    this->fbo->end();
 }
 
-const ofFbo& atlas::core::LayerCompositor::getFrame() {
+inline void atlas::core::LayerCompositor::renderLayer(int index) {
+    const shared_ptr<atlas::layer::Base> layer = this->container->getLayer(index);
+    if (layer->getFrame() == nullptr) {
+        return;
+    }
     
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(255, 255, 255, 255);
+    
+    layer->update(this->delta);
+    layer->getFrame()->draw(ofRectangle(0, 0, this->fbo->getWidth(), this->fbo->getHeight()));
+    
+    ofSetColor(255, 255, 255);
+    ofDisableBlendMode();
+}
+
+const shared_ptr<ofFbo>& atlas::core::LayerCompositor::getFrame() {
+    return this->fbo;
 }

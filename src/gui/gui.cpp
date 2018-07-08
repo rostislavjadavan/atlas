@@ -102,8 +102,7 @@ void atlas::gui::Gui::draw() {
     const float outputWidth = width / 3;
     const float outputHeight = outputWidth * compositorRatio;
     
-    ofSetColor(0, 0, 0);
-    ofDrawRectangle(layersWidth + previewWidth, 0, outputWidth, outputHeight);
+    this->outputView.draw(ofRectangle(layersWidth + previewWidth, 0, outputWidth, outputHeight));
     
     //
     // Properties
