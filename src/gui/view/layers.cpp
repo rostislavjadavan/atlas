@@ -13,7 +13,7 @@ void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
             ofRectangle rect(x * tileSizeX, y * tileSizeY, tileSizeX, tileSizeY);
             const int layerIndex = y * container->NUM_LAYERS_X + x;
             
-            ofSetColor(0, 0, 0);
+            ofSetColor(66);
             if (rect.inside(events.mouseX, events.mouseY)) {
                 ofSetColor(215, 215, 215);
                 if (events.mouseButton == MOUSE_BUTTON_LEFT) {

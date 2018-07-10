@@ -13,5 +13,8 @@ void atlas::gui::view::Properties::draw(ofRectangle rect, int selectedLayer) {
     ImGui::Separator();
     layer->gui();
     
+    ImGui::Separator();
+    this->propertiesPartialsView.createLayerGui(selectedLayer, false);
+    
     ImGui::End();
 }

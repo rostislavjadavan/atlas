@@ -29,6 +29,7 @@
 		7C53CE6C20F2393D00DE1866 /* GifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE6520F2393D00DE1866 /* GifDecoder.cpp */; };
 		7C53CE6F20F239D500DE1866 /* GifPreloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE6E20F239D500DE1866 /* GifPreloader.cpp */; };
 		7C53CE7220F23CC000DE1866 /* gif_directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE7020F23CC000DE1866 /* gif_directory.cpp */; };
+		7C53CE7520F3337000DE1866 /* properties_partials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE7320F3337000DE1866 /* properties_partials.cpp */; };
 		7C8DA10520E5605900A7016A /* app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8DA10320E5605900A7016A /* app.cpp */; };
 		7C8DA10820E56FC200A7016A /* layer_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8DA10620E56FC200A7016A /* layer_container.cpp */; };
 		A0F2BFB15B92B4C6EB9527DE /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C966A8F6085AAA2FED6F411 /* Helpers.cpp */; };
@@ -118,6 +119,8 @@
 		7C53CE6E20F239D500DE1866 /* GifPreloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GifPreloader.cpp; sourceTree = "<group>"; };
 		7C53CE7020F23CC000DE1866 /* gif_directory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gif_directory.cpp; sourceTree = "<group>"; };
 		7C53CE7120F23CC000DE1866 /* gif_directory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gif_directory.hpp; sourceTree = "<group>"; };
+		7C53CE7320F3337000DE1866 /* properties_partials.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = properties_partials.cpp; sourceTree = "<group>"; };
+		7C53CE7420F3337000DE1866 /* properties_partials.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = properties_partials.hpp; sourceTree = "<group>"; };
 		7C8DA10320E5605900A7016A /* app.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = app.cpp; sourceTree = "<group>"; };
 		7C8DA10420E5605900A7016A /* app.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = app.hpp; sourceTree = "<group>"; };
 		7C8DA10620E56FC200A7016A /* layer_container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = layer_container.cpp; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				7C53CE5320EFE60A00DE1866 /* output.hpp */,
 				7C53CE5520EFE62900DE1866 /* properties.cpp */,
 				7C53CE5620EFE62900DE1866 /* properties.hpp */,
+				7C53CE7320F3337000DE1866 /* properties_partials.cpp */,
+				7C53CE7420F3337000DE1866 /* properties_partials.hpp */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				7C53CE5720EFE62900DE1866 /* properties.cpp in Sources */,
 				7C53CE4920EFDB2500DE1866 /* gui.cpp in Sources */,
 				7C53CE5420EFE60A00DE1866 /* output.cpp in Sources */,
+				7C53CE7520F3337000DE1866 /* properties_partials.cpp in Sources */,
 				6B3BB6E115053982E13C175C /* EngineVk.cpp in Sources */,
 				7C53CE4320EA885700DE1866 /* fbo_canvas.cpp in Sources */,
 				000315A9FA4E2F9A09533E05 /* EngineOpenGLES.cpp in Sources */,

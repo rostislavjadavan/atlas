@@ -8,8 +8,8 @@ namespace atlas {
     namespace layer {
         class GifDirectory : public FboCanvas {
         public:
-            void setup(const atlas::core::AppSettings &settings);
-            void update(double delta);
+            void setup(const int layerIndex,const atlas::core::AppSettings &settings);
+            void update(const double delta);
             void gui();
             
         protected:

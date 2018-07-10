@@ -15,6 +15,7 @@ namespace atlas {
             ~LayerContainer();
             
             const std::shared_ptr<atlas::layer::Base>& getLayer(int index);
+            void setLayer(int index, std::shared_ptr<atlas::layer::Base> layer);
             
         private:
             std::shared_ptr<atlas::layer::Base> layers[NUM_LAYERS];

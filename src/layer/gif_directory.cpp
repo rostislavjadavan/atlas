@@ -1,7 +1,7 @@
 #include "gif_directory.hpp"
 
-void atlas::layer::GifDirectory::setup(const atlas::core::AppSettings &settings) {
-    FboCanvas::setup(settings);
+void atlas::layer::GifDirectory::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
+    FboCanvas::setup(layerIndex, settings);
 }
 
 void atlas::layer::GifDirectory::update(double delta) {

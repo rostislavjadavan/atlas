@@ -2,11 +2,12 @@
 
 #include "../core/app.hpp"
 
-void atlas::layer::FboCanvas::setup(const atlas::core::AppSettings &settings) {
+void atlas::layer::FboCanvas::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
     this->fbo = std::make_shared<ofFbo>();
     this->fbo->allocate(settings.compositorOutputWidth,
                         settings.compositorOutputWidth);
     this->layerDrawMode = FIT;
+    this->layerIndex = layerIndex;
 }
 
 const std::shared_ptr<ofFbo>& atlas::layer::FboCanvas::getFrame() {
