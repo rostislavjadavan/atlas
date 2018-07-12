@@ -14,6 +14,7 @@
 		462C212713EFFA5383B35DAB /* EngineGLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C686ADB50E8F79292BA80 /* EngineGLFW.cpp */; };
 		5C2607C471F8D48C0036C56E /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CF9B1FD213484DDDB7AE362 /* imgui.cpp */; };
 		6B3BB6E115053982E13C175C /* EngineVk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D1568F53D3EC80AC718E7B /* EngineVk.cpp */; };
+		7C4B764520F7D91D00BFF986 /* blend_shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */; };
 		7C53CE4320EA885700DE1866 /* fbo_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE4120EA885700DE1866 /* fbo_canvas.cpp */; };
 		7C53CE4620EAAE7E00DE1866 /* layer_compositor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE4420EAAE7E00DE1866 /* layer_compositor.cpp */; };
 		7C53CE4920EFDB2500DE1866 /* gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C53CE4720EFDB2500DE1866 /* gui.cpp */; };
@@ -86,6 +87,8 @@
 		75EDE0F944593EF8C610B0A1 /* stb_textedit.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_textedit.h; path = ../../../addons/ofxImGui/libs/imgui/src/stb_textedit.h; sourceTree = SOURCE_ROOT; };
 		7C38A20A208E5E5E00CBC8BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7C38A20B208E5E6F00CBC8BD /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
+		7C4B764320F7A7A300BFF986 /* blend_shaders.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = blend_shaders.hpp; sourceTree = "<group>"; };
+		7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = blend_shaders.cpp; sourceTree = "<group>"; };
 		7C53CE4120EA885700DE1866 /* fbo_canvas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fbo_canvas.cpp; sourceTree = "<group>"; };
 		7C53CE4220EA885700DE1866 /* fbo_canvas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fbo_canvas.hpp; sourceTree = "<group>"; };
 		7C53CE4420EAAE7E00DE1866 /* layer_compositor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = layer_compositor.cpp; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				7C53CE4520EAAE7E00DE1866 /* layer_compositor.hpp */,
 				7C8DA10620E56FC200A7016A /* layer_container.cpp */,
 				7C8DA10720E56FC200A7016A /* layer_container.hpp */,
+				7C4B764320F7A7A300BFF986 /* blend_shaders.hpp */,
+				7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				27CF6B6E279F8EE58C9D4B90 /* BaseTheme.cpp in Sources */,
 				DBBE189ECD171A97DCF46C6A /* BaseEngine.cpp in Sources */,
 				016BB55A143AD429330F07DB /* Gui.cpp in Sources */,
+				7C4B764520F7D91D00BFF986 /* blend_shaders.cpp in Sources */,
 				7C53CE5C20F0E58300DE1866 /* empty.cpp in Sources */,
 				7C53CE5720EFE62900DE1866 /* properties.cpp in Sources */,
 				7C53CE4920EFDB2500DE1866 /* gui.cpp in Sources */,

@@ -10,12 +10,6 @@ atlas::core::LayerContainer::LayerContainer() {
     for (int i = 0; i < NUM_LAYERS; i++) {
         this->layers[i] = std::make_shared<atlas::layer::Empty>();
     }
-    
-    // TODO: Remove after dev
-    this->layers[0] = std::make_shared<atlas::layer::GifDirectory>();
-    this->layers[0]->setup(0, atlas::core::App::instance().settings);
-    this->layers[1] = std::make_shared<atlas::layer::GifDirectory>();
-    this->layers[1]->setup(1, atlas::core::App::instance().settings);
 }
 
 atlas::core::LayerContainer::~LayerContainer() {

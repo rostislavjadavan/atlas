@@ -1,6 +1,7 @@
 #pragma once
 
 #include "layer_container.hpp"
+#include "blend_shaders.hpp"
 #include <memory>
 
 namespace atlas {
@@ -20,6 +21,8 @@ namespace atlas {
             double delta = 0;
             
             void renderLayer(int index);
+            ofVboMesh quad;
+            BlendShaders blendShaders;
         };
     }
 }
