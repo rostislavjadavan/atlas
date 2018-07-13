@@ -12,6 +12,7 @@ void atlas::gui::Gui::setup() {
     ofAddListener(ofEvents().keyPressed, this, &atlas::gui::Gui::onKeyPressed);
     
     this->gui.setup();
+    ImGui::SetNextTreeNodeOpen(true);
     
     ImGuiStyle * style = &ImGui::GetStyle();
     
@@ -74,6 +75,7 @@ void atlas::gui::Gui::setup() {
 
 void atlas::gui::Gui::draw() {
     ofClear(100);
+    this->gui.begin();
     
     const int width = ofGetWidth();
     const int height = ofGetHeight();
@@ -107,9 +109,12 @@ void atlas::gui::Gui::draw() {
     //
     // Properties
     //
-    this->gui.begin();
+    this->propertiesView.draw(ofRectangle(0, layerHeight + 1, layersWidth + previewWidth - 1, height - layerHeight), this->selectedLayer);
     
-    this->propertiesView.draw(ofRectangle(0, layerHeight + 1, layersWidth + previewWidth, height - layerHeight), this->selectedLayer);
+    //
+    // System
+    //
+    this->systemView.draw(ofRectangle(layersWidth + previewWidth, layerHeight + 1, outputWidth, height - layerHeight));
     
     this->gui.end();
 }

@@ -1,9 +1,10 @@
 #pragma once
 
+#include "app_settings.hpp"
+#include "output_window.hpp"
+#include "layer_container.hpp"
+#include "layer_compositor.hpp"
 #include "libs/of.hpp"
-#include "core/app_settings.hpp"
-#include "core/layer_container.hpp"
-#include "core/layer_compositor.hpp"
 #include <memory>
 
 namespace atlas {
@@ -31,6 +32,10 @@ namespace atlas {
                 return this->mainWindow;
             }
             
+            const std::shared_ptr<OutputWindow>& getOutputWindow() {
+                return this->outputWindow;
+            }
+            
             const std::shared_ptr<LayerContainer>& getLayerContainer() {
                 return this->container;
             }
@@ -50,6 +55,7 @@ namespace atlas {
             ~App() {}
             
             std::shared_ptr<ofAppBaseWindow> mainWindow;
+            std::shared_ptr<OutputWindow> outputWindow;
             std::shared_ptr<LayerCompositor> compositor;
             std::shared_ptr<LayerContainer> container;
         };
