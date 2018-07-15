@@ -1,5 +1,6 @@
 #pragma once
 
+#include "common.hpp"
 #include "core/app_settings.hpp"
 #include "libs/of.hpp"
 
@@ -16,6 +17,7 @@ namespace atlas {
             virtual void update(const double delta) = 0;
             virtual const std::shared_ptr<ofFbo>& getFrame() = 0;
             virtual void gui() = 0;
+            virtual int getLayerType() = 0;
         };
     }
 }

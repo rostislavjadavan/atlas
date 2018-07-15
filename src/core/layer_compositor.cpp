@@ -38,7 +38,7 @@ void atlas::core::LayerCompositor::update() {
 
 inline void atlas::core::LayerCompositor::renderLayer(int index) {
     const shared_ptr<atlas::layer::Base> layer = this->container->getLayer(index);
-    if (layer->getFrame() == nullptr) {
+    if (layer->getLayerType() == atlas::layer::LAYER_TYPE_EMPTY) {
         return;
     }
     

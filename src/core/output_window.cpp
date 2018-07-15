@@ -24,27 +24,26 @@ void atlas::core::OutputWindow::init() {
 }
 
 void atlas::core::OutputWindow::gui() {
-    
-        for (MonitorInfo mi: this->monitors) {
-            ImGui::Text("%s", mi.getTitle().c_str());
-            if (!mi.isPrimary && !this->window) {
-                ImGui::SameLine();
-                if (ImGui::Button("OPEN")) {
-                    this->open(&mi);
-                    
-                }
+    for (MonitorInfo mi: this->monitors) {
+        ImGui::Text("%s", mi.getTitle().c_str());
+        if (!mi.isPrimary && !this->window) {
+            ImGui::SameLine();
+            if (ImGui::Button("OPEN")) {
+                this->open(&mi);
+                
             }
         }
-        if (this->window) {
-            if (ImGui::Button("CLOSE")) {
-                this->window->setWindowShouldClose();
-                this->window.reset();
-            }
+    }
+    if (this->window) {
+        if (ImGui::Button("CLOSE")) {
+            this->window->setWindowShouldClose();
+            this->window.reset();
         }
-        if (ImGui::Button("REFRESH")) {
-            this->monitors.clear();
-            this->init();
-        }
+    }
+    if (ImGui::Button("REFRESH")) {
+        this->monitors.clear();
+        this->init();
+    }
 }
 
 void atlas::core::OutputWindow::open(MonitorInfo *mi) {

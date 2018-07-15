@@ -10,9 +10,13 @@ namespace atlas {
             void update(const double delta) { }
             const std::shared_ptr<ofFbo>& getFrame();
             void gui() { }
+            int getLayerType() {
+                return LAYER_TYPE_EMPTY;
+            }
             
         protected:
             int layerIndex;
+            atlas::core::AppSettings settings;
             
             LayerDrawMode layerDrawMode;
             void drawTexture(const ofTexture &tex);

@@ -8,7 +8,7 @@ namespace atlas {
         namespace view {
             class PropertiesPartials {
             public:
-                void createLayerGui(int index, bool createEmptyLayer);
+                void createLayerGui(int index);
             };
         }
     }

@@ -11,6 +11,9 @@ namespace atlas {
             void setup(const int layerIndex,const atlas::core::AppSettings &settings);
             void update(const double delta);
             void gui();
+            int getLayerType() {
+                return LAYER_TYPE_GIFDIRECTORY;
+            }
             
         protected:
             static const int PRELOAD_QUEUE_SIZE = 3;

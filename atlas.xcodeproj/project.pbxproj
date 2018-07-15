@@ -36,6 +36,7 @@
 		7CB7ADCC20F89D3B0050626C /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADCA20F89D3B0050626C /* system.cpp */; };
 		7CB7ADCF20F8A51B0050626C /* ofOutputApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADCD20F8A51B0050626C /* ofOutputApp.cpp */; };
 		7CB7ADD220F8A64F0050626C /* output_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADD020F8A64F0050626C /* output_window.cpp */; };
+		7CB7ADD520FBA9620050626C /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADD320FBA9620050626C /* text.cpp */; };
 		A0F2BFB15B92B4C6EB9527DE /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C966A8F6085AAA2FED6F411 /* Helpers.cpp */; };
 		A6F396BE5D1E24326E1F796A /* ofxImGuiLoggerChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64438C8902B287DA10BCD63B /* ofxImGuiLoggerChannel.cpp */; };
 		DBBE189ECD171A97DCF46C6A /* BaseEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BDAD29F580A47FF56B52 /* BaseEngine.cpp */; };
@@ -139,6 +140,9 @@
 		7CB7ADCE20F8A51B0050626C /* ofOutputApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofOutputApp.h; sourceTree = "<group>"; };
 		7CB7ADD020F8A64F0050626C /* output_window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = output_window.cpp; sourceTree = "<group>"; };
 		7CB7ADD120F8A64F0050626C /* output_window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = output_window.hpp; sourceTree = "<group>"; };
+		7CB7ADD320FBA9620050626C /* text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
+		7CB7ADD420FBA9620050626C /* text.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text.hpp; sourceTree = "<group>"; };
+		7CB7ADD620FBAE1A0050626C /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		80F80BA4DD89C624504E035E /* stb_truetype.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_truetype.h; path = ../../../addons/ofxImGui/libs/imgui/src/stb_truetype.h; sourceTree = SOURCE_ROOT; };
 		8E362ECECD928E7B3EBA5C53 /* BaseTheme.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = BaseTheme.cpp; path = ../../../addons/ofxImGui/src/BaseTheme.cpp; sourceTree = SOURCE_ROOT; };
 		91D1568F53D3EC80AC718E7B /* EngineVk.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = EngineVk.cpp; path = ../../../addons/ofxImGui/src/EngineVk.cpp; sourceTree = SOURCE_ROOT; };
@@ -222,14 +226,14 @@
 			children = (
 				7C53CE4C20EFE5B900DE1866 /* layers.cpp */,
 				7C53CE4D20EFE5B900DE1866 /* layers.hpp */,
-				7C53CE4F20EFE5FD00DE1866 /* preview.cpp */,
-				7C53CE5020EFE5FD00DE1866 /* preview.hpp */,
 				7C53CE5220EFE60A00DE1866 /* output.cpp */,
 				7C53CE5320EFE60A00DE1866 /* output.hpp */,
-				7C53CE5520EFE62900DE1866 /* properties.cpp */,
-				7C53CE5620EFE62900DE1866 /* properties.hpp */,
+				7C53CE4F20EFE5FD00DE1866 /* preview.cpp */,
+				7C53CE5020EFE5FD00DE1866 /* preview.hpp */,
 				7C53CE7320F3337000DE1866 /* properties_partials.cpp */,
 				7C53CE7420F3337000DE1866 /* properties_partials.hpp */,
+				7C53CE5520EFE62900DE1866 /* properties.cpp */,
+				7C53CE5620EFE62900DE1866 /* properties.hpp */,
 				7CB7ADCA20F89D3B0050626C /* system.cpp */,
 				7CB7ADCB20F89D3B0050626C /* system.hpp */,
 			);
@@ -261,12 +265,12 @@
 				7C53CE4B20EFE18B00DE1866 /* app_settings.hpp */,
 				7C8DA10320E5605900A7016A /* app.cpp */,
 				7C8DA10420E5605900A7016A /* app.hpp */,
+				7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */,
+				7C4B764320F7A7A300BFF986 /* blend_shaders.hpp */,
 				7C53CE4420EAAE7E00DE1866 /* layer_compositor.cpp */,
 				7C53CE4520EAAE7E00DE1866 /* layer_compositor.hpp */,
 				7C8DA10620E56FC200A7016A /* layer_container.cpp */,
 				7C8DA10720E56FC200A7016A /* layer_container.hpp */,
-				7C4B764320F7A7A300BFF986 /* blend_shaders.hpp */,
-				7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */,
 				7CB7ADD020F8A64F0050626C /* output_window.cpp */,
 				7CB7ADD120F8A64F0050626C /* output_window.hpp */,
 			);
@@ -277,12 +281,15 @@
 			isa = PBXGroup;
 			children = (
 				7C8DA10A20E5705300A7016A /* base.hpp */,
-				7C53CE4120EA885700DE1866 /* fbo_canvas.cpp */,
-				7C53CE4220EA885700DE1866 /* fbo_canvas.hpp */,
+				7CB7ADD620FBAE1A0050626C /* common.hpp */,
 				7C53CE5A20F0E58300DE1866 /* empty.cpp */,
 				7C53CE5B20F0E58300DE1866 /* empty.hpp */,
+				7C53CE4120EA885700DE1866 /* fbo_canvas.cpp */,
+				7C53CE4220EA885700DE1866 /* fbo_canvas.hpp */,
 				7C53CE7020F23CC000DE1866 /* gif_directory.cpp */,
 				7C53CE7120F23CC000DE1866 /* gif_directory.hpp */,
+				7CB7ADD320FBA9620050626C /* text.cpp */,
+				7CB7ADD420FBA9620050626C /* text.hpp */,
 			);
 			path = layer;
 			sourceTree = "<group>";
@@ -484,6 +491,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				7C53CE6920F2393D00DE1866 /* BitmapIterator.cpp in Sources */,
+				7CB7ADD520FBA9620050626C /* text.cpp in Sources */,
 				7C8DA10820E56FC200A7016A /* layer_container.cpp in Sources */,
 				7C8DA10520E5605900A7016A /* app.cpp in Sources */,
 				7C53CE7220F23CC000DE1866 /* gif_directory.cpp in Sources */,

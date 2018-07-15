@@ -10,6 +10,9 @@ namespace atlas {
             void update(const double delta) { }
             const std::shared_ptr<ofFbo>& getFrame() { return nullptr; }
             void gui();
+            int getLayerType() {
+                return LAYER_TYPE_EMPTY;
+            }
         private:
             int layerIndex;
         };

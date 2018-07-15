@@ -5,7 +5,7 @@
 namespace atlas {
     namespace gui {
         struct GuiSettings {
-            std::string appName = "Atlas Compositor";
+            std::string appName = "AtlasVJ";
         };
     }
 }

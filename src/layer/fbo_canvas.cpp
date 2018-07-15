@@ -8,6 +8,7 @@ void atlas::layer::FboCanvas::setup(const int layerIndex, const atlas::core::App
                         settings.compositorOutputHeight);
     this->layerDrawMode = FIT;
     this->layerIndex = layerIndex;
+    this->settings = settings;
 }
 
 const std::shared_ptr<ofFbo>& atlas::layer::FboCanvas::getFrame() {
