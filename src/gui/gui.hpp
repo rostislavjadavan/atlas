@@ -25,6 +25,8 @@ namespace atlas {
             Gui& operator=(Gui &&) = delete;
             void setup();
             void draw();
+            void disableSelections();
+            void enableSelections();
             
             Events events;
             
@@ -34,7 +36,7 @@ namespace atlas {
             void onMouseReleased(ofMouseEventArgs& event);
             void onMouseMove(ofMouseEventArgs& event);
             
-        private:
+        protected:
             Gui() {}
             ~Gui() {}
             

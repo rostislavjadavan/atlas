@@ -118,6 +118,14 @@ void atlas::gui::Gui::draw() {
     this->gui.end();
 }
 
+void atlas::gui::Gui::disableSelections() {
+    this->layersView.disableSelections();
+}
+
+void atlas::gui::Gui::enableSelections() {
+    this->layersView.enableSelections();
+}
+
 void atlas::gui::Gui::onKeyReleased(ofKeyEventArgs& event) {
     // TODO
 }

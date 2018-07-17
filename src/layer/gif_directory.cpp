@@ -2,6 +2,7 @@
 
 void atlas::layer::GifDirectory::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
     FboCanvas::setup(layerIndex, settings);
+    this->mediaSelector.setMode(atlas::gui::view::DIR_SELECT);
 }
 
 void atlas::layer::GifDirectory::update(double delta) {
@@ -49,6 +50,9 @@ void atlas::layer::GifDirectory::gui() {
     ImGui::InputText("Directory", this->directory, 256);
     if (ImGui::Button("LOAD")) {
         this->load();
+    }
+    if (this->mediaSelector.draw(ofRectangle(100, 100, 1100, 700))) {
+        ofLogNotice() << this->mediaSelector.getSelected();
     }
     
     if (this->gifList.size() > 0 && this->currentGif.use_count() > 0) {

@@ -37,6 +37,7 @@
 		7CB7ADCF20F8A51B0050626C /* ofOutputApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADCD20F8A51B0050626C /* ofOutputApp.cpp */; };
 		7CB7ADD220F8A64F0050626C /* output_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADD020F8A64F0050626C /* output_window.cpp */; };
 		7CB7ADD520FBA9620050626C /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADD320FBA9620050626C /* text.cpp */; };
+		7CB7ADDC20FBDB850050626C /* media_selector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADDA20FBDB850050626C /* media_selector.cpp */; };
 		A0F2BFB15B92B4C6EB9527DE /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C966A8F6085AAA2FED6F411 /* Helpers.cpp */; };
 		A6F396BE5D1E24326E1F796A /* ofxImGuiLoggerChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64438C8902B287DA10BCD63B /* ofxImGuiLoggerChannel.cpp */; };
 		DBBE189ECD171A97DCF46C6A /* BaseEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BDAD29F580A47FF56B52 /* BaseEngine.cpp */; };
@@ -143,6 +144,8 @@
 		7CB7ADD320FBA9620050626C /* text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
 		7CB7ADD420FBA9620050626C /* text.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text.hpp; sourceTree = "<group>"; };
 		7CB7ADD620FBAE1A0050626C /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		7CB7ADDA20FBDB850050626C /* media_selector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = media_selector.cpp; sourceTree = "<group>"; };
+		7CB7ADDB20FBDB850050626C /* media_selector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = media_selector.hpp; sourceTree = "<group>"; };
 		80F80BA4DD89C624504E035E /* stb_truetype.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_truetype.h; path = ../../../addons/ofxImGui/libs/imgui/src/stb_truetype.h; sourceTree = SOURCE_ROOT; };
 		8E362ECECD928E7B3EBA5C53 /* BaseTheme.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = BaseTheme.cpp; path = ../../../addons/ofxImGui/src/BaseTheme.cpp; sourceTree = SOURCE_ROOT; };
 		91D1568F53D3EC80AC718E7B /* EngineVk.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = EngineVk.cpp; path = ../../../addons/ofxImGui/src/EngineVk.cpp; sourceTree = SOURCE_ROOT; };
@@ -236,6 +239,8 @@
 				7C53CE5620EFE62900DE1866 /* properties.hpp */,
 				7CB7ADCA20F89D3B0050626C /* system.cpp */,
 				7CB7ADCB20F89D3B0050626C /* system.hpp */,
+				7CB7ADDA20FBDB850050626C /* media_selector.cpp */,
+				7CB7ADDB20FBDB850050626C /* media_selector.hpp */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				E984796BE84AA4315636B6E7 /* imgui_demo.cpp in Sources */,
 				7C53CE5120EFE5FD00DE1866 /* preview.cpp in Sources */,
 				00413C35AAE31B483D7538AB /* imgui_draw.cpp in Sources */,
+				7CB7ADDC20FBDB850050626C /* media_selector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,6 +3,7 @@
 #include "fbo_canvas.hpp"
 #include "../libs/gif/GifDecoder.h"
 #include "../libs/gif/GifPreloader.h"
+#include "../gui/view/media_selector.hpp"
 
 namespace atlas {
     namespace layer {
@@ -19,6 +20,7 @@ namespace atlas {
             static const int PRELOAD_QUEUE_SIZE = 3;
             
             char directory[512] = "";
+            atlas::gui::view::MediaSelector mediaSelector;
             
             GifPreloader preloader;
             

@@ -14,10 +14,12 @@ void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
             const int layerIndex = y * container->NUM_LAYERS_X + x;
             
             ofSetColor(66);
-            if (rect.inside(events.mouseX, events.mouseY)) {
-                ofSetColor(215, 215, 215);
-                if (events.mouseButton == MOUSE_BUTTON_LEFT) {
-                    this->selectedLayer = layerIndex;
+            if (this->selectEnabled) {
+                if (rect.inside(events.mouseX, events.mouseY)) {
+                    ofSetColor(215, 215, 215);
+                    if (events.mouseButton == MOUSE_BUTTON_LEFT) {
+                        this->selectedLayer = layerIndex;
+                    }
                 }
             }
             

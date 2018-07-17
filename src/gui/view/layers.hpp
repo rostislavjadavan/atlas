@@ -10,8 +10,15 @@ namespace atlas {
             public:
                 void draw(ofRectangle rect, Events events);
                 int getSelectedLayer();
+                void disableSelections() {
+                    this->selectEnabled = false;
+                }
+                void enableSelections() {
+                    this->selectEnabled = true;
+                }
             protected:
                 int selectedLayer = 0;
+                bool selectEnabled = true;
             };
         }
     }
