@@ -51,7 +51,7 @@ void atlas::layer::GifDirectory::gui() {
     if (ImGui::Button("LOAD")) {
         this->load();
     }
-    if (this->mediaSelector.draw(ofRectangle(100, 100, 1100, 700))) {
+    if (this->mediaSelector.draw()) {
         ofLogNotice() << this->mediaSelector.getSelected();
     }
     

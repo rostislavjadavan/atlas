@@ -12,6 +12,7 @@ namespace atlas {
             class MediaSelector {
             public:
                 MediaSelector();
+                bool draw();
                 bool draw(ofRectangle rect);
                 std::string getSelected() {
                     return this->selectedMedia;
@@ -35,6 +36,7 @@ namespace atlas {
                 bool drawList();
                 
                 bool setPath(std::string path);
+                void goDirUp();
             };
         }
     }

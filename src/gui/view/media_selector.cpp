@@ -6,6 +6,12 @@ atlas::gui::view::MediaSelector::MediaSelector() {
     this->mode = FILE_SELECT;
 }
 
+bool atlas::gui::view::MediaSelector::draw() {
+    const float x = ofGetWidth() / 10;
+    const float y = ofGetHeight() / 10;
+    this->draw(ofRectangle(x, y, ofGetWidth() - x * 2, ofGetHeight() - y * 2));
+}
+
 bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
     if (this->display) {
         atlas::gui::Gui::instance().disableSelections();
@@ -42,9 +48,7 @@ void atlas::gui::view::MediaSelector::drawDirectoryInput() {
     }
     ImGui::SameLine();
     if (ImGui::Button("UP")) {
-        ofFile f(this->currentPath);
-        size_t found = this->currentPath.find_last_of("/\\");
-        this->setPath(this->currentPath.substr(0, found));
+        this->goDirUp();
     }
 }
 
@@ -65,22 +69,29 @@ bool atlas::gui::view::MediaSelector::drawList() {
         }
     }
     if (this->mode == DIR_SELECT) {
+        ImGui::Columns(2);
         for (int i = 0; i < this->fileList.size(); i ++) {
             const ofFile file = this->fileList.at(i);
             if (file.isDirectory()) {
                 if (ImGui::Selectable(file.getFileName().c_str())) {
                     this->setPath(file.getAbsolutePath());
                 }
-                if (ImGui::Button("Select")) {
+            }
+        }
+        ImGui::NextColumn();
+        for (int i = 0; i < this->fileList.size(); i ++) {
+            const ofFile file = this->fileList.at(i);
+            if (file.isDirectory()) {
+                if (ImGui::Selectable("Select")) {
                     const ofFile file = this->fileList.at(i);
                     if (file.isDirectory()) {
                         this->selectedMedia = file.getAbsolutePath();
                         return true;
                     }
                 }
-                ImGui::Separator();
             }
         }
+        ImGui::Columns(1);
     }
 }
 
@@ -104,4 +115,9 @@ bool atlas::gui::view::MediaSelector::setPath(std::string path) {
         fileList.push_back(dir.getFile(i));
     }
     return true;
+}
+
+void atlas::gui::view::MediaSelector::goDirUp() {
+    int found = this->currentPath.find_last_of("/\\");
+    this->setPath(this->currentPath.substr(0, found));
 }
