@@ -6,7 +6,6 @@ void atlas::layer::Text::setup(const int layerIndex,const atlas::core::AppSettin
     this->lineHeight = 55;
     this->letterSpacing = 1;
     memset(this->text, 0, sizeof this->text);
-    memset(this->fontName, 0, sizeof this->fontName);
 }
 
 void atlas::layer::Text::update(const double delta) {
@@ -31,13 +30,11 @@ void atlas::layer::Text::gui() {
     ImGui::InputTextMultiline("Text", this->text, 1024);
     ImGui::InputFloat("Line height", &this->lineHeight);
     ImGui::InputFloat("Letter spacing", &this->letterSpacing);
-    if (ImGui::TreeNode("font properties")) {
-        ImGui::InputInt("Size", &this->size);
-        ImGui::InputText("Font filename (.ttf)", this->fontName, 256);
-        ImGui::SameLine();
-        if (ImGui::Button("LOAD")) {
-            this->font.load(std::string(this->fontName), this->size);
-        }
-        ImGui::TreePop();
+    if (ImGui::InputInt("Size", &this->size)) {
+        this->font.load(this->mediaSelector.getSelected().getAbsolutePath(), this->size);
+    }
+    ImGui::Text("%s", this->mediaSelector.getSelected().getFileName().c_str());
+    if (this->mediaSelector.draw()) {
+        this->font.load(this->mediaSelector.getSelected().getAbsolutePath(), this->size);
     }
 }

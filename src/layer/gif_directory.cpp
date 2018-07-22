@@ -49,7 +49,7 @@ void atlas::layer::GifDirectory::update(double delta) {
 }
 
 void atlas::layer::GifDirectory::gui() {
-    ImGui::Text("%s", this->mediaSelector.getSelected().c_str());
+    ImGui::Text("%s", this->mediaSelector.getSelected().getFileName().c_str());
     if (this->mediaSelector.draw()) {
         std::queue<std::shared_ptr<GifDecoder>>().swap(this->preloadQueue);
         this->gifListIndex = 0;
@@ -75,18 +75,15 @@ void atlas::layer::GifDirectory::gui() {
 void atlas::layer::GifDirectory::load() {
     ofDirectory dir;
     
-    dir.open(this->mediaSelector.getSelected());
+    dir.open(this->mediaSelector.getSelected().getAbsolutePath());
     dir.allowExt("gif");
     
     const int size = (int)dir.listDir();
     if (size > 0) {
-        ofLog(OF_LOG_NOTICE) << "gifDirectory: " << size << " files found in " << this->directory;
         this->gifList.clear();
         for (int i = 0; i < dir.size(); i ++) {
             this->gifList.push_back(dir.getPath(i));
         }
         this->gifListIndex = 0;
-    } else {
-        ofLog(OF_LOG_NOTICE) << "gifDirectory: no files found or directory doesnt exists: " << this->directory;
     }
 }

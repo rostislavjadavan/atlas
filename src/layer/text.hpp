@@ -1,6 +1,7 @@
 #pragma once
 
 #include "fbo_canvas.hpp"
+#include "../gui/view/media_selector.hpp"
 
 namespace atlas {
     namespace layer {
@@ -18,7 +19,7 @@ namespace atlas {
             int size;
             float lineHeight, letterSpacing;
             
-            char fontName[256];
+            atlas::gui::view::MediaSelector mediaSelector;
             int timeDisplay, timeHidden, timeAnimation;
             
             ofTrueTypeFont font;

@@ -18,11 +18,9 @@ namespace atlas {
             
         protected:
             static const int PRELOAD_QUEUE_SIZE = 3;
-            
-            std::string directory;
-            atlas::gui::view::MediaSelector mediaSelector;
-            
             GifPreloader preloader;
+            
+            atlas::gui::view::MediaSelector mediaSelector;
             
             float frame;
             std::shared_ptr<GifDecoder> currentGif;

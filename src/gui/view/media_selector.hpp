@@ -14,11 +14,8 @@ namespace atlas {
                 MediaSelector();
                 bool draw();
                 bool draw(ofRectangle rect);
-                std::string getSelected() {
+                ofFile getSelected() {
                     return this->selectedMedia;
-                }
-                void resetSelection() {
-                    this->selectedMedia = "";
                 }
                 void setMode(MediaSelectorMode mode) {
                     this->mode = mode;
@@ -26,7 +23,7 @@ namespace atlas {
                 
             protected:
                 bool display = false;
-                std::string selectedMedia;
+                ofFile selectedMedia;
                 
                 ofDirectory dir;
                 std::string currentPath;

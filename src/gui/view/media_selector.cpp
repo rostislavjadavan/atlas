@@ -70,7 +70,7 @@ bool atlas::gui::view::MediaSelector::drawList() {
                 }
             } else {
                 if (ImGui::Selectable(file.getFileName().c_str())) {
-                    this->selectedMedia = file.getAbsolutePath();
+                    this->selectedMedia = file;
                     return true;
                 }
             }
@@ -93,7 +93,7 @@ bool atlas::gui::view::MediaSelector::drawList() {
                 if (ImGui::Selectable(std::string("SELECT " + file.getFileName()).c_str())) {
                     const ofFile file = this->fileList.at(i);
                     if (file.isDirectory()) {
-                        this->selectedMedia = file.getAbsolutePath();
+                        this->selectedMedia = file;
                         ImGui::Columns(1);
                         return true;
                     }
