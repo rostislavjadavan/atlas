@@ -9,12 +9,16 @@ atlas::gui::view::MediaSelector::MediaSelector() {
 bool atlas::gui::view::MediaSelector::draw() {
     const float x = ofGetWidth() / 10;
     const float y = ofGetHeight() / 10;
-    this->draw(ofRectangle(x, y, ofGetWidth() - x * 2, ofGetHeight() - y * 2));
+    return this->draw(ofRectangle(x, y, ofGetWidth() - x * 2, ofGetHeight() - y * 2));
 }
 
 bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
     if (this->display) {
         atlas::gui::Gui::instance().disableSelections();
+        
+        if (ImGui::Button("CANCEL")) {
+            this->display = false;
+        }
         
         ImGui::SetNextWindowPos(ImVec2(rect.x, rect.y));
         ImGui::SetNextWindowSize(ofVec2f(rect.width, rect.height));
@@ -28,7 +32,7 @@ bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
             return true;
         }
         
-        if (ImGui::Button("Cancel")) {
+        if (ImGui::Button("CANCEL")) {
             this->display = false;
         }
         ImGui::End();
@@ -82,10 +86,11 @@ bool atlas::gui::view::MediaSelector::drawList() {
         for (int i = 0; i < this->fileList.size(); i ++) {
             const ofFile file = this->fileList.at(i);
             if (file.isDirectory()) {
-                if (ImGui::Selectable("Select")) {
+                if (ImGui::Selectable(std::string("SELECT " + file.getFileName()).c_str())) {
                     const ofFile file = this->fileList.at(i);
                     if (file.isDirectory()) {
                         this->selectedMedia = file.getAbsolutePath();
+                        ImGui::Columns(1);
                         return true;
                     }
                 }

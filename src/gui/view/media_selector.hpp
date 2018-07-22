@@ -17,6 +17,9 @@ namespace atlas {
                 std::string getSelected() {
                     return this->selectedMedia;
                 }
+                void resetSelection() {
+                    this->selectedMedia = "";
+                }
                 void setMode(MediaSelectorMode mode) {
                     this->mode = mode;
                 }

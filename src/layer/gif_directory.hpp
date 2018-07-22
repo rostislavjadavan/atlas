@@ -19,7 +19,7 @@ namespace atlas {
         protected:
             static const int PRELOAD_QUEUE_SIZE = 3;
             
-            char directory[512] = "";
+            std::string directory;
             atlas::gui::view::MediaSelector mediaSelector;
             
             GifPreloader preloader;
@@ -33,8 +33,6 @@ namespace atlas {
             bool playGif = true;
             
             void load();
-            void play();
-            void stop();
         };
     }
 }

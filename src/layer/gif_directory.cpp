@@ -30,8 +30,10 @@ void atlas::layer::GifDirectory::update(double delta) {
     
     if (this->currentGif.use_count() > 0) {
         if ((int)this->frame > this->currentGif->getFrameCount()) {
-            this->currentGif = this->preloadQueue.front();
-            this->preloadQueue.pop();
+            if (this->preloadQueue.size() > 0) {
+                this->currentGif = this->preloadQueue.front();
+                this->preloadQueue.pop();
+            }
             this->frame = 0;
         }
         
@@ -47,12 +49,12 @@ void atlas::layer::GifDirectory::update(double delta) {
 }
 
 void atlas::layer::GifDirectory::gui() {
-    ImGui::InputText("Directory", this->directory, 256);
-    if (ImGui::Button("LOAD")) {
-        this->load();
-    }
+    ImGui::Text("%s", this->mediaSelector.getSelected().c_str());
     if (this->mediaSelector.draw()) {
-        ofLogNotice() << this->mediaSelector.getSelected();
+        std::queue<std::shared_ptr<GifDecoder>>().swap(this->preloadQueue);
+        this->gifListIndex = 0;
+        this->gifList.clear();
+        this->load();
     }
     
     if (this->gifList.size() > 0 && this->currentGif.use_count() > 0) {
@@ -60,28 +62,20 @@ void atlas::layer::GifDirectory::gui() {
         
         if (!this->playGif) {
             if (ImGui::Button("PLAY")) {
-                this->play();
+                this->playGif = true;
             }
         } else {
             if (ImGui::Button("STOP")) {
-                this->stop();
+                this->playGif = false;
             }
         }
     }
 }
 
-void atlas::layer::GifDirectory::play() {
-    this->playGif = true;
-}
-
-void atlas::layer::GifDirectory::stop() {
-    this->playGif = false;
-}
-
 void atlas::layer::GifDirectory::load() {
     ofDirectory dir;
     
-    dir.open(this->directory);
+    dir.open(this->mediaSelector.getSelected());
     dir.allowExt("gif");
     
     const int size = (int)dir.listDir();
