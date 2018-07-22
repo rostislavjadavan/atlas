@@ -20,6 +20,10 @@ namespace atlas {
                 void setMode(MediaSelectorMode mode) {
                     this->mode = mode;
                 }
+                void allowExt(std::string ext) {
+                    this->allowExtList.push_back(ext);
+                    this->setPath(this->currentPath);
+                }
                 
             protected:
                 bool display = false;
@@ -28,6 +32,7 @@ namespace atlas {
                 ofDirectory dir;
                 std::string currentPath;
                 std::vector<ofFile> fileList;
+                std::vector<std::string> allowExtList;
                 MediaSelectorMode mode;
                 
                 char pathInput[512];

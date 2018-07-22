@@ -6,6 +6,7 @@ void atlas::layer::Text::setup(const int layerIndex,const atlas::core::AppSettin
     this->lineHeight = 55;
     this->letterSpacing = 1;
     memset(this->text, 0, sizeof this->text);
+    this->mediaSelector.allowExt("ttf");
 }
 
 void atlas::layer::Text::update(const double delta) {

@@ -121,7 +121,16 @@ bool atlas::gui::view::MediaSelector::setPath(std::string path) {
     
     this->fileList.clear();
     for (int i = 0; i < this->dir.size(); i ++) {
-        fileList.push_back(dir.getFile(i));
+        const ofFile item = this->dir.getFile(i);
+        if (item.isFile()) {
+            for (int i = 0; i < this->allowExtList.size(); i++) {
+                if (item.getExtension() == this->allowExtList.at(i)) {
+                    fileList.push_back(item);
+                }
+            }
+        } else {
+            fileList.push_back(item);
+        }
     }
     return true;
 }
