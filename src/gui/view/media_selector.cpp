@@ -32,6 +32,10 @@ bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
             return true;
         }
         
+        if (ImGui::Button("BACK")) {
+            this->goDirUp();
+        }
+        ImGui::SameLine();
         if (ImGui::Button("CANCEL")) {
             this->display = false;
         }
