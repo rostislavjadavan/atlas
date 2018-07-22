@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base.hpp"
+#include "../gui/view/properties_partials.hpp"
 
 namespace atlas {
     namespace layer {
@@ -15,13 +16,12 @@ namespace atlas {
             }
             
         protected:
-            int layerIndex;
             atlas::core::AppSettings settings;
+            std::shared_ptr<ofFbo> fbo;
             
-            LayerDrawMode layerDrawMode;
             void drawTexture(const ofTexture &tex);
             
-            std::shared_ptr<ofFbo> fbo;
+            atlas::gui::view::PropertiesPartials partials;
         };
     }
 }

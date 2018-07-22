@@ -27,5 +27,19 @@ void atlas::gui::view::PropertiesPartials::createLayerGui(int index) {
             ImGui::TreePop();
         }
     }
+}
+
+void atlas::gui::view::PropertiesPartials::baseLayerPropsGui(int index) {
+    std::shared_ptr<atlas::layer::Base> layer = atlas::core::App::instance().getLayerContainer()->getLayer(index);
     
+    ImGui::SliderFloat("opacity", &layer->props.alpha, 0.0f, 1.0f);
+    ImGui::Combo("blend mode", &layer->props.blendMode, atlas::core::BlendShaders::IMGUI_COMBO_STRING);
+    ImGui::Combo("draw mode", &layer->props.drawMode, atlas::layer::IMGUI_COMBO_LAYER_DRAW_MODES);
+    ImGui::InputInt("position x", &layer->props.x);
+    ImGui::InputInt("position y", &layer->props.y);
+    ImGui::InputInt("width", &layer->props.width);
+    ImGui::InputInt("height", &layer->props.height);
+    ImGui::Checkbox("disable from output", &layer->props.disabledFromOutput);
+    
+    ImGui::Separator();
 }

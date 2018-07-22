@@ -9,6 +9,7 @@ namespace atlas {
             class PropertiesPartials {
             public:
                 void createLayerGui(int index);
+                void baseLayerPropsGui(int index);
             };
         }
     }

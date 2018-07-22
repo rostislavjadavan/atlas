@@ -13,8 +13,6 @@ namespace atlas {
             int getLayerType() {
                 return LAYER_TYPE_EMPTY;
             }
-        private:
-            int layerIndex;
         };
     }
 }

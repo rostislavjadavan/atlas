@@ -3,10 +3,8 @@
 #include "../libs/of.hpp"
 
 void atlas::layer::Empty::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
-    this->layerIndex = layerIndex;
+    this->props.init(layerIndex, settings.compositorOutputWidth, settings.compositorOutputHeight);
 }
 
 void atlas::layer::Empty::gui() {
-    //gui::view::PropertiesPartials pp;
-    //pp.createLayer(layerIndex, false);
 }

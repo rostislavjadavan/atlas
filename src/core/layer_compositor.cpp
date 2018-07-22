@@ -42,12 +42,22 @@ inline void atlas::core::LayerCompositor::renderLayer(int index) {
         return;
     }
     
-    ofSetColor(255, 255, 255, 255);
     layer->update(this->delta);
     
-    this->blendShaders.begin(this->fbo->getTexture(), layer->getFrame()->getTexture(), BlendShaders::BLEND_MODE_ADD);
+    ofPushMatrix();
+    ofTranslate(layer->props.x, layer->props.y);
+    
+    this->blendShaders.begin(this->fbo->getTexture(), layer->getFrame()->getTexture(), layer->props.blendMode, layer->props.alpha);
+    
+    this->quad.setVertex(0, ofVec3f(0, 0, 0));
+    this->quad.setVertex(1, ofVec3f(layer->props.width, 0, 0));
+    this->quad.setVertex(2, ofVec3f(layer->props.width, layer->props.height, 0));
+    this->quad.setVertex(3, ofVec3f(0, layer->props.height, 0));
+    
     this->quad.draw();
     this->blendShaders.end();
+    
+    ofPopMatrix();
 }
 
 const shared_ptr<ofFbo>& atlas::core::LayerCompositor::getFrame() {

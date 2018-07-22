@@ -70,6 +70,9 @@ void atlas::layer::GifDirectory::gui() {
             }
         }
     }
+    
+    ImGui::Separator();
+    this->partials.baseLayerPropsGui(props.index);
 }
 
 void atlas::layer::GifDirectory::load() {

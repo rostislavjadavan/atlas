@@ -184,6 +184,8 @@ namespace atlas {
                                                                                                                                                                                                         uniform sampler2DRect blendTgt;
                                                                                                                                                                                                         uniform int mode;
                                                                                                                                                                                                         
+                                                                                                                                                                                                        uniform float alpha;
+                                                                                                                                                                                                        
                                                                                                                                                                                                         void main()
                                                                                                                                                                                                         {
                                                                                                                                                                                                             vec4 baseCol = texture2DRect(base, gl_TexCoord[0].st);
@@ -301,7 +303,7 @@ namespace atlas {
                                                                                                                                                                                                             }
                                                                                                                                                                                                             else
                                                                                                                                                                                                             {
-                                                                                                                                                                                                                gl_FragColor = vec4(result, 1.0);
+                                                                                                                                                                                                                gl_FragColor = vec4(result, alpha);
                                                                                                                                                                                                             }
                                                                                                                                                                                                         }
                                                                                                                                                                                                         );
@@ -317,6 +319,7 @@ namespace atlas {
                                                                         in vec2  texcoord;
                                                                         in vec4  color;
                                                                         in vec3  normal;
+                                                                        in float alpha;
                                                                         
                                                                         out vec2 texCoordVarying;
                                                                         
@@ -502,6 +505,8 @@ namespace atlas {
                                                                                                                                                                                                         uniform int mode;
                                                                                                                                                                                                         out vec4 fragColor;
                                                                                                                                                                                                         
+                                                                                                                                                                                                in float alpha;
+                                                                                                                                                                                                        
                                                                                                                                                                                                         void main()
                                                                                                                                                                                                         {
                                                                                                                                                                                                             vec4 baseCol = texture(base, texCoordVarying.st);
@@ -619,7 +624,7 @@ namespace atlas {
                                                                                                                                                                                                             }
                                                                                                                                                                                                             else
                                                                                                                                                                                                             {
-                                                                                                                                                                                                                fragColor = vec4(result, 1.0);
+                                                                                                                                                                                                                fragColor = vec4(result, alpha);
                                                                                                                                                                                                             }
                                                                                                                                                                                                         }
                                                                                                                                                                                                         );
@@ -652,10 +657,10 @@ namespace atlas {
             static const int BLEND_MODE_COLOR = 23;
             static const int BLEND_MODE_LUMINOSITY = 24;
             
-            static const std::string IMGUI_COMBO_STRING;
+            static const char *IMGUI_COMBO_STRING;
             
             void setup();
-            void begin(const ofTexture &base, const ofTexture &blend, int blendMode);
+            void begin(const ofTexture &base, const ofTexture &blend, int blendMode, float alpha);
             void end();
             
         protected:
