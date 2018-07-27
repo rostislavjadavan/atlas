@@ -7,9 +7,8 @@ atlas::gui::view::MediaSelector::MediaSelector() {
 }
 
 bool atlas::gui::view::MediaSelector::draw() {
-    const float x = ofGetWidth() / 10;
-    const float y = ofGetHeight() / 10;
-    return this->draw(ofRectangle(x, y, ofGetWidth() - x * 2, ofGetHeight() - y * 2));
+    const float width = ofGetWidth() / 3;
+    return this->draw(ofRectangle(width, 0, ofGetWidth() - width, ofGetHeight()));
 }
 
 bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
@@ -23,7 +22,7 @@ bool atlas::gui::view::MediaSelector::draw(ofRectangle rect) {
         ImGui::SetNextWindowPos(ImVec2(rect.x, rect.y));
         ImGui::SetNextWindowSize(ofVec2f(rect.width, rect.height));
         ImGui::Begin("Select media", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-                     ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_ShowBorders);
+                     ImGuiWindowFlags_NoCollapse);
         
         this->drawDirectoryInput();
         if (this->drawList()) {
