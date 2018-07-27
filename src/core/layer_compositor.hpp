@@ -14,7 +14,7 @@ namespace atlas {
             const shared_ptr<ofFbo>& getFrame();
             
         private:
-            std::shared_ptr<ofFbo> fbo;
+            std::shared_ptr<ofFbo> fbo, tmpFbo;
             std::shared_ptr<LayerContainer> container;
             
             double lastElapsedTime = 0;

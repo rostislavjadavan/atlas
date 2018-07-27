@@ -5,6 +5,9 @@ atlas::core::LayerCompositor::LayerCompositor(std::shared_ptr<LayerContainer> co
     this->fbo = std::make_shared<ofFbo>();
     this->fbo->allocate(settings.compositorOutputWidth, settings.compositorOutputHeight);
     
+    this->tmpFbo = std::make_shared<ofFbo>();
+    this->tmpFbo->allocate(settings.compositorOutputWidth, settings.compositorOutputHeight);
+    
     this->blendShaders.setup();
     
     this->quad.getVertices().resize(4);
@@ -26,14 +29,23 @@ void atlas::core::LayerCompositor::update() {
     this->delta = ofGetElapsedTimeMillis() - this->lastElapsedTime;
     this->lastElapsedTime = ofGetElapsedTimeMillis();
     
+    this->tmpFbo->begin();
+    ofClear(0, 0, 0, 255);
+    this->tmpFbo->end();
+    
     this->fbo->begin();
     ofClear(0, 0, 0, 255);
+    this->fbo->end();
     
     for (int i = 0; i < this->container->NUM_LAYERS; i++) {
+        this->tmpFbo->begin();
         this->renderLayer(i);
+        this->tmpFbo->end();
+     
+        this->fbo->begin();
+        this->tmpFbo->draw(0, 0, this->fbo->getWidth(), this->fbo->getHeight());
+        this->fbo->end();
     }
-    
-    this->fbo->end();
 }
 
 inline void atlas::core::LayerCompositor::renderLayer(int index) {
