@@ -7,28 +7,21 @@ namespace atlas {
             static void apply() {
                 ImGuiStyle * style = &ImGui::GetStyle();
                 
-                /*
-                 style->WindowPadding = ImVec2(15, 15);
-                 style->WindowRounding = 0.0f;
-                 style->FramePadding = ImVec2(5, 5);
-                 style->FrameRounding = 0.0f;
-                 style->ItemSpacing = ImVec2(12, 8);
-                 style->ItemInnerSpacing = ImVec2(8, 6);
-                 style->IndentSpacing = 25.0f;
-                 style->ScrollbarSize = 15.0f;
-                 style->ScrollbarRounding = 0.0f;
-                 style->GrabMinSize = 5.0f;
-                 style->GrabRounding = 3.0f;
-                 */
                 style->WindowPadding = ImVec2(15, 15);
+                style->FramePadding = ImVec2(5, 5);
                 style->ItemSpacing = ImVec2(12, 8);
+                style->ItemInnerSpacing = ImVec2(8, 6);
+                style->IndentSpacing = 25.0f;
+                style->ScrollbarSize = 15.0f;
+                style->ScrollbarRounding = 9.0f;
+                style->GrabMinSize = 5.0f;
                 
                 style->Colors[ImGuiCol_Text] = ImVec4(0.80f, 0.80f, 0.83f, 1.00f);
                 style->Colors[ImGuiCol_TextDisabled] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
                 style->Colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);
                 style->Colors[ImGuiCol_ChildWindowBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
                 style->Colors[ImGuiCol_PopupBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
-                style->Colors[ImGuiCol_Border] = ImVec4(0.40f, 0.40f, 0.43f, 0.88f);
+                style->Colors[ImGuiCol_Border] = ImVec4(0.80f, 0.80f, 0.83f, 0.88f);
                 style->Colors[ImGuiCol_BorderShadow] = ImVec4(0.92f, 0.91f, 0.88f, 0.00f);
                 style->Colors[ImGuiCol_FrameBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
                 style->Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
@@ -66,7 +59,6 @@ namespace atlas {
                 style->Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.25f, 1.00f, 0.00f, 1.00f);
                 style->Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.25f, 1.00f, 0.00f, 0.43f);
                 style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
-                 
             }
         };
     }
