@@ -5,6 +5,7 @@
 #include "layer_container.hpp"
 #include "layer_compositor.hpp"
 #include "libs/of.hpp"
+#include "libs/ofxBeat/ofxBeat.h"
 #include <memory>
 
 namespace atlas {
@@ -28,6 +29,10 @@ namespace atlas {
                 this->mainWindow = mainWindow;
             }
             
+            void setMainApp(const std::shared_ptr<ofBaseApp> &mainApp) {
+                this->mainApp = mainApp;
+            }
+            
             const std::shared_ptr<ofAppBaseWindow>& getMainWindow() {
                 return this->mainWindow;
             }
@@ -48,6 +53,10 @@ namespace atlas {
                 return this->container->getLayer(index)->getFrame();
             }
             
+            const std::shared_ptr<ofxBeat>& getBeatDetector() {
+                return this->beatDetector;
+            }
+            
             AppSettings settings;
             
         protected:
@@ -56,8 +65,10 @@ namespace atlas {
             
             std::shared_ptr<ofAppBaseWindow> mainWindow;
             std::shared_ptr<OutputWindow> outputWindow;
+            std::shared_ptr<ofBaseApp> mainApp;
             std::shared_ptr<LayerCompositor> compositor;
             std::shared_ptr<LayerContainer> container;
+            std::shared_ptr<ofxBeat> beatDetector;
         };
         
     }

@@ -10,10 +10,11 @@ int main() {
     settings.height = APP_HEIGHT;
     
     std::shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
-    
     atlas::core::App::instance().setMainWindow(mainWindow);
     
     shared_ptr<ofApp> mainApp(new ofApp);
+    atlas::core::App::instance().setMainApp(mainApp);
+    
     ofRunApp(mainWindow, mainApp);
     ofRunMainLoop();
 }

@@ -38,4 +38,6 @@ void atlas::layer::Text::gui() {
     if (this->mediaSelector.draw()) {
         this->font.load(this->mediaSelector.getSelected().getAbsolutePath(), this->size);
     }
+    ImGui::Separator();
+    this->partials.baseLayerPropsGui(props.index);
 }

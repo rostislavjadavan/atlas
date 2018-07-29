@@ -8,6 +8,7 @@ void ofApp::setup() {
     atlas::gui::Gui::instance().setup();
     
     ofLog(OF_LOG_NOTICE) << "Working directory: " <<  ofFilePath::getCurrentWorkingDirectory();
+    ofLog(OF_LOG_NOTICE) << "Data directory: " <<  ofToDataPath(".");
 }
 
 //--------------------------------------------------------------
@@ -73,4 +74,8 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+//--------------------------------------------------------------
+void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
+    atlas::core::App::instance().getBeatDetector()->audioReceived(input, bufferSize, nChannels);
 }

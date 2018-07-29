@@ -4,8 +4,8 @@
 void atlas::gui::view::System::draw(ofRectangle rect) {
     ImGui::SetNextWindowPos(ImVec2(rect.x, rect.y));
     ImGui::SetNextWindowSize(ofVec2f(rect.width, rect.height));
-    ImGui::Begin("System", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-                 ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
+    ImGui::Begin("System properties", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+                 ImGuiWindowFlags_NoCollapse);
     
     std::stringstream strm;
     strm << "fps: " << ofGetFrameRate();
