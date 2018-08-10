@@ -1,6 +1,7 @@
 #include "fbo_canvas.hpp"
 
 #include "../core/app.hpp"
+#include "../core/constants.hpp"
 
 void atlas::layer::FboCanvas::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
     this->fbo = std::make_shared<ofFbo>();
@@ -20,7 +21,7 @@ void atlas::layer::FboCanvas::drawTexture(const ofTexture &tex) {
     float fx, fy, fw, fh;
     
     switch(this->props.drawMode) {
-        case LAYER_DRAW_MODE_FIT: {
+        case atlas::core::LAYER_DRAW_MODE_FIT: {
             float scale = std::fmin(tex.getHeight()/height, tex.getWidth()/width);
             fx = width/2 - tex.getWidth() / 2 / scale;
             fy = height/2 - tex.getHeight() / 2 / scale;
@@ -28,14 +29,14 @@ void atlas::layer::FboCanvas::drawTexture(const ofTexture &tex) {
             fh = tex.getHeight() / scale;
             break;
         }
-        case LAYER_DRAW_MODE_STRETCH: {
+        case atlas::core::LAYER_DRAW_MODE_STRETCH: {
             fx = 0;
             fy = 0;
             fw = width;
             fh = height;
             break;
         }
-        case LAYER_DRAW_MODE_ORIGINAL:
+        case atlas::core::LAYER_DRAW_MODE_ORIGINAL:
         default:
             fx = width/2 - tex.getWidth() / 2;
             fy = height/2 - tex.getHeight() / 2;

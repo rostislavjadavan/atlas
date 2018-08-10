@@ -25,6 +25,9 @@ void atlas::layer::Gif::update(const double delta) {
             this->frame += delta * (float)this->currentGif->getDelay((int)this->frame) / 1000.0f;
         }
         
+        if (this->bpmFrame.enabled) {
+            this->frame = this->bpmFrame.applyAdd(this->frame);
+        }
     }
     
     this->fbo->end();
@@ -50,5 +53,11 @@ void atlas::layer::Gif::gui() {
     
     ImGui::Separator();
     this->partials.baseLayerPropsGui(props.index);
+    
+    ImGui::Checkbox("bpm frame", &this->bpmFrame.enabled);
+    ImGui::Combo("bpm frame modify by", &this->bpmFrame.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm frame scale", &this->bpmFrame.scale, -100.0f, 100.0f);
+    
+    this->partials.bpmLayerPropsGui(props.index);
 }
 

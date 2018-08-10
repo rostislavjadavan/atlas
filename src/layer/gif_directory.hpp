@@ -31,6 +31,9 @@ namespace atlas {
             bool playGif = true;
             
             void load();
+            
+            atlas::core::BpmModifier bpmFrame, bpmNextGif;
+            float nextGifTrigger = 0.0f;
         };
     }
 }

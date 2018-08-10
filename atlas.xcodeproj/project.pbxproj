@@ -38,6 +38,7 @@
 		7C6D5DDE211E165F0054A1FC /* EngineOpenGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5DC9211E165F0054A1FC /* EngineOpenGLES.cpp */; };
 		7C6D5DDF211E165F0054A1FC /* EngineGLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5DCA211E165F0054A1FC /* EngineGLFW.cpp */; };
 		7C6D5DE0211E165F0054A1FC /* ofxImGuiLoggerChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5DCE211E165F0054A1FC /* ofxImGuiLoggerChannel.cpp */; };
+		7C6D5DE4211E1C330054A1FC /* bpm_modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5DE2211E1C330054A1FC /* bpm_modifier.cpp */; };
 		7C8DA10520E5605900A7016A /* app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8DA10320E5605900A7016A /* app.cpp */; };
 		7C8DA10820E56FC200A7016A /* layer_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8DA10620E56FC200A7016A /* layer_container.cpp */; };
 		7CB7ADCC20F89D3B0050626C /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7ADCA20F89D3B0050626C /* system.cpp */; };
@@ -154,6 +155,9 @@
 		7C6D5DCC211E165F0054A1FC /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		7C6D5DCD211E165F0054A1FC /* ofxImGuiLoggerChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxImGuiLoggerChannel.h; sourceTree = "<group>"; };
 		7C6D5DCE211E165F0054A1FC /* ofxImGuiLoggerChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxImGuiLoggerChannel.cpp; sourceTree = "<group>"; };
+		7C6D5DE1211E1BD20054A1FC /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
+		7C6D5DE2211E1C330054A1FC /* bpm_modifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bpm_modifier.cpp; sourceTree = "<group>"; };
+		7C6D5DE3211E1C330054A1FC /* bpm_modifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bpm_modifier.hpp; sourceTree = "<group>"; };
 		7C853D6420FFB5A100432545 /* gui_theme.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gui_theme.hpp; sourceTree = "<group>"; };
 		7C8DA10320E5605900A7016A /* app.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = app.cpp; sourceTree = "<group>"; };
 		7C8DA10420E5605900A7016A /* app.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = app.hpp; sourceTree = "<group>"; };
@@ -326,6 +330,9 @@
 				7C8DA10720E56FC200A7016A /* layer_container.hpp */,
 				7CB7ADD020F8A64F0050626C /* output_window.cpp */,
 				7CB7ADD120F8A64F0050626C /* output_window.hpp */,
+				7C6D5DE1211E1BD20054A1FC /* constants.hpp */,
+				7C6D5DE2211E1C330054A1FC /* bpm_modifier.cpp */,
+				7C6D5DE3211E1C330054A1FC /* bpm_modifier.hpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -544,6 +551,7 @@
 				7C4B764520F7D91D00BFF986 /* blend_shaders.cpp in Sources */,
 				7C53CE5C20F0E58300DE1866 /* empty.cpp in Sources */,
 				7C53CE5720EFE62900DE1866 /* properties.cpp in Sources */,
+				7C6D5DE4211E1C330054A1FC /* bpm_modifier.cpp in Sources */,
 				7C53CE4920EFDB2500DE1866 /* gui.cpp in Sources */,
 				7C53CE5420EFE60A00DE1866 /* output.cpp in Sources */,
 				7C53CE7520F3337000DE1866 /* properties_partials.cpp in Sources */,

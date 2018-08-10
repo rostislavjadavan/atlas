@@ -10,6 +10,7 @@ namespace atlas {
             public:
                 void createLayerGui(int index);
                 void baseLayerPropsGui(int index);
+                void bpmLayerPropsGui(int index);
             };
         }
     }

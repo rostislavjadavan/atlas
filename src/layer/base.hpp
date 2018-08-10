@@ -1,17 +1,17 @@
 #pragma once
 
 #include "common.hpp"
-#include "core/app_settings.hpp"
-#include "core/blend_shaders.hpp"
+#include "../core/constants.hpp"
+#include "../core/app_settings.hpp"
+#include "../core/blend_shaders.hpp"
+#include "../core/bpm_modifier.hpp"
 #include "libs/of.hpp"
 
 namespace atlas {
     namespace layer {
         
-        static const int LAYER_DRAW_MODE_ORIGINAL = 0;
-        static const int LAYER_DRAW_MODE_STRETCH = 1;
-        static const int LAYER_DRAW_MODE_FIT = 2;
         static const char *IMGUI_COMBO_LAYER_DRAW_MODES = "ORIGINAL\0STRETCH\0FIT\0";
+        static const char *IMGUI_COMBO_BPM_MOFIFY_BY_LIST = "KICK\0SNARE\0HIHAT\0";
         
         struct LayerProps {
             int index;
@@ -21,6 +21,8 @@ namespace atlas {
             int blendMode;
             bool disabledFromOutput;
             
+            atlas::core::BpmModifier bpmAlpha, bpmScale;
+            
             void init(int index, int width, int height) {
                 this->index = index;
                 this->alpha = 1.0f;
@@ -28,7 +30,7 @@ namespace atlas {
                 this->y = 0;
                 this->width = width;
                 this->height = height;
-                this->drawMode = LAYER_DRAW_MODE_FIT;
+                this->drawMode = atlas::core::LAYER_DRAW_MODE_FIT;
                 this->blendMode = atlas::core::BlendShaders::BLEND_MODE_ADD;
                 this->disabledFromOutput = false;
             }

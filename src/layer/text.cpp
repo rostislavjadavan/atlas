@@ -40,4 +40,5 @@ void atlas::layer::Text::gui() {
     }
     ImGui::Separator();
     this->partials.baseLayerPropsGui(props.index);
+    this->partials.bpmLayerPropsGui(props.index);
 }

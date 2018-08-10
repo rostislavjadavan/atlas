@@ -28,6 +28,8 @@ namespace atlas {
             void disableSelections();
             void enableSelections();
             
+            GuiSettings settings;
+            
             Events events;
             
             void onKeyReleased(ofKeyEventArgs& event);
@@ -40,7 +42,6 @@ namespace atlas {
             Gui() {}
             ~Gui() {}
             
-            GuiSettings settings;
             ofxImGui::Gui gui;
             
             int selectedLayer;

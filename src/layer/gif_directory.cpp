@@ -29,12 +29,13 @@ void atlas::layer::GifDirectory::update(double delta) {
     ofClear(0, 0, 0, 255);
     
     if (this->currentGif.use_count() > 0) {
-        if ((int)this->frame > this->currentGif->getFrameCount()) {
+        if ((int)this->frame > this->currentGif->getFrameCount() || this->nextGifTrigger > 100.0f) {
             if (this->preloadQueue.size() > 0) {
                 this->currentGif = this->preloadQueue.front();
                 this->preloadQueue.pop();
             }
             this->frame = 0;
+            this->nextGifTrigger = 0.0f;
         }
         
         this->drawTexture(*this->currentGif->getFrameTexture((int)this->frame));
@@ -43,6 +44,13 @@ void atlas::layer::GifDirectory::update(double delta) {
             this->frame += delta * (float)this->currentGif->getDelay((int)this->frame) / 1000.0f;
         }
         
+        if (this->bpmFrame.enabled) {
+            this->frame = this->bpmFrame.applyAdd(this->frame);
+        }
+        
+        if (bpmNextGif.enabled) {
+            this->nextGifTrigger = this->bpmNextGif.applyAdd(this->nextGifTrigger);
+        }
     }
     
     this->fbo->end();
@@ -73,6 +81,16 @@ void atlas::layer::GifDirectory::gui() {
     
     ImGui::Separator();
     this->partials.baseLayerPropsGui(props.index);
+    
+    ImGui::Checkbox("bpm frame", &this->bpmFrame.enabled);
+    ImGui::Combo("bpm frame modify by", &this->bpmFrame.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm frame scale", &this->bpmFrame.scale, -100.0f, 100.0f);
+    
+    ImGui::Checkbox("bpm next gif", &this->bpmNextGif.enabled);
+    ImGui::Combo("bpm next gif modify by", &this->bpmNextGif.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm next gif scale", &this->bpmNextGif.scale, 0.0f, 100.0f);
+    
+    this->partials.bpmLayerPropsGui(props.index);
 }
 
 void atlas::layer::GifDirectory::load() {

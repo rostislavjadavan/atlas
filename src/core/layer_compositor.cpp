@@ -1,4 +1,5 @@
 #include "layer_compositor.hpp"
+#include "app.hpp"
 
 atlas::core::LayerCompositor::LayerCompositor(std::shared_ptr<LayerContainer> container, const AppSettings &settings) {
     this->container = container;
@@ -59,12 +60,20 @@ inline void atlas::core::LayerCompositor::renderLayer(int index) {
     ofPushMatrix();
     ofTranslate(layer->props.x, layer->props.y);
     
-    this->blendShaders.begin(this->fbo->getTexture(), layer->getFrame()->getTexture(), layer->props.blendMode, layer->props.alpha);
+    this->blendShaders.begin(this->fbo->getTexture(), layer->getFrame()->getTexture(), layer->props.blendMode, layer->props.bpmAlpha.applyMultiply(layer->props.alpha));
     
     this->quad.setVertex(0, ofVec3f(0, 0, 0));
     this->quad.setVertex(1, ofVec3f(layer->props.width, 0, 0));
     this->quad.setVertex(2, ofVec3f(layer->props.width, layer->props.height, 0));
     this->quad.setVertex(3, ofVec3f(0, layer->props.height, 0));
+    
+    
+    float scale = layer->props.bpmScale.applyAdd(0.0f);
+    
+    this->quad.setTexCoord(0, ofVec2f(scale, scale));
+    this->quad.setTexCoord(1, ofVec2f(layer->props.width - scale, scale));
+    this->quad.setTexCoord(2, ofVec2f(layer->props.width - scale, layer->props.height - scale));
+    this->quad.setTexCoord(3, ofVec2f(scale, layer->props.height - scale));
     
     this->quad.draw();
     this->blendShaders.end();

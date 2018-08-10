@@ -25,6 +25,8 @@ namespace atlas {
             std::shared_ptr<GifDecoder> currentGif;
 
             bool playGif = true;
+            
+            atlas::core::BpmModifier bpmFrame;
         };
     }
 }

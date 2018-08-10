@@ -2,7 +2,7 @@
 #include "../gui.hpp"
 
 atlas::gui::view::MediaSelector::MediaSelector() {
-    this->setPath(ofFilePath::getUserHomeDir());
+    this->setPath(atlas::gui::Gui::instance().settings.lastMediaSelectorDirectory);
     this->mode = FILE_SELECT;
 }
 
@@ -112,6 +112,7 @@ bool atlas::gui::view::MediaSelector::setPath(std::string path) {
     }
     
     this->currentPath = path;
+    atlas::gui::Gui::instance().settings.lastMediaSelectorDirectory = path;
     this->dir.open(path);
     strcpy(this->pathInput, path.c_str());
     

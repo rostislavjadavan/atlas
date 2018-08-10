@@ -44,3 +44,15 @@ void atlas::gui::view::PropertiesPartials::baseLayerPropsGui(int index) {
     
     ImGui::Separator();
 }
+
+void atlas::gui::view::PropertiesPartials::bpmLayerPropsGui(int index) {
+    std::shared_ptr<atlas::layer::Base> layer = atlas::core::App::instance().getLayerContainer()->getLayer(index);
+    
+    ImGui::Checkbox("bpm alpha", &layer->props.bpmAlpha.enabled);
+    ImGui::Combo("bpm alpha modify by", &layer->props.bpmAlpha.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm alpha scale", &layer->props.bpmAlpha.scale, 0.0f, 1.0f);
+    
+    ImGui::Checkbox("bpm size", &layer->props.bpmScale.enabled);
+    ImGui::Combo("bpm size modify by", &layer->props.bpmScale.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm size scale", &layer->props.bpmScale.scale, 0.0f, 1000.0f);
+}
