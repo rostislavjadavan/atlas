@@ -2,5 +2,5 @@
 
 #include "ofMain.h"
 #include "ofAppGLFWWindow.h"
-#include "ofxImGui.h"
+#include "ofxImGui/ofxImGui.h"
 
