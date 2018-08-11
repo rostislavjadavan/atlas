@@ -8,9 +8,9 @@ void atlas::layer::Gif::setup(const int layerIndex,const atlas::core::AppSetting
 void atlas::layer::Gif::update(const double delta) {
     this->fbo->begin();
     ofSetColor(255, 255, 255);
-    ofClear(0, 0, 0, 255);
+    ofClear(0, 0, 0, 0);
     
-    if (this->preloader.getStatus() == GifPreloader::PREPARED) {
+    if (this->preloader.getStatus() == atlas::layer::libs::GifPreloader::PREPARED) {
         this->currentGif = this->preloader.get();
     }
     

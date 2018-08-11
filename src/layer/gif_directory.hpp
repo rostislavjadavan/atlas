@@ -1,8 +1,7 @@
 #pragma once
 
 #include "fbo_canvas.hpp"
-#include "../libs/gif/GifDecoder.h"
-#include "../libs/gif/GifPreloader.h"
+#include "libs/gif_preloader.hpp"
 #include "../gui/view/media_selector.hpp"
 
 namespace atlas {
@@ -18,7 +17,7 @@ namespace atlas {
             
         protected:
             static const int PRELOAD_QUEUE_SIZE = 3;
-            GifPreloader preloader;
+            atlas::layer::libs::GifPreloader preloader;
             
             atlas::gui::view::MediaSelector mediaSelector;
             

@@ -1,31 +1,25 @@
 #pragma once
 
 #include "fbo_canvas.hpp"
-#include "libs/gif_preloader.hpp"
+#include "libs/image_preloader.hpp"
 #include "../gui/view/media_selector.hpp"
 
 namespace atlas {
     namespace layer {
-        class Gif : public FboCanvas {
+        class Image : public FboCanvas {
         public:
             void setup(const int layerIndex,const atlas::core::AppSettings &settings);
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_GIF;
+                return LAYER_TYPE_IMAGE;
             }
             
         protected:
-            atlas::layer::libs::GifPreloader preloader;
-            
             atlas::gui::view::MediaSelector mediaSelector;
+            atlas::layer::libs::ImagePreloader preloader;
             
-            float frame;
-            std::shared_ptr<GifDecoder> currentGif;
-
-            bool playGif = true;
-            
-            atlas::core::BpmModifier bpmFrame;
+            ofImage image;
         };
     }
 }

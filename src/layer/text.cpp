@@ -12,7 +12,7 @@ void atlas::layer::Text::setup(const int layerIndex,const atlas::core::AppSettin
 void atlas::layer::Text::update(const double delta) {
     this->fbo->begin();
     ofSetColor(255, 255, 255);
-    ofClear(0, 0, 0, 255);
+    ofClear(0, 0, 0, 0);
     
     if (this->font.isLoaded()) {
         this->font.setLetterSpacing(this->letterSpacing);

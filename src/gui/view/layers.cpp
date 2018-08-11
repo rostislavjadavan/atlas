@@ -32,10 +32,10 @@ void atlas::gui::view::Layers::draw(ofRectangle rect, Events events) {
             ofRectangle rectInside(x * tileSizeX + 1, y * tileSizeY + 1, tileSizeX - 2, tileSizeY - 2);
             const std::shared_ptr<atlas::layer::Base> layer = container->getLayer(layerIndex);
             
-            if (layer->getLayerType() == atlas::layer::LAYER_TYPE_EMPTY) {
-                ofSetColor(0, 0, 0);
-                ofDrawRectangle(rectInside);
-            } else {
+            ofSetColor(0, 0, 0);
+            ofDrawRectangle(rectInside);
+            
+            if (layer->getLayerType() != atlas::layer::LAYER_TYPE_EMPTY) {
                 ofSetColor(255, 255, 255);
                 layer->getFrame()->draw(rectInside);
             }

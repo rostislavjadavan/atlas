@@ -69,11 +69,13 @@ inline void atlas::core::LayerCompositor::renderLayer(int index) {
     
     
     float scale = layer->props.bpmScale.applyAdd(0.0f);
+    const float texWidth = layer->getFrame()->getTexture().getWidth();
+    const float texHeight = layer->getFrame()->getTexture().getHeight();
     
     this->quad.setTexCoord(3, ofVec2f(scale, scale));
-    this->quad.setTexCoord(2, ofVec2f(layer->props.width - scale, scale));
-    this->quad.setTexCoord(1, ofVec2f(layer->props.width - scale, layer->props.height - scale));
-    this->quad.setTexCoord(0, ofVec2f(scale, layer->props.height - scale));
+    this->quad.setTexCoord(2, ofVec2f(texWidth - scale, scale));
+    this->quad.setTexCoord(1, ofVec2f(texWidth - scale, texHeight - scale));
+    this->quad.setTexCoord(0, ofVec2f(scale, texHeight - scale));
     
     this->quad.draw();
     this->blendShaders.end();

@@ -1,6 +1,6 @@
-#include "GifPreloader.h"
+#include "gif_preloader.hpp"
 
-void GifPreloader::preload(std::string path) {
+void atlas::layer::libs::GifPreloader::preload(std::string path) {
     this->status = LOADING;
     this->fpGifDecoder = std::async(std::launch::async, [](std::string path) {
         ofLog(OF_LOG_NOTICE) << "[GifPreloader] loading: " << path;
@@ -14,7 +14,7 @@ void GifPreloader::preload(std::string path) {
     }, path);
 }
 
-int GifPreloader::getStatus() {
+int atlas::layer::libs::GifPreloader::getStatus() {
     if (!this->fpGifDecoder.valid() || this->status == WAITING) {
         this->status = WAITING;
     } else if (future_status::ready == this->fpGifDecoder.wait_for(std::chrono::seconds(0))) {
@@ -26,7 +26,7 @@ int GifPreloader::getStatus() {
     return this->status;
 }
 
-std::shared_ptr<GifDecoder> GifPreloader::get() {
+std::shared_ptr<GifDecoder> atlas::layer::libs::GifPreloader::get() {
     this->status = WAITING;
     return this->fpGifDecoder.get();
 }

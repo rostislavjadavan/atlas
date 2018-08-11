@@ -4,6 +4,7 @@
 #include "../layer/gif_directory.hpp"
 #include "../layer/gif.hpp"
 #include "../layer/text.hpp"
+#include "../layer/image.hpp"
 
 void atlas::gui::view::PropertiesPartials::createLayerGui(int index) {
     std::shared_ptr<atlas::layer::Base> layer = atlas::core::App::instance().getLayerContainer()->getLayer(index);
@@ -23,6 +24,10 @@ void atlas::gui::view::PropertiesPartials::createLayerGui(int index) {
             atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::Text>());
         }
         ImGui::Text("Display user defined text using custom truetype font (.ttf only)");
+        if (ImGui::Button("IMAGE")) {
+            atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::Image>());
+        }
+        ImGui::Text("Display image (.jpg or .png)");
     } else {
         if (ImGui::Button("DELETE LAYER")) {
             atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::Empty>());

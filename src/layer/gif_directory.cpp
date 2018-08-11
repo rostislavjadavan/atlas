@@ -6,7 +6,7 @@ void atlas::layer::GifDirectory::setup(const int layerIndex, const atlas::core::
 }
 
 void atlas::layer::GifDirectory::update(double delta) {
-    if (this->gifList.size() > 0 && this->preloadQueue.size() < PRELOAD_QUEUE_SIZE && this->preloader.getStatus() == GifPreloader::WAITING) {
+    if (this->gifList.size() > 0 && this->preloadQueue.size() < PRELOAD_QUEUE_SIZE && this->preloader.getStatus() == atlas::layer::libs::GifPreloader::WAITING) {
         this->preloader.preload(this->gifList.at(this->gifListIndex));
         
         this->gifListIndex++;
@@ -15,7 +15,7 @@ void atlas::layer::GifDirectory::update(double delta) {
         }
     }
     
-    if (this->preloader.getStatus() == GifPreloader::PREPARED) {
+    if (this->preloader.getStatus() == atlas::layer::libs::GifPreloader::PREPARED) {
         this->preloadQueue.push(this->preloader.get());
     }
     
@@ -26,7 +26,7 @@ void atlas::layer::GifDirectory::update(double delta) {
     
     this->fbo->begin();
     ofSetColor(255, 255, 255);
-    ofClear(0, 0, 0, 255);
+    ofClear(0, 0, 0, 0);
     
     if (this->currentGif.use_count() > 0) {
         if ((int)this->frame > this->currentGif->getFrameCount() || this->nextGifTrigger > 100.0f) {
