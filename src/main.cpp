@@ -8,6 +8,7 @@ int main() {
     ofGLFWWindowSettings settings;
     settings.width = APP_WIDTH;
     settings.height = APP_HEIGHT;
+    settings.setGLVersion(3, 2);
     
     std::shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     atlas::core::App::instance().setMainWindow(mainWindow);
