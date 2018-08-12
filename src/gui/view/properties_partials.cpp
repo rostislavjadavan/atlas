@@ -5,6 +5,7 @@
 #include "../layer/gif.hpp"
 #include "../layer/text.hpp"
 #include "../layer/image.hpp"
+#include "../layer/image_slideshow.hpp"
 
 void atlas::gui::view::PropertiesPartials::createLayerGui(int index) {
     std::shared_ptr<atlas::layer::Base> layer = atlas::core::App::instance().getLayerContainer()->getLayer(index);
@@ -28,6 +29,10 @@ void atlas::gui::view::PropertiesPartials::createLayerGui(int index) {
             atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::Image>());
         }
         ImGui::Text("Display image (.jpg or .png)");
+        if (ImGui::Button("IMAGE_SLIDESHOW")) {
+            atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::ImageSlideshow>());
+        }
+        ImGui::Text("Create slideshow of all images in directory (.jpg or .png)");
     } else {
         if (ImGui::Button("DELETE LAYER")) {
             atlas::core::App::instance().getLayerContainer()->setLayer(index, std::make_shared<atlas::layer::Empty>());
