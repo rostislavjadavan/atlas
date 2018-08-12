@@ -1,6 +1,10 @@
 obj/
-bin/
 build/
+*.gif
+*.jpg
+*.png
+*.ttf
+*.mp4
 
 .vscode/
 

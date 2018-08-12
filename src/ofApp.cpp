@@ -2,13 +2,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    ofLog(OF_LOG_NOTICE) << "App & Gui setup";
+    ofLog(OF_LOG_NOTICE) << "[ofApp] App and Gui setup";
     
     atlas::core::App::instance().setup();
     atlas::gui::Gui::instance().setup();
     
-    ofLog(OF_LOG_NOTICE) << "Working directory: " <<  ofFilePath::getCurrentWorkingDirectory();
-    ofLog(OF_LOG_NOTICE) << "Data directory: " <<  ofToDataPath(".");
+    ofLog(OF_LOG_NOTICE) << "[ofApp] Working directory: " <<  ofFilePath::getCurrentWorkingDirectory();
+    ofLog(OF_LOG_NOTICE) << "[ofApp] Data directory: " <<  ofToDataPath(".");
 }
 
 //--------------------------------------------------------------
