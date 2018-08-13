@@ -14,8 +14,10 @@ namespace atlas {
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_IMAGESLIDESHOW;
+                return atlas::layer::LAYER_TYPE_IMAGESLIDESHOW;
             }
+            json saveJson();
+            void loadJson(const json &j);
             
         protected:
             atlas::gui::view::MediaSelector mediaSelector;
@@ -28,7 +30,7 @@ namespace atlas {
             std::queue<std::shared_ptr<ofImage>> preloadQueue;
             std::vector<std::string> imageList;
             int imageListIndex;
-            float imageTime;
+            float duration;
             
             bool play = true;
         

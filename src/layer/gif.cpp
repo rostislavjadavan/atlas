@@ -36,7 +36,7 @@ void atlas::layer::Gif::update(const double delta) {
 void atlas::layer::Gif::gui() {
     ImGui::Text("%s", this->mediaSelector.getSelected().getFileName().c_str());
     if (this->mediaSelector.draw()) {
-        this->preloader.preload(this->mediaSelector.getSelected().getAbsolutePath());
+        this->load();
     }
     
     if (this->currentGif.use_count() > 0) {
@@ -61,3 +61,32 @@ void atlas::layer::Gif::gui() {
     this->partials.bpmLayerPropsGui(props.index);
 }
 
+void atlas::layer::Gif::load() {
+    this->preloader.preload(this->mediaSelector.getSelected().getAbsolutePath());
+}
+
+json atlas::layer::Gif::saveJson() {
+    json j;
+    j["layer_type"] = this->getLayerType();
+    j["props"] = this->props.saveJson();
+    j["path"] = this->mediaSelector.getSelected().getAbsolutePath();
+    j["play"] = this->playGif;
+    j["bpm_frame"] = this->bpmFrame.saveJson();
+    return j;
+}
+
+void atlas::layer::Gif::loadJson(const json &j) {
+    if (j.count("props") > 0) {
+        this->props.loadJson(j["props"]);
+    }
+    if (j.count("path") > 0) {
+        this->mediaSelector.setSelected(j["path"]);
+        this->load();
+    }
+    if (j.count("play") > 0) {
+        this->playGif = j["play"].get<bool>();
+    }
+    if (j.count("bpm_frame") > 0) {
+        this->bpmFrame.loadJson(j["bpm_frame"]);
+    }
+}

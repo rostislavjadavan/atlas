@@ -9,6 +9,8 @@ namespace atlas {
             class System {
             public:
                 void draw(ofRectangle rect);
+            protected:
+                char savename[1024];
             };
         }
     }

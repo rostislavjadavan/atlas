@@ -12,8 +12,10 @@ namespace atlas {
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_GIFDIRECTORY;
+                return atlas::layer::LAYER_TYPE_GIFDIRECTORY;
             }
+            json saveJson();
+            void loadJson(const json &j);
             
         protected:
             static const int PRELOAD_QUEUE_SIZE = 3;

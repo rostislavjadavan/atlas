@@ -29,10 +29,10 @@ namespace atlas {
                             this->compositorOutputHeight = config["compositor_output_height"].get<int>();
                         }
                     } catch (const nlohmann::detail::parse_error &e) {
-                        ofLogNotice() << "[AppSettings] error parsing application.json: " << e.what();
+                        ofLogError() << "[AppSettings] error parsing application.json: " << e.what();
                     }
                 } else {
-                    ofLogNotice() << "[AppSettings] application.json does not exists";
+                    ofLogError() << "[AppSettings] application.json does not exists";
                 }
             }
         };

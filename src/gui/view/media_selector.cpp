@@ -139,6 +139,25 @@ bool atlas::gui::view::MediaSelector::setPath(std::string path) {
     return true;
 }
 
+const ofFile & atlas::gui::view::MediaSelector::getSelected() {
+    return this->selectedMedia;
+}
+
+bool atlas::gui::view::MediaSelector::setSelected(std::string path) {
+    // TODO: check if file exists
+    this->selectedMedia.open(path);
+    return true;
+}
+
+void atlas::gui::view::MediaSelector::setMode(MediaSelectorMode mode) {
+    this->mode = mode;
+}
+
+void atlas::gui::view::MediaSelector::allowExt(std::string ext) {
+    this->allowExtList.push_back(ext);
+    this->setPath(this->currentPath);
+}
+
 void atlas::gui::view::MediaSelector::goDirUp() {
     int found = this->currentPath.find_last_of("/\\");
     this->setPath(this->currentPath.substr(0, found));

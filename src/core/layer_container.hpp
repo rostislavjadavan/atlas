@@ -1,6 +1,14 @@
 #pragma once
 
 #include "layer/base.hpp"
+#include "../layer/base.hpp"
+#include "../layer/empty.hpp"
+#include "../layer/gif_directory.hpp"
+#include "../layer/gif.hpp"
+#include "../layer/text.hpp"
+#include "../layer/image.hpp"
+#include "../layer/image_slideshow.hpp"
+#include "../libs/json.hpp"
 #include <memory>
 
 namespace atlas {
@@ -15,7 +23,10 @@ namespace atlas {
             ~LayerContainer();
             
             const std::shared_ptr<atlas::layer::Base>& getLayer(int index);
-            void setLayer(int index, std::shared_ptr<atlas::layer::Base> layer);
+            void setLayer(int index, int layerType);
+            
+            json saveJson();
+            void loadJson(const json &j);
             
         private:
             std::shared_ptr<atlas::layer::Base> layers[NUM_LAYERS];

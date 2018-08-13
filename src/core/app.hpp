@@ -11,6 +11,9 @@
 namespace atlas {
     namespace core {
         
+        const int APP_VERSION_MAJOR = 1;
+        const int APP_VERSION_MINOR = 0;
+        
         class App {
         public:
             static App& instance() {
@@ -56,6 +59,17 @@ namespace atlas {
             const std::shared_ptr<ofxBeat>& getBeatDetector() {
                 return this->beatDetector;
             }
+            
+            std::string getVersion() {
+                char buff[10];
+                snprintf(buff, sizeof(buff), "%i.%i", APP_VERSION_MAJOR, APP_VERSION_MINOR);
+                std::string buffAsStdStr = buff;
+                return buffAsStdStr;
+            }
+            
+            bool saveWorkspace(std::string name);
+            bool loadWorkspace(std::string name);
+            const std::vector<std::string> listSavedWorkspaces();
             
             AppSettings settings;
             

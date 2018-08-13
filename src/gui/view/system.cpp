@@ -20,6 +20,20 @@ void atlas::gui::view::System::draw(ofRectangle rect) {
         ImGui::TreePop();
     }
     
+    if (ImGui::TreeNode("Load/Save")) {
+        ImGui::InputText("name", this->savename, 1024);
+        if (ImGui::Button("SAVE")) {
+            ofLogNotice() << atlas::core::App::instance().saveWorkspace(this->savename);
+        }
+        ImGui::Separator();
+        for (std::string name: atlas::core::App::instance().listSavedWorkspaces()) {
+            if (ImGui::Button(std::string("load " + name).c_str())) {
+                atlas::core::App::instance().loadWorkspace(name);
+            }
+        }
+        ImGui::TreePop();
+    }
+    
     
     ImGui::End();
 }

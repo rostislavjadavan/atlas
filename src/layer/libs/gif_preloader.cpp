@@ -3,13 +3,8 @@
 void atlas::layer::libs::GifPreloader::preload(std::string path) {
     this->status = LOADING;
     this->fpGifDecoder = std::async(std::launch::async, [](std::string path) {
-        ofLog(OF_LOG_NOTICE) << "[GifPreloader] loading: " << path;
-        
         std::shared_ptr<GifDecoder> decoder = std::shared_ptr<GifDecoder>(new GifDecoder());
         decoder->load(ofToDataPath(path).c_str());
-        
-        ofLog(OF_LOG_NOTICE) << "[GifPreloader] done: " << path << ", width: " << decoder->getWidth() << ", height: " << decoder->getHeight() << ", frames: " << decoder->getFrameCount();
-        
         return decoder;
     }, path);
 }

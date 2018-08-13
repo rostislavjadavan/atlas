@@ -36,3 +36,24 @@ float atlas::core::BpmModifier::applyAdd(float input) {
         return input + atlas::core::App::instance().getBeatDetector()->hihat() * this->scale;
     }
 }
+
+const json atlas::core::BpmModifier::saveJson() {
+    json j;
+    j["enabled"] = this->enabled;
+    j["modified_by"] = this->modifiedBy;
+    j["scale"] = this->scale;
+    return j;
+}
+
+bool atlas::core::BpmModifier::loadJson(const json &j) {
+    if (j.count("enabled") > 0) {
+        this->enabled = j["enabled"].get<bool>();
+    }
+    if (j.count("modified_by") > 0) {
+        this->modifiedBy = j["modified_by"].get<int>();
+    }
+    if (j.count("scale") > 0) {
+        this->scale = j["scale"].get<float>();
+    }
+    return true;
+}

@@ -12,14 +12,18 @@ namespace atlas {
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_IMAGE;
+                return atlas::layer::LAYER_TYPE_IMAGE;
             }
+            json saveJson();
+            void loadJson(const json &j);
             
         protected:
             atlas::gui::view::MediaSelector mediaSelector;
             atlas::layer::libs::ImagePreloader preloader;
             
             ofImage image;
+            
+            void load();
         };
     }
 }

@@ -12,8 +12,10 @@ namespace atlas {
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_GIF;
+                return atlas::layer::LAYER_TYPE_GIF;
             }
+            json saveJson();
+            void loadJson(const json &j);
             
         protected:
             atlas::layer::libs::GifPreloader preloader;
@@ -24,6 +26,7 @@ namespace atlas {
             std::shared_ptr<GifDecoder> currentGif;
 
             bool playGif = true;
+            void load();
             
             atlas::core::BpmModifier bpmFrame;
         };

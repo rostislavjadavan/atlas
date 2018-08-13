@@ -25,7 +25,7 @@ void atlas::layer::Image::update(const double delta) {
 void atlas::layer::Image::gui() {
     ImGui::Text("%s", this->mediaSelector.getSelected().getFileName().c_str());
     if (this->mediaSelector.draw()) {
-        this->preloader.preload(this->mediaSelector.getSelected().getAbsolutePath());
+        this->load();
     }
 
     ImGui::Separator();
@@ -34,3 +34,24 @@ void atlas::layer::Image::gui() {
     this->partials.bpmLayerPropsGui(props.index);
 }
 
+void atlas::layer::Image::load() {
+    this->preloader.preload(this->mediaSelector.getSelected().getAbsolutePath());
+}
+
+json atlas::layer::Image::saveJson() {
+    json j;
+    j["layer_type"] = this->getLayerType();
+    j["props"] = this->props.saveJson();
+    j["path"] = this->mediaSelector.getSelected().getAbsolutePath();
+    return j;
+}
+
+void atlas::layer::Image::loadJson(const json &j) {
+    if (j.count("props") > 0) {
+        this->props.loadJson(j["props"]);
+    }
+    if (j.count("path") > 0) {
+        this->mediaSelector.setSelected(j["path"]);
+        this->load();
+    }
+}

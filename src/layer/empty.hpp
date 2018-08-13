@@ -11,8 +11,14 @@ namespace atlas {
             const std::shared_ptr<ofFbo>& getFrame() { return nullptr; }
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_EMPTY;
+                return atlas::layer::LAYER_TYPE_EMPTY;
             }
+            json saveJson() {
+                json j;
+                j["layer_type"] = this->getLayerType();
+                return j;
+            }
+            void loadJson(const json &j) { }
         };
     }
 }

@@ -108,3 +108,33 @@ void atlas::layer::GifDirectory::load() {
         this->gifListIndex = 0;
     }
 }
+
+json atlas::layer::GifDirectory::saveJson() {
+    json j;
+    j["layer_type"] = this->getLayerType();
+    j["props"] = this->props.saveJson();
+    j["path"] = this->mediaSelector.getSelected().getAbsolutePath();
+    j["play"] = this->playGif;
+    j["bpm_frame"] = this->bpmFrame.saveJson();
+    j["bpm_next_gif"] = this->bpmNextGif.saveJson();
+    return j;
+}
+
+void atlas::layer::GifDirectory::loadJson(const json &j) {
+    if (j.count("props") > 0) {
+        this->props.loadJson(j["props"]);
+    }
+    if (j.count("path") > 0) {
+        this->mediaSelector.setSelected(j["path"]);
+        this->load();
+    }
+    if (j.count("play") > 0) {
+        this->playGif = j["play"].get<bool>();
+    }
+    if (j.count("bpm_frame") > 0) {
+        this->bpmFrame.loadJson(j["bpm_frame"]);
+    }
+    if (j.count("bpm_next_gif") > 0) {
+        this->bpmNextGif.loadJson(j["bpm_next_gif"]);
+    }
+}

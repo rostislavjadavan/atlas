@@ -11,8 +11,10 @@ namespace atlas {
             void update(const double delta);
             void gui();
             int getLayerType() {
-                return LAYER_TYPE_TEXT;
+                return atlas::layer::LAYER_TYPE_TEXT;
             }
+            json saveJson();
+            void loadJson(const json &j);
             
         protected:
             char text[1024];
@@ -20,9 +22,12 @@ namespace atlas {
             float lineHeight, letterSpacing;
             
             atlas::gui::view::MediaSelector mediaSelector;
+            
+            // TODO: implement in separate timeline class
             int timeDisplay, timeHidden, timeAnimation;
             
             ofTrueTypeFont font;
+            void loadFont();
         };
     }
 }
