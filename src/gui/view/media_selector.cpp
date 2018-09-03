@@ -101,6 +101,7 @@ bool atlas::gui::view::MediaSelector::drawList() {
         }
         ImGui::Columns(1);
     }
+    return false;
 }
 
 bool atlas::gui::view::MediaSelector::setPath(std::string path) {

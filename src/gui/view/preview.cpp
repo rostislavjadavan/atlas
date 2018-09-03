@@ -2,13 +2,13 @@
 #include "../../core/app.hpp"
 
 void atlas::gui::view::Preview::draw(ofRectangle rect, int selectedLayer) {
-    const shared_ptr<ofFbo> frame = atlas::core::App::instance().getFrameFromLayer(selectedLayer);
+    const shared_ptr<atlas::layer::Base> layer = atlas::core::App::instance().getLayerContainer()->getLayer(selectedLayer);
     
     ofSetColor(0, 0, 0);
     ofDrawRectangle(rect);
     
-    if (frame != nullptr) {
+    if (layer->getLayerType() != atlas::layer::LAYER_TYPE_EMPTY) {
         ofSetColor(255, 255, 255);
-        frame->draw(rect);
+        layer->getFrame()->draw(rect);
     }
 }
