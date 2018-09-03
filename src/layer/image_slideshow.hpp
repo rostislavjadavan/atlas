@@ -35,6 +35,9 @@ namespace atlas {
             bool play = true;
         
             void load();
+            
+            atlas::core::BpmModifier bpmNextImage;
+            float nextImageTrigger = 0.0f;
         };
     }
 }

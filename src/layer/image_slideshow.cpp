@@ -4,6 +4,7 @@ void atlas::layer::ImageSlideshow::setup(const int layerIndex,const atlas::core:
     FboCanvas::setup(layerIndex, settings);
     this->mediaSelector.setMode(atlas::gui::view::DIR_SELECT);
     this->duration = 1.0f;
+    this->nextImageTrigger = 0.0f;
 }
 
 void atlas::layer::ImageSlideshow::update(const double delta) {
@@ -32,18 +33,23 @@ void atlas::layer::ImageSlideshow::update(const double delta) {
     ofClear(0, 0, 0, 0);
     
     if (this->currentImage.use_count() > 0) {
-        if (this->currentImageTime > this->duration) {
+        if (this->currentImageTime > this->duration || this->nextImageTrigger > 100.0f) {
             if (this->preloadQueue.size() > 0) {
                 this->currentImage = this->preloadQueue.front();
                 this->preloadQueue.pop();
             }
             this->currentImageTime = 0;
+            this->nextImageTrigger = 0.0f;
         }
         
         this->drawTexture(this->currentImage->getTexture());
         
         if (this->play) {
             this->currentImageTime += delta / 1000.0f;
+        }
+        
+        if (bpmNextImage.enabled) {
+            this->nextImageTrigger = this->bpmNextImage.applyAdd(this->nextImageTrigger);
         }
     }
     
@@ -78,6 +84,11 @@ void atlas::layer::ImageSlideshow::gui() {
     
     ImGui::Separator();
     this->partials.baseLayerPropsGui(props.index);
+    
+    ImGui::Checkbox("bpm next image", &this->bpmNextImage.enabled);
+    ImGui::Combo("bpm next image modify by", &this->bpmNextImage.modifiedBy, atlas::layer::IMGUI_COMBO_BPM_MOFIFY_BY_LIST);
+    ImGui::SliderFloat("bpm next image scale", &this->bpmNextImage.scale, 0.0f, 100.0f);
+    
     this->partials.bpmLayerPropsGui(props.index);
 }
 
@@ -105,7 +116,7 @@ json atlas::layer::ImageSlideshow::saveJson() {
     j["path"] = this->mediaSelector.getSelected().getAbsolutePath();
     j["play"] = this->play;
     j["duration"] = this->duration;
-    //j["bpm_frame"] = this->bpmFrame.saveJson();
+    j["bpm_next_image"] = this->bpmNextImage.saveJson();
     return j;
 }
 
@@ -123,10 +134,7 @@ void atlas::layer::ImageSlideshow::loadJson(const json &j) {
     if (j.count("duration") > 0) {
         this->duration = j["duration"].get<float>();
     }
-    /*if (j.count("bpm_frame") > 0) {
-        this->bpmFrame.loadJson(j["bpm_frame"]);
+    if (j.count("bpm_next_image") > 0) {
+        this->bpmNextImage.loadJson(j["bpm_next_gif"]);
     }
-    if (j.count("bpm_next_gif") > 0) {
-        this->bpmNextGif.loadJson(j["bpm_next_gif"]);
-    }*/
 }

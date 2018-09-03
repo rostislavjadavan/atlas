@@ -3,6 +3,7 @@
 void atlas::layer::GifDirectory::setup(const int layerIndex, const atlas::core::AppSettings &settings) {
     FboCanvas::setup(layerIndex, settings);
     this->mediaSelector.setMode(atlas::gui::view::DIR_SELECT);
+    this->nextGifTrigger = 0.0f;
 }
 
 void atlas::layer::GifDirectory::update(double delta) {
