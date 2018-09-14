@@ -5,13 +5,24 @@ void atlas::layer::Text::setup(const int layerIndex,const atlas::core::AppSettin
     this->size = 50;
     this->lineHeight = 55;
     this->letterSpacing = 1;
+    this->timeDisplay = 10;
+    this->timeAnimation = 5;
+    this->timeHidden = 10;
     memset(this->text, 0, sizeof this->text);
     this->mediaSelector.allowExt("ttf");
+    
+    this->lt.add(ofVec2f(0, 0.0));
+    this->lt.add(ofVec2f(this->timeAnimation, 1.0));
+    this->lt.add(ofVec2f(this->timeDisplay, 1.0));
+    this->lt.add(ofVec2f(this->timeAnimation, 0.0));
+    this->lt.add(ofVec2f(this->timeHidden, 0.0));
 }
 
 void atlas::layer::Text::update(const double delta) {
+    this->lt.update(delta);
+    
     this->fbo->begin();
-    ofSetColor(255, 255, 255);
+    ofSetColor(255, 255, 255, this->lt.get() * 255);
     ofClear(0, 0, 0, 0);
     
     if (this->font.isLoaded()) {
@@ -39,8 +50,17 @@ void atlas::layer::Text::gui() {
         this->loadFont();
     }
     ImGui::Separator();
+    ImGui::InputInt("Display time", &this->timeDisplay);
+    ImGui::InputInt("Hidden time", &this->timeHidden);
+    ImGui::InputInt("Fade in/out time", &this->timeAnimation);
+    ImGui::Separator();
     this->partials.baseLayerPropsGui(props.index);
     this->partials.bpmLayerPropsGui(props.index);
+    
+    this->lt.set(1, ofVec2f(this->timeAnimation, 1.0));
+    this->lt.set(2, ofVec2f(this->timeDisplay, 1.0));
+    this->lt.set(3, ofVec2f(this->timeAnimation, 0.0));
+    this->lt.set(4, ofVec2f(this->timeHidden, 0.0));
 }
 
 void atlas::layer::Text::loadFont() {
@@ -56,6 +76,9 @@ json atlas::layer::Text::saveJson() {
     j["size"] = this->size;
     j["line_height"] = this->lineHeight;
     j["letter_spacing"] = this->letterSpacing;
+    j["time_animation"] = this->timeAnimation;
+    j["time_display"] = this->timeDisplay;
+    j["time_hidden"] = this->timeHidden;
     
     return j;
 }
@@ -81,5 +104,13 @@ void atlas::layer::Text::loadJson(const json &j) {
         this->mediaSelector.setSelected(j["path"]);
         this->loadFont();
     }
-    
+    if (j.count("time_animation")) {
+        this->timeAnimation = j["time_animation"].get<float>();
+    }
+    if (j.count("time_display")) {
+        this->timeDisplay = j["time_display"].get<float>();
+    }
+    if (j.count("time_hidden")) {
+        this->timeHidden = j["time_hidden"].get<float>();
+    }
 }

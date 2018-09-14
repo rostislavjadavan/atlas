@@ -75,7 +75,10 @@ namespace atlas {
             
         protected:
             App() {}
-            ~App() {}
+            ~App() {
+                ofSoundStreamStop();
+                ofSoundStreamClose();
+            }
             
             std::shared_ptr<ofAppBaseWindow> mainWindow;
             std::shared_ptr<OutputWindow> outputWindow;

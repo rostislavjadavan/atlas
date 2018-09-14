@@ -88,6 +88,7 @@
 		7C38A20B208E5E6F00CBC8BD /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
 		7C4B764320F7A7A300BFF986 /* blend_shaders.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = blend_shaders.hpp; sourceTree = "<group>"; };
 		7C4B764420F7D91D00BFF986 /* blend_shaders.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = blend_shaders.cpp; sourceTree = "<group>"; };
+		7C4C21F2213DAF45005DCF7D /* linear_timeline.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = linear_timeline.hpp; sourceTree = "<group>"; };
 		7C53CE4120EA885700DE1866 /* fbo_canvas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fbo_canvas.cpp; sourceTree = "<group>"; };
 		7C53CE4220EA885700DE1866 /* fbo_canvas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fbo_canvas.hpp; sourceTree = "<group>"; };
 		7C53CE4420EAAE7E00DE1866 /* layer_compositor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = layer_compositor.cpp; sourceTree = "<group>"; };
@@ -342,6 +343,7 @@
 				7C6D5DE8211F38EF0054A1FC /* image_preloader.cpp */,
 				7C6D5DE9211F38EF0054A1FC /* image_preloader.hpp */,
 				7C6D5DEB211F39B00054A1FC /* preloader_base.hpp */,
+				7C4C21F2213DAF45005DCF7D /* linear_timeline.hpp */,
 			);
 			path = libs;
 			sourceTree = "<group>";

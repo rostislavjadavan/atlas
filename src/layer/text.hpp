@@ -2,6 +2,7 @@
 
 #include "fbo_canvas.hpp"
 #include "../gui/view/media_selector.hpp"
+#include "libs/linear_timeline.hpp"
 
 namespace atlas {
     namespace layer {
@@ -23,8 +24,8 @@ namespace atlas {
             
             atlas::gui::view::MediaSelector mediaSelector;
             
-            // TODO: implement in separate timeline class
             int timeDisplay, timeHidden, timeAnimation;
+            atlas::layer::libs::LinearTimeline lt;
             
             ofTrueTypeFont font;
             void loadFont();
