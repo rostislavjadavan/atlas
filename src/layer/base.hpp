@@ -85,6 +85,7 @@ namespace atlas {
                 if (j.count("bpm_scale") > 0) {
                     this->bpmScale.loadJson(j["bpm_scale"]);
                 }
+                return true;
             }
         };
         

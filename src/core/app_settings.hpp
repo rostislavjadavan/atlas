@@ -17,7 +17,7 @@ namespace atlas {
             void loadIfExists() {
                 ofFile file;
                 if (file.open(ofToDataPath("config/application.json"), ofFile::ReadOnly, false)) {
-                    try {
+                    //try {
                         nlohmann::json config = nlohmann::json::parse(file.readToBuffer().getData());
                         
                         ofLogNotice() << "[AppSettings] loading application.json";
@@ -28,9 +28,9 @@ namespace atlas {
                         if (config.count("compositor_output_height") > 0) {
                             this->compositorOutputHeight = config["compositor_output_height"].get<int>();
                         }
-                    } catch (const nlohmann::detail::parse_error &e) {
+                    /*} catch (const nlohmann::detail::parse_error &e) {
                         ofLogError() << "[AppSettings] error parsing application.json: " << e.what();
-                    }
+                    }*/
                 } else {
                     ofLogError() << "[AppSettings] application.json does not exists";
                 }

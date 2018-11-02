@@ -17,11 +17,20 @@ namespace ofxImGui
 		: lastTime(0.0f)
 		, engine(nullptr)
 		, theme(nullptr)
-	{}
+	{
+		ImGui::CreateContext();
+	}
 
 	//--------------------------------------------------------------
-	void Gui::setup(BaseTheme* theme_)
+	Gui::~Gui()
 	{
+		exit();
+	}
+
+	//--------------------------------------------------------------
+	void Gui::setup(BaseTheme* theme_, bool autoDraw_)
+	{
+		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
 
 		io.DisplaySize = ImVec2((float)ofGetWidth(), (float)ofGetHeight());
@@ -32,10 +41,11 @@ namespace ofxImGui
 #elif defined (OF_TARGET_API_VULKAN) 
 		engine = new EngineVk();
 #else 
-	engine = new EngineGLFW();
+		engine = new EngineGLFW();
 #endif
 
-		engine->setup();
+		autoDraw = autoDraw_;
+		engine->setup(autoDraw);
 
 		if (theme_)
 		{
@@ -45,6 +55,33 @@ namespace ofxImGui
 		{
 			setTheme(new BaseTheme());
 		}
+	}
+
+	//--------------------------------------------------------------
+	void Gui::exit()
+	{
+		if (engine)
+		{
+			delete engine;
+			engine = nullptr;
+		}
+		//if(io)
+		//{
+		//    io->Fonts->TexID = 0;
+		//    io = nullptr;
+		//}
+		if (theme)
+		{
+			delete theme;
+			theme = nullptr;
+		}
+		for (size_t i = 0; i < loadedTextures.size(); i++)
+		{
+			delete loadedTextures[i];
+		}
+		loadedTextures.clear();
+
+		ImGui::DestroyContext();
 	}
 
 	//--------------------------------------------------------------
@@ -73,7 +110,7 @@ namespace ofxImGui
 	}
 
 	//--------------------------------------------------------------
-	GLuint Gui::loadPixels(string imagePath)
+	GLuint Gui::loadPixels(const std::string& imagePath)
 	{
 		if (!engine) return -1;
 		ofPixels pixels;
@@ -89,13 +126,13 @@ namespace ofxImGui
 	}
 
 	//--------------------------------------------------------------
-	GLuint Gui::loadImage(string imagePath)
+	GLuint Gui::loadImage(const std::string& imagePath)
 	{
 		return loadPixels(imagePath);
 	}
 
 	//--------------------------------------------------------------
-	GLuint Gui::loadTexture(string imagePath)
+	GLuint Gui::loadTexture(const std::string& imagePath)
 	{
 		ofDisableArbTex();
 		ofTexture* texture = new ofTexture();
@@ -106,7 +143,7 @@ namespace ofxImGui
 	}
 
 	//--------------------------------------------------------------
-	GLuint Gui::loadTexture(ofTexture& texture, string imagePath)
+	GLuint Gui::loadTexture(ofTexture& texture, const std::string& imagePath)
 	{
 		bool isUsingArb = ofGetUsingArbTex();
 		if (isUsingArb)
@@ -147,9 +184,6 @@ namespace ofxImGui
 		io.MousePos = ImVec2((float)ofGetMouseX(), (float)ofGetMouseY());
 		for (int i = 0; i < 5; i++) {
 			io.MouseDown[i] = engine->mousePressed[i];
-
-			// Update for next frame; set to false only if the mouse has been released
-			engine->mousePressed[i] = !engine->mouseReleased;
 		}
 		ImGui::NewFrame();
 	}
@@ -161,34 +195,11 @@ namespace ofxImGui
 	}
 
 	//--------------------------------------------------------------
-	void Gui::close()
+	void Gui::draw()
 	{
-		if (engine)
+		if (!autoDraw)
 		{
-			delete engine;
-			engine = nullptr;
+			engine->draw();
 		}
-		//if(io)
-		//{
-		//    io->Fonts->TexID = 0;
-		//    io = nullptr;
-		//}
-		if (theme)
-		{
-			delete theme;
-			theme = nullptr;
-		}
-		for (size_t i = 0; i < loadedTextures.size(); i++)
-		{
-			delete loadedTextures[i];
-		}
-		loadedTextures.clear();
-	}
-
-	//--------------------------------------------------------------
-	Gui::~Gui()
-	{
-		close();
-		ImGui::Shutdown();
 	}
 }

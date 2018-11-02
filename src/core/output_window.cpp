@@ -2,6 +2,7 @@
 #include "app.hpp"
 
 void atlas::core::OutputWindow::init() {
+    /*
     int count;
     GLFWmonitor **monitors = glfwGetMonitors(&count);
     
@@ -21,9 +22,11 @@ void atlas::core::OutputWindow::init() {
             ofLog(OF_LOG_NOTICE) << "[OutputWindow] " << mi.name << ": " << mi.width << "x" << mi.height << " (pos: " << mi.vx << ", " << mi.vy << ")" << (mi.isPrimary ? " primary" : "");
         }
     }
+    */
 }
 
 void atlas::core::OutputWindow::gui() {
+    /*
     for (MonitorInfo mi: this->monitors) {
         ImGui::Text("%s", mi.getTitle().c_str());
         if (!mi.isPrimary && !this->window) {
@@ -43,15 +46,15 @@ void atlas::core::OutputWindow::gui() {
     if (ImGui::Button("REFRESH")) {
         this->monitors.clear();
         this->init();
-    }
+    }*/
 }
 
 void atlas::core::OutputWindow::open(MonitorInfo *mi) {
-    ofGLFWWindowSettings wsettings;
+    /*ofGLFWWindowSettings wsettings;
     wsettings.resizable = false;
     wsettings.decorated = false;
-    wsettings.width = mi->width;
-    wsettings.height = mi->height;
+    //wsettings.width = mi->width;
+    //wsettings.height = mi->height;
     wsettings.setPosition(ofVec2f(mi->vx, mi->vy));
     wsettings.shareContextWith = App::instance().getMainWindow();
     
@@ -60,5 +63,5 @@ void atlas::core::OutputWindow::open(MonitorInfo *mi) {
     this->window->toggleFullscreen();
     
     shared_ptr<ofOutputApp> outputApp(new ofOutputApp);
-    ofRunApp(this->window, outputApp);
+    ofRunApp(this->window, outputApp);*/
 }

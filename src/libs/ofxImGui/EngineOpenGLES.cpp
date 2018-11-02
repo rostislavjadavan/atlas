@@ -3,13 +3,14 @@
 #if defined(TARGET_OPENGLES) && (!defined (OF_TARGET_API_VULKAN) )
 
 #include "ofAppRunner.h"
+#include "ofGLProgrammableRenderer.h"
 
 namespace ofxImGui
 {
 	ofShader EngineOpenGLES::g_Shader;
 
 	//--------------------------------------------------------------
-	void EngineOpenGLES::setup()
+	void EngineOpenGLES::setup(bool autoDraw)
 	{
 		if (isSetup) return;
 
@@ -29,8 +30,11 @@ namespace ofxImGui
 		io.KeyMap[ImGuiKey_Enter] = OF_KEY_RETURN;
 		io.KeyMap[ImGuiKey_Escape] = OF_KEY_ESC;
 
-		io.RenderDrawListsFn = rendererDrawLists;
-
+		if (autoDraw)
+		{
+			io.RenderDrawListsFn = rendererDrawData;
+		}
+		
 		io.SetClipboardTextFn = &BaseEngine::setClipboardString;
 		io.GetClipboardTextFn = &BaseEngine::getClipboardString;
 
@@ -73,12 +77,12 @@ namespace ofxImGui
 
 	bool EngineOpenGLES::createDeviceObjects()
 	{
-#if defined(TARGET_RASPBERRY_PI)
-		string header = "";
-#else
-		string header = "precision highp float; \n";
-#endif
-		string vertex_shader = header + R"(
+//#if defined(TARGET_RASPBERRY_PI)
+//		std::string header = "";
+//#else
+		std::string header = "precision highp float; \n";
+//#endif
+		std::string vertex_shader = header + R"(
     
     uniform mat4 ProjMat;
     
@@ -98,7 +102,7 @@ namespace ofxImGui
     
     )";
 
-		string fragment_shader = header + R"(
+		std::string fragment_shader = header + R"(
     
     uniform sampler2D Texture;
     
@@ -127,7 +131,7 @@ namespace ofxImGui
 
 		g_UniformLocationTex = glGetUniformLocation(g_ShaderHandle, "Texture");
 		g_UniformLocationProjMtx = glGetUniformLocation(g_ShaderHandle, "ProjMat");
-		g_UniformLocationPosition = glGetAttribLocation(g_ShaderHandle, "Position");
+		g_AttribLocationPosition = glGetAttribLocation(g_ShaderHandle, "Position");
 		g_AttribLocationUV = glGetAttribLocation(g_ShaderHandle, "UV");
 		g_AttribLocationColor = glGetAttribLocation(g_ShaderHandle, "Color");
 
@@ -193,7 +197,13 @@ namespace ofxImGui
 	}
 
 	//--------------------------------------------------------------
-	void EngineOpenGLES::rendererDrawLists(ImDrawData * draw_data)
+	void EngineOpenGLES::draw()
+	{
+		rendererDrawData(ImGui::GetDrawData());
+	}
+
+	//--------------------------------------------------------------
+	void EngineOpenGLES::rendererDrawData(ImDrawData * draw_data)
 	{
 		GLint last_program, last_texture, last_array_buffer, last_element_array_buffer;
 		glGetIntegerv(GL_CURRENT_PROGRAM, &last_program);

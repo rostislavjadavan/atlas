@@ -1,13 +1,13 @@
 #include "core/app.hpp"
 #include "ofApp.h"
 
-static const int APP_WIDTH = 1280;
-static const int APP_HEIGHT = 800;
+static const int APP_WIDTH = 1024;
+static const int APP_HEIGHT = 768;
 
 int main() {
     ofGLFWWindowSettings settings;
-    settings.width = APP_WIDTH;
-    settings.height = APP_HEIGHT;
+    //settings.setWidth(APP_WIDTH);
+    //settings.setHeight(APP_HEIGHT);
     settings.setGLVersion(3, 2);
     
     std::shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);

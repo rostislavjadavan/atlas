@@ -20,6 +20,7 @@ float atlas::core::BpmModifier::applyMultiply(float input) {
     if (this->modifiedBy == atlas::core::BPM_HIHAT) {
          return atlas::core::App::instance().getBeatDetector()->hihat() * input * this->scale;
     }
+    return input;
 }
 
 float atlas::core::BpmModifier::applyAdd(float input) {
@@ -35,6 +36,7 @@ float atlas::core::BpmModifier::applyAdd(float input) {
     if (this->modifiedBy == atlas::core::BPM_HIHAT) {
         return input + atlas::core::App::instance().getBeatDetector()->hihat() * this->scale;
     }
+    return input;
 }
 
 const json atlas::core::BpmModifier::saveJson() {

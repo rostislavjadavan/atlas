@@ -18,7 +18,7 @@ namespace atlas {
             void loadJson(const json &j);
             
         protected:
-            static const int PRELOAD_QUEUE_SIZE = 3;
+            static const int PRELOAD_QUEUE_SIZE = 128;
             atlas::layer::libs::GifPreloader preloader;
             
             atlas::gui::view::MediaSelector mediaSelector;
